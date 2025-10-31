@@ -9,12 +9,29 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "next": "16.0.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "next": "16.0.1"
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "eslint": "^9",
     "eslint-config-next": "16.0.1"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/souzabweatriz/EdPro-FrontEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/souzabweatriz/EdPro-FrontEnd/issues"
+  },
+  "homepage": "https://github.com/souzabweatriz/EdPro-FrontEnd#readme"
 }
