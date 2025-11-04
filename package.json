@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.1.0",
     "autoprefixer": "^10.4.21",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
