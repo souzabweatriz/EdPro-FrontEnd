@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from '../styles/Cursos.module.css';
+import styles from './Courses.module.css';
 
 export default function Cursos() {
   const [selectedImage, setSelectedImage] = useState(null);
