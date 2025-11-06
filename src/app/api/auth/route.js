@@ -7,8 +7,8 @@ const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 
 const JWT_CONFIG = {
     issuer: "minha-aplicacao",
-    audience: "app-users",
-    expiresIn: "1m", 
+    audience: "meus-usuarios",
+    expiresIn: "1m",
 };
 
 const cookieOpts = { httpOnly: true, secure: false, sameSite: "lax", maxAge: 60 };
@@ -22,16 +22,16 @@ const createToken = async (payload) =>
         .setExpirationTime(JWT_CONFIG.expiresIn) 
         .sign(JWT_SECRET);
         const verifyToken = async (token) => {
-    try {
-        const { payload } = await jwtVerify(token, JWT_SECRET, {
-            issuer: JWT_CONFIG.issuer, 
-            audience: JWT_CONFIG.audience, destinatário
-        });
-        return payload; 
-    } catch {
-        return null; 
-    }
-};
+            try {
+                const { payload } = await jwtVerify(token, JWT_SECRET, {
+                    issuer: JWT_CONFIG.issuer,
+                    audience: JWT_CONFIG.audience,
+                });
+                return payload;
+            } catch {
+                return null;
+            }
+        };
 
 const getToken = (request) =>
     request.cookies.get("auth-token")?.value || 
