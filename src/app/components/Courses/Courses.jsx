@@ -24,16 +24,17 @@ export default function Cursos() {
           onClick={() => document.getElementById('imageInput').click()}
         >
           {selectedImage ? (
-            <Image
-              src={selectedImage}
-              alt="Curso"
-              className={styles.cursosImage}
-              width={150}
-              height={150}
-            />
-          ) : (
-            <span className={styles.cursosImagePlaceholder}>FOTO AQUI</span>
-          )}
+  <Image
+    src={selectedImage}
+    alt="Curso"
+    className={styles.cursosImage}
+    width={150}
+    height={150}
+    onError={() => setSelectedImage(null)} // Fallback para erros de carregamento
+  />
+) : (
+  <span className={styles.cursosImagePlaceholder}>FOTO AQUI</span>
+)}
         </div>
         <input
           id="imageInput"
