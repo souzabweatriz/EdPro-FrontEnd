@@ -1,6 +1,7 @@
 .container {
     background-color: #150259;
     color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
     padding: 40px 0 0 0;
 }
 
@@ -31,7 +32,6 @@
     font-size: 40px;
     font-weight: 800;
     color: #2ec4ff;
-    /* ciano do logo */
     line-height: 1;
 }
 
@@ -172,7 +172,7 @@
 
 .socialIcons {
     display: flex;
-    gap: 18px;
+    gap: 40px;
     align-items: center;
 }
 
@@ -202,29 +202,6 @@
     font-weight: 600;
 }
 
-/* Responsividade */
-@media (max-width: 992px) {
-    .content {
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-    }
-}
-
-@media (max-width: 600px) {
-    .content {
-        grid-template-columns: 1fr;
-        gap: 22px;
-        padding: 32px 18px 20px;
-    }
-
-    .logoSection h3 {
-        font-size: 28px;
-    }
-
-    .emailForm {
-        max-width: 100%;
-    }
-}
 
 
 .content {
@@ -281,6 +258,29 @@
     color: #ffffff;
 }
 
+/* underline menor especificamente para o título da seção de contato */
+.sectionContact .title {
+    /* remover border padrão e usar pseudo-elemento para controlar comprimento */
+    border-bottom: none;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.sectionContact .title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transform: none;
+    bottom: 0;
+    width: 56px;
+    /* comprimento da linha */
+    height: 3px;
+    /* espessura da linha */
+    background: #2ec4ff;
+    border-radius: 2px;
+}
+
 .contactInfo {
     display: flex;
     flex-direction: column;
@@ -319,6 +319,12 @@
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 10px 0;
+}
+
+.newsletter h4 {
+    display: inline-block;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #2ec4ff;
 }
 
 .emailForm {
@@ -376,14 +382,32 @@
 }
 
 .socialIcons {
-    display: flex;
-    gap: 15px;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 20px !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.socialIcons .icons {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 40px !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialIcons a,
+.socialIcons .icons a {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
 .socialIcons :global(.edpro-social__icon) {
-    font-size: 24px;
+    font-size: 32px;
     color: #d0d0d0;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
 }
 
@@ -395,30 +419,42 @@
 
 .socialIcons a:hover :global(.edpro-social__icon) {
     color: #ffffff;
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
-.copyright {
+.section {
+    grid-column: 2;
+    grid-row: 1;
+    align-items: center;
     text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #3a1f8f;
 }
 
-.copyright p {
-    margin: 0;
-    font-size: 14px;
-    color: #b8b8b8;
+.newsletter {
+    grid-column: 2;
+    grid-row: 2;
+    align-items: center;
+    text-align: center;
+    margin-top: -180px;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
+.social {
+    grid-column: 2;
+    grid-row: 3;
+    align-items: center;
+    text-align: center;
+}
 
-    .emailForm {
-        flex-direction: column;
-    }
+.links {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.links li a {
+    color: #48b5ff;
+}
+
+.emailForm {
+    margin: 0 auto;
+    max-width: 320px;
 }

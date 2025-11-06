@@ -23,8 +23,8 @@ export default function Footer() {
             <Image
               src="/images/Logo.png"
               alt="EdPro Logo"
-              width={60}
-              height={60}
+              width={120}
+              height={150}
             />
             <div>
               <h3>EdPro</h3>
@@ -39,11 +39,7 @@ export default function Footer() {
           <div className={styles.sectionContact}>
             <h4 className={styles.title}>Contato</h4>
             <div className={styles.contactInfo}>
-              <p>
-                📍 Rua da EdPro, 123
-                <br />
-                São Paulo - SP
-              </p>
+              <p>📍 Rua da EdPro, 123 São Paulo - SP</p>
               <p>📞 (19) 1234-5678</p>
               <p>✉️ plataformaedpro@gmail.com</p>
             </div>
@@ -78,7 +74,7 @@ export default function Footer() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <button type="submit">Inscrever-se</button>
+            <button type="submit"></button>
           </form>
 
           <div className={styles.social}>
