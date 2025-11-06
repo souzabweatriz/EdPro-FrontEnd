@@ -11,7 +11,9 @@ const cookieOpts = {
     sameSite: "lax",
 };
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || ""; // ex: https://api.meusite.com
 const axiosOpts = { timeout: 10000, withCredentials: true };
+const axiosInstance = axios.create({ baseURL: API_BASE, ...axiosOpts });
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
@@ -32,29 +34,39 @@ export function AuthProvider({ children }) {
     };
     const removeUser = () => ["user", "isLoggedIn", "auth-token"].forEach((c) => Cookies.remove(c));
 
-    const authRequest = async (action, data = {}) => {
-        try {
-            // Faz requisição POST para /api/auth com a ação e dados
-            const response = await axios.post("/api/auth", { action, ...data }, axiosOpts);
-            return response.data;
-        } catch (error) {
-            // Padroniza tratamento de erros de todas as requisições
-            return {
-                success: false,
-                error: error.response?.data?.error || "Erro de conexão",
-            };
-        }
-    }; const checkAuth = useCallback(async () => {
+    const authError = (error) => ({
+        success: false,
+        error: error?.response?.data?.error || error?.message || "Erro de conexão",
+    });
+
+    // Faz check no backend para obter dados do usuário autenticado.
+    // Se NEXT_PUBLIC_API_URL estiver definida, espera endpoints REST:
+    // POST /auth/login, POST /auth/signup, POST /auth/logout, GET /auth/me
+    // Caso contrário, mantém compatibilidade com a rota interna /api/auth (action-based).
+    const checkAuth = useCallback(async () => {
         const localUser = getUser();
         if (!localUser) return { success: false };
+
         try {
-            const response = await axios.get("/api/auth", axiosOpts);
-            if (response.data.success) {
-                saveUser(response.data.user);
-                return { success: true, user: response.data.user };
+            let response;
+            if (API_BASE) {
+                // Se API_BASE aponta para algo como http://localhost:5000/api/usuarios
+                // usamos endpoints relativos: /me
+                response = await axiosInstance.get("/me");
+                if (response.data?.success) {
+                    saveUser(response.data.user);
+                    return { success: true, user: response.data.user };
+                }
+            } else {
+                response = await axios.get("/api/auth", axiosOpts);
+                if (response.data?.success) {
+                    saveUser(response.data.user);
+                    return { success: true, user: response.data.user };
+                }
             }
         } catch (error) {
             if (error.response?.status === 401) removeUser();
+            return { success: false };
         }
         return { success: false };
     }, []);
@@ -67,28 +79,62 @@ export function AuthProvider({ children }) {
     }, [checkAuth]);
     const login = async (email, password) => {
         if (!email || !password) return { success: false, error: "Email e senha obrigatórios" };
-        const result = await authRequest("login", { email, password });
-        if (result.success) {
-            saveUser(result.user);
-            setUser(result.user);
-            setIsAuthenticated(true);
+
+        try {
+            let response;
+            if (API_BASE) {
+                // Backend externo REST-style — espera que o backend set-cookie o token HttpOnly
+                // API_BASE pode ser um path até /api/usuarios, então chamamos /login
+                response = await axiosInstance.post("/login", { email, password });
+            } else {
+                // Rota interna legacy
+                response = await axios.post("/api/auth", { action: "login", email, password }, axiosOpts);
+            }
+
+            const data = response.data;
+            if (data?.success) {
+                // Salvamos apenas dados públicos do usuário em cookie (não o token)
+                saveUser(data.user);
+                setUser(data.user);
+                setIsAuthenticated(true);
+            }
+            return data;
+        } catch (error) {
+            return authError(error);
         }
-        return result;
     };
 
     const signup = async (name, email, password) => {
         if (!name || !email || !password) return { success: false, error: "Todos campos obrigatórios" };
-        const result = await authRequest("signup", { name, email, password });
-        if (result.success) {
-            saveUser(result.user);
-            setUser(result.user);
-            setIsAuthenticated(true);
+
+        try {
+            let response;
+            if (API_BASE) {
+                response = await axiosInstance.post("/signup", { name, email, password });
+            } else {
+                response = await axios.post("/api/auth", { action: "signup", name, email, password }, axiosOpts);
+            }
+            const data = response.data;
+            if (data?.success) {
+                saveUser(data.user);
+                setUser(data.user);
+                setIsAuthenticated(true);
+            }
+            return data;
+        } catch (error) {
+            return authError(error);
         }
-        return result;
     };
 
     const logout = async () => {
-        await authRequest("logout");
+        try {
+            if (API_BASE) {
+                await axiosInstance.post("/logout");
+            } else {
+                await axios.post("/api/auth", { action: "logout" }, axiosOpts);
+            }
+        } catch (e) {
+        }
         removeUser();
         setUser(null);
         setIsAuthenticated(false);
