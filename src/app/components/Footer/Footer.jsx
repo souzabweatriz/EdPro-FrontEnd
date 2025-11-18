@@ -34,7 +34,7 @@ export default function Footer() {
               height={150}
             />
             <div>
-              <h3>EdPro</h3>
+              <h1>EdPro</h1>
               <p>Plataforma de Curso</p>
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function Footer() {
             real.
           </p>
           <div className={styles.sectionContact}>
-            <h4 className={styles.titleContact}>Contato</h4>
+            <h1 className={styles.titleContact}>Contato</h1>
             <div className={styles.contactLine}></div>
             <div className={styles.contactInfo}>
               <p>
@@ -67,7 +67,7 @@ export default function Footer() {
 
         <div className={styles.section}>
           <div className={styles.contentt}>
-            <h4 className={styles.title}>Links Rápidos</h4>
+            <h1 className={styles.title}>Links Rápidos</h1>
             <div className={styles.linkline}></div>
             <ul className={styles.links}>
               <li>
@@ -85,7 +85,7 @@ export default function Footer() {
             </ul>
 
             <div className={styles.newsletter}>
-              <h4 className={styles.title}>Fique por dentro</h4>
+              <h1 className={styles.title}>Fique por dentro</h1>
               <div className={styles.letterline}></div>
               <form onSubmit={handleSubmit} className={styles.emailForm}>
                 <input
@@ -99,7 +99,7 @@ export default function Footer() {
               </form>
 
               <div className={styles.social}>
-                <p>Siga-nos</p>
+                <h1 className={styles.title}>Siga-nos</h1>
                 <div className={styles.socialIcons}>
                   <IconContext.Provider
                     value={{ className: "edpro-social__icon" }}
