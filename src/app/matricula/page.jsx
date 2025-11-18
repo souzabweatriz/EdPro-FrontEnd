@@ -101,6 +101,11 @@ export default function Matricula() {
                         <label className={styles.courseItem}><input type="checkbox" /> Administração</label>
                         <label className={styles.courseItem}><input type="checkbox" /> Ciências Contábeis</label>
                         <label className={styles.courseItem}><input type="checkbox" /> Engenharia Civil</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Pedagogia</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Enfermagem</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Engenharia Mecânica</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Medicina Veterinária</label>
+
                     </div>
                 </div>
                 <div className={styles.commentsRow}>
