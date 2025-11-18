@@ -1,3 +1,37 @@
+@media (max-width: 1200px) {
+	.formBox {
+		max-width: 98vw;
+		padding: 18px 2vw 0 2vw;
+	}
+	.fieldsRow {
+		flex-direction: column;
+		gap: 12px;
+	}
+	.imageBox {
+		max-width: 98vw;
+		height: 110px;
+	}
+}
+
+@media (max-width: 700px) {
+	.formBox {
+		padding: 10px 2vw 0 2vw;
+		border-radius: 10px;
+	}
+	.title {
+		font-size: 1.1rem;
+	}
+	.input {
+		font-size: 0.95rem;
+		padding: 8px 8px;
+		border-radius: 12px;
+	}
+	.createButton {
+		font-size: 1rem;
+		padding: 8px 16px;
+		border-radius: 12px;
+	}
+}
 .container {
 	display: flex;
 	flex-direction: column;
