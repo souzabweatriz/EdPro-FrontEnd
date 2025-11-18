@@ -105,7 +105,6 @@ export default function Matricula() {
                         <label className={styles.courseItem}><input type="checkbox" /> Enfermagem</label>
                         <label className={styles.courseItem}><input type="checkbox" /> Engenharia Mecânica</label>
                         <label className={styles.courseItem}><input type="checkbox" /> Medicina Veterinária</label>
-
                     </div>
                 </div>
                 <div className={styles.commentsRow}>
