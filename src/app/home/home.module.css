@@ -9,7 +9,7 @@
 }
 
 .title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
     margin: 18px 0 6px 20px;
     color: #071229;
@@ -81,8 +81,8 @@
 }
 
 .card {
-    width: 320px;
-    height: 220px;
+    width: 330px;
+    height: 260px;
     background-color: #051f52;
     border-radius: 14px;
     padding: 24px 20px;
@@ -95,10 +95,41 @@
 }
 
 .cardtitle {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin: 0 0 12px 0;
     color: #ffffff;
     line-height: 1.15;
+}
+
+.cards .card {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.cards .card:nth-child(1) {
+    background-image: url('/images/livros.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.cards .card:nth-child(2) {
+    background-image: url('/images/equipe.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.cards .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(#051f52a5 , #051f52a5 );
+    z-index: 1;
+}
+
+.cards .card > * {
+    position: relative;
+    z-index: 2;
 }
 
 .buttoncard {
@@ -146,9 +177,10 @@
     border-radius: 10px;
     margin: 10px auto 28px auto;
     box-shadow: 0 10px 20px rgba(16, 24, 40, 0.235);
-    max-width: 720px;
+    max-width: 730px;
     text-align: left;
-    height: 15rem;
+    height: 13rem;
+
 }
 
 .sectiondescription {
@@ -156,4 +188,6 @@
     color: #374151; 
     line-height: 1.7;
     margin: 0;
+    font-style: italic;
+    font-weight: 550;
 }

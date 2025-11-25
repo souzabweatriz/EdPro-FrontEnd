@@ -4,6 +4,7 @@ import styles from "../home/home.module.css";
 import Link from "next/link";
 import Footer from "../../app/components/Footer/Footer";
 import { Carousel } from 'antd';
+import Image from "next/image";
 
 const contentStyle = {
     margin: 0,
@@ -17,17 +18,20 @@ const contentStyle = {
 export default function Home() {
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>O seu conhecimento começa aqui</h1>
-            <div className={styles.descriptions}>
-                <p className={styles.description}>Vamos aprender?</p>
-                <Link href="/login" className={styles.subdescription}>Entre agora!</Link>
+            <div className={styles.sessao}>
+                <h1 className={styles.title}>O seu conhecimento começa aqui</h1>
+                <div className={styles.descriptions}>
+                    <p className={styles.description}>Vamos aprender?</p>
+                    <Link href="/login" className={styles.subdescription}>Entre agora!</Link>
+                </div>
+                <div className={styles.buttons}>
+                    <Link href="/login" className={styles.button1}>Login</Link>
+                    <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
+                </div>
             </div>
-            <div className={styles.buttons}>
-                <Link href="/login" className={styles.button1}>Login</Link>
-                <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
-            </div>
+
             <div className={styles.carrouselContainer}>
-                <Carousel autoplay>
+                <Carousel autoplay autoplaySpeed={5000}>
                     <div>
                         <h3 style={contentStyle}>1</h3>
                     </div>
@@ -46,11 +50,11 @@ export default function Home() {
             <div className={styles.cards}>
                 <div className={styles.card}>
                     <h2 className={styles.cardtitle}>Conheça Nossos Cursos</h2>
-                    <Link href="/courses" className={styles.buttoncard}>Veja Aqui</Link>
+                    <Link href="/Studentcourses" className={styles.buttoncard}>Veja Aqui</Link>
                 </div>
                 <div className={styles.card}>
-                    <h2 className={styles.cardtitle}>Conheça Nossos Cursos</h2>
-                    <Link href="/courses" className={styles.buttoncard}>Veja Aqui</Link>
+                    <h2 className={styles.cardtitle}>Conheça Nossa Equipe</h2>
+                    <Link href="/about" className={styles.buttoncard}>Saiba Mais</Link>
                 </div>
             </div>
             <div className={styles.section}>
