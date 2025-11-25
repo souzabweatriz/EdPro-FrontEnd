@@ -1,20 +1,13 @@
-import "./globals.css";
-import BackTop from "./components/BackTop/BackTop.jsx";
-
-export const metadata = {
-    title: "EdPro",
-    description: "Plataforma de cursos.",
-    icons: {
-        icon: "/icons/favicon.ico",
-    },
-};
+import Header from './components/Header/Header'; 
 
 export default function RootLayout({ children }) {
     return (
         <html lang="pt-BR">
             <body>
-                {children}
-                <BackTop />
+                <Header />
+                <main>
+                    {children}
+                </main>
             </body>
         </html>
     );
