@@ -1,0 +1,120 @@
+.header {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 20px;
+    background-color: #1a0033; 
+    color: #fff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-height: 70px; 
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.logoText {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navLink:hover {
+    color: #ccc; 
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actionButton {
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.actionButton:hover {
+    background-color: #fff;
+    color: #1a0033;
+}
+
+.menuIcon {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; 
+    cursor: pointer;
+    position: relative; 
+    margin-left: 20px; 
+}
+
+.menuLine {
+    width: 35px; 
+    height: 4px; 
+    background-color: #fff;
+    display: flex;
+    transition: background-color 0.3s ease;
+}
+
+.menuLine:hover {
+    background-color: #ccc;
+}
+
+.dropdownMenu {
+    display: none; 
+    position: absolute;
+    top: 30px; 
+    right: 0;
+    background-color: #1a0033;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 10px;
+}
+
+.dropdownMenu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdownMenu a:hover {
+    background-color: #fff;
+    color: #1a0033;
+}
+
+.menuIcon:hover .dropdownMenu {
+    display: block; 
+}
