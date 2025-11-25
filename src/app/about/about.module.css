@@ -108,7 +108,7 @@
 
 .description1 {
     font-size: 1.2rem;
-    font-weight: 400;
+    font-weight: 600;
     color: #333333;
     text-align: center;
 }
@@ -127,4 +127,94 @@
     color: #333333;
     text-align: center;
     margin-top: 1rem;
+}
+
+.icons {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.icon{
+    width: 220px;
+    text-align: center;
+}
+
+.iconTitle {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+}
+
+.iconText {
+    margin: 0.25rem 0 0;
+    color: #334155;
+}
+
+.sectionEquipe {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 520px;
+    margin: 2.5rem auto;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    background-color: #150259;
+    color: #ffffff;
+    border-radius: 8px;
+    border: 4px solid rgba(0,0,0,0.05);
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 1.5rem;
+}
+
+.sessaoequipe {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.equipe {
+    display: flex;
+    gap: 3.5rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 180px;
+}
+
+.avatar {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 6px solid rgba(255,255,255,0.15);
+}
+
+.role {
+    margin: 0.6rem 0 0.2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+}
+
+.name {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #ffffffcc;
+    text-align: center;
 }
