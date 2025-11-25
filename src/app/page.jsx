@@ -69,7 +69,20 @@ export default function LoginPage(){
               Entrar no Sistema
             </Button>
           </Form.Item>
+          <Button
+              type="dashed"
+              htmlType="submit" 
+              size="large"
+              block 
+              loading={carregando}>
+              Administrador
+          </Button>
         </Form>
+        </div>
+        <div className={styles.aside}>
+          <h1 className={styles.title}>
+            Autonomia para treinar, inteligência para crescer. 
+          </h1>
         </div>
     </div>
     )
