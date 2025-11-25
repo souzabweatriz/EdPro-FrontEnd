@@ -1,23 +1,31 @@
 .container {
     background-color: #150259;
     color: #ffffff;
-    padding: 40px 0 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: auto;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 12px 0 0 0;
 }
 
 .content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 24px 20px;
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 2.5fr 1.6fr 0.9fr;
     align-items: start;
+    padding: 0 12px;
+    gap: 12px;
 }
 
 .company {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px;
+    margin-left: 10rem;
 }
 
 .logoSection {
@@ -26,26 +34,26 @@
     gap: 18px;
 }
 
-.logoSection h3 {
+.logoSection h1 {
     margin: 0;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 800;
     color: #2ec4ff;
-    /* ciano do logo */
     line-height: 1;
 }
 
 .logoSection p {
     margin: 0;
     font-size: 14px;
-    color: #cbd5e1;
+    font-weight: 700;
+    color: #ffffff;
 }
 
 .description {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #d0d6ea;
-    max-width: 420px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #ffffff;
+    max-width: 360px;
 }
 
 .section,
@@ -53,45 +61,74 @@
 .newsletter {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
+}
+
+.section {
+    margin-top: 28px;
+    align-items: flex-end;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 60px;
+}
+
+.titleContact {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    color: #ffffff;
+    display: inline-block;
+    padding-bottom: 4px;
+    text-align: left;
+    border-bottom: 3px solid #2ec4ff;
+    width: fit-content;
 }
 
 .title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    margin: 0 0 12px 0;
+    margin: 0 0 10px 0;
     color: #ffffff;
     display: inline-block;
-    padding-bottom: 8px;
+    padding-bottom: 4px;
+    text-align: center;
     border-bottom: 3px solid #2ec4ff;
 }
 
 .contactInfo {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
 }
 
 .contactInfo p {
     margin: 0;
-    font-size: 14px;
-    color: #cbd5e1;
-    line-height: 1.6;
+    font-size: 12px;
+    color: #2ec4ff;
+    line-height: 1.4;
+}
+
+.icons {
+    color: #2ec4ff;
 }
 
 .links {
     list-style: none;
     padding: 0;
     margin: 0;
+    font-size: 14px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
+    text-align: center;
 }
 
 .links li a {
     color: #48b5ff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
     transition: color 0.25s ease, transform 0.15s ease;
 }
@@ -101,50 +138,47 @@
     transform: translateX(3px);
 }
 
-.newsletter h4 {
-    font-size: 18px;
+.newsletter {
+    align-items: center;
+    text-align: center;
+    margin-top: 28px;
+}
+
+.title2 {
+    font-size: 16px;
     font-weight: 700;
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
 }
 
 .emailForm {
     display: block;
     position: relative;
     width: 100%;
-    max-width: 320px;
+    max-width: 200px;
+    margin-left: auto;
 }
 
 .emailForm input {
     width: 100%;
-    padding: 12px 54px 12px 14px;
-    /* espaço para botão à direita */
+    padding: 8px 44px 8px 10px;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 22px;
+    border-radius: 18px;
     background-color: rgba(255, 255, 255, 0.03);
     color: #dbeafe;
-    font-size: 14px;
+    font-size: 12px;
     outline: none;
     transition: box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.emailForm input::placeholder {
-    color: #94a3b8;
-}
-
-.emailForm input:focus {
-    box-shadow: 0 0 0 4px rgba(46, 196, 255, 0.06);
-    border-color: rgba(46, 196, 255, 0.35);
-}
-
 .emailForm button {
     position: absolute;
-    right: 6px;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 34px;
+    width: 34px;
+    height: 28px;
     padding: 0;
-    border-radius: 10px;
+    border-radius: 8px;
     border: none;
     background-color: #2ec4ff;
     display: inline-flex;
@@ -160,25 +194,21 @@
 .social {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 8px;
-}
-
-.social p {
-    margin: 0;
-    font-size: 14px;
-    color: #cbd5e1;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
 }
 
 .socialIcons {
     display: flex;
     gap: 18px;
     align-items: center;
+    justify-content: center;
 }
 
 .socialIcons :global(.edpro-social__icon) {
-    font-size: 26px;
-    color: #cbd5e1;
+    font-size: 30px;
+    color: #ffffff;
     transition: transform 0.18s ease, color 0.18s ease;
 }
 
@@ -188,237 +218,20 @@
 }
 
 .copyright {
-    text-align: center;
-    margin-top: 28px;
-    padding: 16px 0;
-    background: rgba(0, 0, 0, 0.12);
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    position: relative;
+    left: 0;
+    width: 100%;
+    margin: 8px 0 0 0;
+    padding: 6px 0 10px 0;
+    background-color: #0F0140;
+    z-index: 1001;
 }
 
 .copyright p {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
     color: #52d0ff;
     font-weight: 600;
-}
-
-/* Responsividade */
-@media (max-width: 992px) {
-    .content {
-        grid-template-columns: 1fr 1fr;
-        gap: 28px;
-    }
-}
-
-@media (max-width: 600px) {
-    .content {
-        grid-template-columns: 1fr;
-        gap: 22px;
-        padding: 32px 18px 20px;
-    }
-
-    .logoSection h3 {
-        font-size: 28px;
-    }
-
-    .emailForm {
-        max-width: 100%;
-    }
-}
-
-
-.content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-}
-
-.company {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.logoSection {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logoSection h3 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.logoSection p {
-    margin: 0;
-    font-size: 14px;
-    color: #b8b8b8;
-}
-
-.description {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #d0d0d0;
-}
-
-.section,
-.sectionContact,
-.newsletter {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.title {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0 0 10px 0;
-    color: #ffffff;
-}
-
-.contactInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.contactInfo p {
-    margin: 0;
-    font-size: 14px;
-    color: #d0d0d0;
-    line-height: 1.6;
-}
-
-.links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.links li a {
-    color: #d0d0d0;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.links li a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-.newsletter h4 {
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0 0 10px 0;
-}
-
-.emailForm {
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-}
-
-.emailForm input {
-    padding: 12px;
-    border: 1px solid #3a1f8f;
-    border-radius: 5px;
-    background-color: #1e0a5c;
-    color: #ffffff;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.emailForm input::placeholder {
-    color: #8a8a8a;
-}
-
-.emailForm input:focus {
-    border-color: #5a3fb8;
-}
-
-.emailForm button {
-    padding: 12px 20px;
-    background-color: #7c3aed;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.emailForm button:hover {
-    background-color: #6d28d9;
-}
-
-.social {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.social p {
-    margin: 0;
-    font-size: 14px;
-    color: #d0d0d0;
-}
-
-.socialIcons {
-    display: flex;
-    gap: 15px;
-}
-
-.socialIcons :global(.edpro-social__icon) {
-    font-size: 24px;
-    color: #d0d0d0;
-    transition: color 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-}
-
-.socialIcons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.socialIcons a:hover :global(.edpro-social__icon) {
-    color: #ffffff;
-    transform: scale(1.1);
-}
-
-.copyright {
+    line-height: 1.8;
     text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #3a1f8f;
-}
-
-.copyright p {
-    margin: 0;
-    font-size: 14px;
-    color: #b8b8b8;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .emailForm {
-        flex-direction: column;
-    }
 }
