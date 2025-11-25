@@ -5,7 +5,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import styles from "./page.module.css"
 import { Form, Input, Button, message, Alert } from 'antd';
-
+import Image from 'next/image';
 const HEADERS = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
 export default function LoginPage(){
@@ -32,7 +32,17 @@ export default function LoginPage(){
 
     return(
     <div className={styles.container}>
-        <div className={styles.main}>
+      <div className={styles.main}>
+        <div className={styles.logo}>
+        <Image 
+        src="/images/Logo.png"
+        alt="Logo EdPro"
+        width={100}
+        height={150}
+        />
+        <div className={styles.line}></div>
+        <p className={styles.text}>EdPro</p>
+      </div>
           {erro && (
           <Alert
             message="Erro ao fazer login"
@@ -46,14 +56,12 @@ export default function LoginPage(){
         
         <Form name="login" onFinish={onFinish} layout="vertical">
           <Form.Item
-            label="Usuário"
             name="login"
             rules={[{ required: true, message: 'Digite seu usuário!' }]}>
             <Input size="large" placeholder="Digite seu usuário" />
           </Form.Item>
           
           <Form.Item
-            label="Senha"
             name="senha"
             rules={[{ required: true, message: 'Digite sua senha!' }]}>
             <Input.Password size="large" placeholder="Digite sua senha" />
@@ -81,7 +89,7 @@ export default function LoginPage(){
         </div>
         <div className={styles.aside}>
           <h1 className={styles.title}>
-            Autonomia para treinar, inteligência para crescer. 
+          ❝Autonomia para treinar, inteligência para crescer.❞ 
           </h1>
         </div>
     </div>
