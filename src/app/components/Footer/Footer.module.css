@@ -1,237 +1,231 @@
 .container {
-    background-color: #150259;
+    background: #271761;
     color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
     width: 100%;
-    height: auto;
-    position: relative;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    padding: 12px 0 0 0;
 }
 
 .content {
-    max-width: 1200px;
+    max-width: 90rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0 1rem;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2.5fr 1.6fr 0.9fr;
-    align-items: start;
-    padding: 0 12px;
-    gap: 12px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
 }
 
 .company {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-left: 10rem;
+    gap: 0.5rem;
+    flex: 2 1 18rem;
+    min-width: 0;
+    padding-left: 4rem;
 }
 
 .logoSection {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 0.4rem;
+    margin-bottom: -1rem;
 }
 
 .logoSection h1 {
+    font-size: 2rem;
+    font-weight: 700;
     margin: 0;
-    font-size: 30px;
-    font-weight: 800;
-    color: #2ec4ff;
-    line-height: 1;
+    color: #4BC9FF;
 }
 
 .logoSection p {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 1rem;
     color: #ffffff;
+    margin: 0;
 }
 
 .description {
-    font-size: 12px;
-    line-height: 1.4;
     color: #ffffff;
-    max-width: 360px;
-}
-
-.section,
-.sectionContact,
-.newsletter {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1.4;
+    max-width: 21rem;
+    text-align: justify;
 }
 
 .section {
-    margin-top: 28px;
-    align-items: flex-end;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-left: 60px;
-}
-
-.titleContact {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0 4px 0;
-    color: #ffffff;
-    display: inline-block;
-    padding-bottom: 4px;
-    text-align: left;
-    border-bottom: 3px solid #2ec4ff;
-    width: fit-content;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin: 1.5rem 0 0;
 }
 
 .title {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: #ffffff;
+    border-bottom: 0.125rem solid #37AAFC;
     display: inline-block;
-    padding-bottom: 4px;
-    text-align: center;
-    border-bottom: 3px solid #2ec4ff;
+}
+
+.title1 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: 0.125rem solid #37AAFC;
+    display: inline-block;
+    max-width: 4.5rem;
+}
+
+.newsletter .title {
+    display: inline-block;
+    max-width: 8rem;
+    border-bottom: 0.125rem solid #37AAFC;
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.section li {
+    color: #37AAFC;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    text-align: left;
+}
+
+.sectionContact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin: 1.5rem 0 0;
 }
 
 .contactInfo {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    color: #37AAFC;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    gap: 0.25rem;
+    align-items: flex-start;
 }
 
 .contactInfo p {
     margin: 0;
-    font-size: 12px;
-    color: #2ec4ff;
-    line-height: 1.4;
+    font-size: 0.8rem;
 }
 
-.icons {
-    color: #2ec4ff;
-}
-
-.links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-}
-
-.links li a {
-    color: #48b5ff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    transition: color 0.25s ease, transform 0.15s ease;
-}
-
-.links li a:hover {
-    color: #9fe9ff;
-    transform: translateX(3px);
+.contactIcon {
+    margin-right: 0.4rem;
+    color: #ffffff;
+    vertical-align: middle;
 }
 
 .newsletter {
-    align-items: center;
-    text-align: center;
-    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 25rem;
+    width: 100%;
+    margin: 1.5rem 0 0;
 }
 
-.title2 {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0 6px 0;
+.newsletter h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+    border-bottom: 0.125rem solid #37AAFC;
+    display: inline-block;
+    padding-bottom: 0.3rem;
 }
 
 .emailForm {
-    display: block;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+    max-width: 18rem;
     width: 100%;
-    max-width: 200px;
-    margin-left: auto;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.4rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .emailForm input {
-    width: 100%;
-    padding: 8px 44px 8px 10px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 18px;
-    background-color: rgba(255, 255, 255, 0.03);
-    color: #dbeafe;
-    font-size: 12px;
+    flex: 1;
+    padding: 0.45rem 0.6rem;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.85rem;
     outline: none;
-    transition: box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
 .emailForm button {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 34px;
-    height: 28px;
-    padding: 0;
-    border-radius: 8px;
+    padding: 0.45rem 0.8rem;
     border: none;
-    background-color: #2ec4ff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    background: #37AAFC;
+    color: #ffffff;
     cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s ease;
 }
 
 .emailForm button:hover {
-    filter: brightness(0.95);
+    background: #0091ff;
 }
 
 .social {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 6px;
-    align-items: center;
+    gap: 0.4rem;
+    color: #37AAFC;
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
 }
 
 .socialIcons {
     display: flex;
-    gap: 18px;
+    gap: 1.2rem;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.socialIcons a {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-}
-
-.socialIcons :global(.edpro-social__icon) {
-    font-size: 30px;
-    color: #ffffff;
-    transition: transform 0.18s ease, color 0.18s ease;
-}
-
-.socialIcons a:hover :global(.edpro-social__icon) {
-    color: #2ec4ff;
-    transform: translateY(-3px);
+    width: 2.4rem;
+    height: 2.4rem;
+    text-decoration: none;
+    font-size: 2rem;
+    transition: transform 0.12s ease, color 0.12s ease;
 }
 
 .copyright {
-    position: relative;
-    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 0.4rem;
     width: 100%;
-    margin: 8px 0 0 0;
-    padding: 6px 0 10px 0;
-    background-color: #0F0140;
-    z-index: 1001;
 }
 
 .copyright p {
     margin: 0;
-    font-size: 12px;
-    color: #52d0ff;
-    font-weight: 600;
-    line-height: 1.8;
-    text-align: center;
+    color: #37AAFC;
+    font-size: 0.85rem;
 }
