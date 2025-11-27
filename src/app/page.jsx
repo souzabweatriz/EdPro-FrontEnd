@@ -67,7 +67,6 @@ export default function LoginPage() {
             style={{ marginBottom: '20px' }}
           />
         )}
-        {/* Formulário */}
         <Form name="login" onFinish={onFinish} layout="vertical">
           <Form.Item
             name="login"
