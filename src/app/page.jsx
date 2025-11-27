@@ -43,6 +43,10 @@ export default function LoginPage(){
         <div className={styles.line}></div>
         <p className={styles.text}>EdPro</p>
       </div>
+      <div className={styles.welcome}>
+        <h1 className={styles.title1}>Olá, Bem-vindo ai EdPro</h1>
+          <p className={styles.subtitle}>Faça seu login para continuar</p> 
+      </div>
           {erro && (
           <Alert
             message="Erro ao fazer login"
