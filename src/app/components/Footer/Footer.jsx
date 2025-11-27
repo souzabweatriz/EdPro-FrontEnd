@@ -43,91 +43,77 @@ export default function Footer() {
             trilhas de aprendizado personalizadas e acompanhamento em tempo
             real.
           </p>
-          <div className={styles.sectionContact}>
-            <h1 className={styles.titleContact}>Contato</h1>
-            <div className={styles.contactLine}></div>
-            <div className={styles.contactInfo}>
-              <p>
-                <FaMapMarkerAlt
-                  style={{ marginRight: "8px", color: "#ffffff" }}
-                />
-                Rua da EdPro, 123 São Paulo - SP
-              </p>
-              <p>
-                <FaPhone style={{ marginRight: "8px", color: "#ffffff" }} />
-                (19) 1234-5678
-              </p>
-              <p>
-                <FaEnvelope style={{ marginRight: "8px", color: "#ffffff" }} />
-                plataformaedpro@gmail.com
-              </p>
-            </div>
+        </div>
+        <div className={styles.section}>
+          <h1 className={styles.title}>Links Rápidos</h1>
+          <ul className={styles.links}>
+            <li className={styles.link}><Link href="/">Início</Link></li>
+            <li className={styles.link}><Link href="/cursos">Cursos</Link></li>
+            <li className={styles.link}><Link href="/sobre">Sobre Nós</Link></li>
+            <li className={styles.link}><Link href="/contato">Contato</Link></li>
+          </ul>
+        </div>
+        <div className={styles.sectionContact}>
+          <h1 className={styles.title}>Contato</h1>
+          <div className={styles.contactInfo}>
+            <p>
+              <FaMapMarkerAlt
+                style={{ marginRight: "8px", color: "#ffffff" }}
+              />
+              Rua da EdPro, 123 São Paulo - SP
+            </p>
+            <p>
+              <FaPhone style={{ marginRight: "8px", color: "#ffffff" }} />
+              (19) 1234-5678
+            </p>
+            <p>
+              <FaEnvelope style={{ marginRight: "8px", color: "#ffffff" }} />
+              plataformaedpro@gmail.com
+            </p>
           </div>
         </div>
+        <div className={styles.newsletter}>
+          <h1 className={styles.title}>Fique por dentro</h1>
+          <form onSubmit={handleSubmit} className={styles.emailForm}>
+            <input
+              type="email"
+              placeholder="Seu e-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button type="submit"></button>
+          </form>
 
-        <div className={styles.section}>
-          <div className={styles.contentt}>
-            <h1 className={styles.title}>Links Rápidos</h1>
-            <div className={styles.linkline}></div>
-            <ul className={styles.links}>
-              <li>
-                <Link href="/">Início</Link>
-              </li>
-              <li>
-                <Link href="/cursos">Cursos</Link>
-              </li>
-              <li>
-                <Link href="/sobre">Sobre Nós</Link>
-              </li>
-              <li>
-                <Link href="/contato">Contato</Link>
-              </li>
-            </ul>
-
-            <div className={styles.newsletter}>
-              <h1 className={styles.title}>Fique por dentro</h1>
-              <div className={styles.letterline}></div>
-              <form onSubmit={handleSubmit} className={styles.emailForm}>
-                <input
-                  type="email"
-                  placeholder="Seu e-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <button type="submit"></button>
-              </form>
-
-              <div className={styles.social}>
-                <h1 className={styles.title}>Siga-nos</h1>
-                <div className={styles.socialIcons}>
-                  <IconContext.Provider
-                    value={{ className: "edpro-social__icon" }}
+          <div className={styles.social}>
+            <h1 className={styles.title1}>Siga-nos</h1>
+            <div className={styles.socialIcons}>
+              <IconContext.Provider
+                value={{ className: "edpro-social__icon" }}
+              >
+                <div className="icons">
+                  <a
+                    href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A83329387&keywords=escola%20senai%20valinhos%20%7C%20senai%20s%C3%A3o%20paulo&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=3f1a2b1c-95a9-4862-abf7-b4263b1989b3&sid=J-X&spellCorrectionEnabled=true"
+                    aria-label="LinkedIn"
                   >
-                    <div className="icons">
-                      <a
-                        href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A83329387&keywords=escola%20senai%20valinhos%20%7C%20senai%20s%C3%A3o%20paulo&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=3f1a2b1c-95a9-4862-abf7-b4263b1989b3&sid=J-X&spellCorrectionEnabled=true"
-                        aria-label="LinkedIn"
-                      >
-                        <FaLinkedin />
-                      </a>
-                      <a
-                        href="https://www.instagram.com/senaivalinhos/"
-                        aria-label="Instagram"
-                      >
-                        <FaInstagram />
-                      </a>
-                      <a
-                        href="https://github.com/souzabweatriz/EdPro-FrontEnd"
-                        aria-label="GitHub"
-                      >
-                        <FaGithub />
-                      </a>
-                    </div>
-                  </IconContext.Provider>
+                    <FaLinkedin />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/senaivalinhos/"
+                    aria-label="Instagram"
+                  >
+                    <FaInstagram />
+                  </a>
+                  <a
+                    href="https://github.com/souzabweatriz/EdPro-FrontEnd"
+                    aria-label="GitHub"
+                  >
+                    <FaGithub />
+                  </a>
                 </div>
-              </div>
+              </IconContext.Provider>
             </div>
+
           </div>
         </div>
       </div>
