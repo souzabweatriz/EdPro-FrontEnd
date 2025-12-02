@@ -8,10 +8,10 @@
     align-items: center;
     justify-content: space-between; 
     padding: 10px 20px;
-    background-color: #1a0033; 
+    background-color: #020b8d; 
     color: #fff; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    max-height: 70px; 
+    min-height: 12vh; 
 }
 
 .logoContainer {
@@ -20,8 +20,6 @@
 }
 
 .logo {
-    width: 40px;
-    height: auto;
     margin-right: 10px;
 }
 
