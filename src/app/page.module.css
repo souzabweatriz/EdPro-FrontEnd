@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1B0273;
+    background: linear-gradient(90deg, #182f7a 0%, #042d6e 50%, #021853 100%);
     width: 70%;
     height: 100vh;
 }
@@ -21,7 +21,7 @@
     font-family: var(--font-montserrat);
     display: flex;
     text-align: left;
-    font-size: 3.5rem;
+    font-size: 3.6rem;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -88,7 +88,8 @@ justify-content: center;
 
 .subtitle{
     font-family: var(--font-inter);
-    font-size: 1rem;
+    font-size: 0.9rem;
+    color: #1B0273;
 }
 
 .button{
@@ -116,12 +117,17 @@ justify-content: center;
 }
 
 .buttonRegister{
-    border-radius: 1.2rem;
-    width: 11rem;
+    border-radius: 1rem;
+    width: 14rem;
     height: 3rem;
     background-color: #c4cfdd;
-    color: #1B0273;
+    color: #000000;
     border: none;
+}
+
+.buttonRegister:hover{
+    background-color: #aeb6c3;
+    cursor: pointer;
 }
 
     @media (max-width: 900px) {

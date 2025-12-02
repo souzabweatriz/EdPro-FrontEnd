@@ -10,7 +10,7 @@ const JWT_CONFIG = {
 
 const protectedRoutes = {
     "/admin": ["admin"],
-    "/alunos": ["aluno", "admin"],
+    "/alunos": ["aluno"],
 }
 
 export async function middleware(request) {
@@ -31,13 +31,12 @@ export async function middleware(request) {
     if (!token) {
         return NextResponse.redirect(new URL("/login", request.url));
     }
-
     try {
         const { payload } = await jwtVerify(token, JWT_SECRET,{
             issuer: JWT_CONFIG.issuer,
             audience: JWT_CONFIG.audience,
         })
-         if (!routeConfig[1].includes(payload.role)) {
+        if (!routeConfig[1].includes(payload.role)) {
             return NextResponse.redirect(new URL("/", request.url)); 
         }
                 return NextResponse.next();
