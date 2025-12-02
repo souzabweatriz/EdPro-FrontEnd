@@ -5,7 +5,7 @@ import axios from 'axios';
 import styles from "./login.module.css";
 import { Form, Input, Button, message, Alert } from 'antd';
 import Image from 'next/image';
-import ButtonAdm from '../components/ButtonAdm/ButtonAdm.jsx';
+import ButtonAdm from '../../components/ButtonAdm/ButtonAdm.jsx';
 
 const HEADERS = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
@@ -19,7 +19,7 @@ export default function LoginPage() {
     setCarregando(true);
     try {
       const { data } = await axios.post(
-        ${process.env.NEXT_PUBLIC_API_URL}/users,
+        `${process.env.NEXT_PUBLIC_API_URL}/users`,
         values,
         { headers: HEADERS }
       );
