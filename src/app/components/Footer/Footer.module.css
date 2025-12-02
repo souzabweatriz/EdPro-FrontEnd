@@ -8,9 +8,7 @@
     max-width: 90rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
+    gap: 5rem;
     padding: 0 1rem;
     margin: 0 auto;
     box-sizing: border-box;
@@ -18,8 +16,6 @@
 }
 
 .company {
-    display: flex;
-    flex-direction: column;
     gap: 0.5rem;
     flex: 2 1 18rem;
     min-width: 0;
@@ -93,6 +89,13 @@
     gap: 0.5rem;
     padding: 0;
     margin: 0;
+}
+
+.links a {
+    text-decoration: none;
+    color: #37AAFC;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
 
 .section li {
@@ -207,13 +210,14 @@
 }
 
 .socialIcons a {
+    text-decoration: none !important;
+    color: #37AAFC;
+    font-size: 2rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 2.4rem;
     height: 2.4rem;
-    text-decoration: none;
-    font-size: 2rem;
     transition: transform 0.12s ease, color 0.12s ease;
 }
 

@@ -4,7 +4,7 @@
     right: 2rem;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #150259,#22087e);
+    background: linear-gradient(135deg, #422e8a,#573faf);
     color: white;
     border: none;
     border-radius: 50%;
@@ -26,7 +26,7 @@
 }
 
 .backTop:hover {
-    background: linear-gradient(135deg, #22087e, #150259);
+    background: linear-gradient(135deg, #534291, #38296d);
     transform: scale(1.1) translateY(-2px);
     box-shadow: 0 6px 16px #22087ecc;
 }
