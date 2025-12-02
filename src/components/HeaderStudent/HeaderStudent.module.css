@@ -1,17 +1,17 @@
 .header {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    z-index: 1000; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     padding: 10px 20px;
-    background-color: #020b8d; 
-    color: #fff; 
+    background-color: #020b8d;
+    color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    min-height: 12vh; 
+    min-height: 12vh;
 }
 
 .logoContainer {
@@ -30,7 +30,9 @@
 
 .nav {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    height: 100%;
+    gap: 4rem;
 }
 
 .navLink {
@@ -41,7 +43,13 @@
 }
 
 .navLink:hover {
-    color: #ccc; 
+    color: #ccc;
+}
+
+.icon {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .actions {
@@ -49,35 +57,18 @@
     gap: 10px;
 }
 
-.actionButton {
-    padding: 8px 16px;
-    background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.actionButton:hover {
-    background-color: #fff;
-    color: #1a0033;
-}
-
 .menuIcon {
     display: flex;
     flex-direction: column;
-    gap: 6px; 
+    gap: 6px;
     cursor: pointer;
-    position: relative; 
-    margin-left: 20px; 
+    position: relative;
+    margin-left: 20px;
 }
 
 .menuLine {
-    width: 35px; 
-    height: 4px; 
+    width: 35px;
+    height: 4px;
     background-color: #fff;
     display: flex;
     transition: background-color 0.3s ease;
@@ -88,9 +79,9 @@
 }
 
 .dropdownMenu {
-    display: none; 
+    display: none;
     position: absolute;
-    top: 30px; 
+    top: 30px;
     right: 0;
     background-color: #1a0033;
     border: 1px solid #fff;
@@ -114,5 +105,5 @@
 }
 
 .menuIcon:hover .dropdownMenu {
-    display: block; 
+    display: block;
 }
