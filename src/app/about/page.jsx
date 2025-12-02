@@ -4,10 +4,12 @@ import styles from "../about/about.module.css";
 import Footer from "../../components/Footer/Footer";
 import { FiPlay, FiBookOpen, FiBarChart2 } from "react-icons/fi";
 import Image from "next/image";
+import HeaderAdmin from "@/components/HeaderAdmin/HeaderAdmin";
 
 export default function About() {
     return (
         <div className={styles.container}>
+            <HeaderAdmin />
             <div className={styles.content}>
                 <h1 className={styles.title}>Desenvolva sua equipe</h1>
                 <h2 className={styles.description}>dentro da sua própria empresa.</h2>
