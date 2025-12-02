@@ -27,9 +27,7 @@ export default function HeaderStudent() {
                         <IoMdMenu size={35} aria-label="Menu" />
                     </div>
                     <div className={styles.dropdownMenu}>
-                        <Link href="/configuracoes">Configurações</Link>
                         <Link href="/perfil">Perfil</Link>
-                        <Link href="/ajuda">Ajuda</Link>
                     </div>
                 </div>
             </nav>
