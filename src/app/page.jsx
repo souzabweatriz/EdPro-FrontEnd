@@ -5,6 +5,7 @@ import axios from 'axios';
 import styles from "./page.module.css";
 import { Form, Input, Button, message, Alert } from 'antd';
 import Image from 'next/image';
+import ButtonAdm from './components/ButtonAdm/ButtonAdm.jsx';
 
 const HEADERS = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
@@ -36,10 +37,6 @@ export default function LoginPage() {
     router.push('/register');
   };
 
-  const handlePageClick = () => {
-    router.push('/admin-login');
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.main}>
@@ -64,7 +61,6 @@ export default function LoginPage() {
             type="error"
             closable
             onClose={() => setErro(null)}
-            style={{ marginBottom: '20px' }}
           />
         )}
         <Form name="login" onFinish={onFinish} layout="vertical">
@@ -82,7 +78,7 @@ export default function LoginPage() {
           </Form.Item>
           <Form.Item>
             <Button
-              type="primary"
+              type="normal"
               htmlType="submit"
               size="large"
               block
@@ -93,12 +89,6 @@ export default function LoginPage() {
           </Form.Item>
         </Form>
         <div className={styles.button}>
-          <button
-            className={styles.buttonInstructor}
-            onClick={handlePageClick}
-          >
-            Administrador
-          </button>
           <p className={styles.subtitle}>
             Não possui uma conta?
           </p>
@@ -108,6 +98,7 @@ export default function LoginPage() {
           >
             Cadastre-se
           </button>
+          <ButtonAdm/>
         </div>
       </div>
       <div className={styles.aside}>
