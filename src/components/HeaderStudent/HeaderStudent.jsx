@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from './Header.module.css';
+import styles from './HeaderStudent.module.css';
 
 export default function Header() {
     return (
@@ -9,24 +9,18 @@ export default function Header() {
                 <Image
                     src="/images/Logo.png"
                     alt="EdPro Logo"
-                    width={40}        
-                    height={40}       
+                    width={70}        
+                    height={110}       
                     className={styles.logo}
                 />
                 <span className={styles.logoText}>EdPro</span>
             </div>
             
             <nav className={styles.nav}>
-                <Link href="/" className={styles.navLink}>Início</Link>
-                <Link href="/cursos" className={styles.navLink}>Cursos</Link>
-                <Link href="/quem-somos" className={styles.navLink}>Quem Somos</Link>
-                <Link href="/player" className={styles.navLink}>Player do Curso</Link>
+                <Link href="/home" className={styles.navLink}>Início</Link>
+                <Link href="/about" className={styles.navLink}>Sobre Nós</Link>
+                <Link href="/contato" className={styles.navLink}>Contato</Link>
             </nav>
-
-            <div className={styles.actions}>
-                <Link href="/login" className={styles.actionButton}>Login</Link>
-                <Link href="/register" className={styles.actionButton}>Cadastre-se</Link>
-            </div>
 
             <div className={styles.menuIcon}>
                 <span className={styles.menuLine}></span>
