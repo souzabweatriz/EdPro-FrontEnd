@@ -119,8 +119,8 @@
     text-align: center;
     white-space: nowrap;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .cards {
