@@ -43,14 +43,12 @@ export default function CreateCourse() {
         formDataToSend.append("imagem", image);
       }
 
-      // Salvar dados no sessionStorage (opcional)
       sessionStorage.setItem("cursoData", JSON.stringify(formData));
 
-      const response = await fetch("https://seu-backend-url.com/api/cursos", {
+      const response = await fetch("http://localhost:5000/api/course", {
         method: "POST",
         body: formDataToSend,
       });
-
       if (response.ok) {
         alert("Curso criado com sucesso!");
         router.push("/matricula");
