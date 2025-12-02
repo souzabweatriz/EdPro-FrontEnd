@@ -5,10 +5,12 @@ import Link from "next/link";
 import Footer from "../../components/Footer/Footer";
 import { Carousel } from 'antd';
 import Image from "next/image";
+import Header from "../components/Header/Header.jsx";
 
 export default function Home() {
     return (
         <div className={styles.container}>
+            <Header />
             <div className={styles.sessao}>
                 <div className={styles.buttons}>
                     <Link href="/login" className={styles.button}>Login</Link>

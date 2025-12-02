@@ -61,6 +61,7 @@ export default function LoginPage() {
             type="error"
             closable
             onClose={() => setErro(null)}
+            style={{ marginBottom: '20px' }}
           />
         )}
         <Form name="login" onFinish={onFinish} layout="vertical">
@@ -83,6 +84,7 @@ export default function LoginPage() {
               size="large"
               block
               loading={carregando}
+              
             >
               Entrar
             </Button>
