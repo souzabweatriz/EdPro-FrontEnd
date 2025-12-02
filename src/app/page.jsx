@@ -1,113 +1,60 @@
-'use client';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
-import styles from "./page.module.css";
-import { Form, Input, Button, message, Alert } from 'antd';
-import Image from 'next/image';
-import ButtonAdm from '../components/ButtonAdm/ButtonAdm.jsx';
+"use client"
+import React from "react";
+import styles from "../app/page.module.css";
+import Link from "next/link";
+import Footer from "../components/Footer/Footer.jsx";
+import { Carousel } from 'antd';
+import Image from "next/image";
+import Header from "../components/HeaderStudent/HeaderStudent.jsx";
 
-const HEADERS = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
+export default function Home() {
+    return (
+        <div className={styles.container}>
+            <Header />
+            <div className={styles.sessao}>
+                <div className={styles.buttons}>
+                    <Link href="/login" className={styles.button}>Login</Link>
+                    <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
+                </div>
+            </div>
+            <div className={styles.content}>
+                <div className={styles.sessao2}>
+                    <h1 className={styles.title}>Bem-vindo ao EdPro!</h1>
+                    <h2 className={styles.subtitle}>Plataforma de Cursos</h2>
+                    <p className={styles.description}>Capacite sua equipe com treinamentos personalizados e eficientes.</p>
+                </div>
+                <div className={styles.containerbuttons}>
+                </div>
+            </div>
 
-export default function LoginPage() {
-  const router = useRouter();
-  const [erro, setErro] = useState(null);
-  const [carregando, setCarregando] = useState(false);
+            <div className={styles.cards}>
+                <div className={styles.card}>
+                    <h2 className={styles.cardtitle}>Conheça Nossos Cursos</h2>
+                    <Link href="/Studentcourses" className={styles.buttoncard}>Veja Aqui</Link>
+                </div>
+                <div className={styles.card}>
+                    <h2 className={styles.cardtitle}>Conheça Nossa Equipe</h2>
+                    <Link href="/about" className={styles.buttoncard}>Saiba Mais</Link>
+                </div>
+            </div>
+            <div className={styles.section}>
+                <div className={styles.sectioncontainer}>
+                    <h1 className={styles.sectiontitle}>Nossa Dor</h1>
+                    <div className={styles.sectioncard1}>
+                        <p className={styles.sectiondescription}>Treinar colaboradores é essencial, mas para muitas empresas isso se torna caro, trabalhoso e limitado. Plataformas externas cobram alto, não oferecem a flexibilidade que a equipe precisa e dificultam a criação de conteúdos próprios. O resultado é sempre o mesmo: cursos espalhados, pouca personalização, dificuldade em acompanhar o progresso e perda de produtividade. Capacitar a equipe não deveria ser tão complicado - mas é a realidade de muitas empresas hoje.
+                        </p>
+                    </div>
+                </div>
 
-  const onFinish = async (values) => {
-    setErro(null);
-    setCarregando(true);
-    try {
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/users`,
-        values,
-        { headers: HEADERS }
-      );
-      sessionStorage.setItem('usuario', JSON.stringify(data.usuario));
-      message.success('Login realizado com sucesso!');
-      router.push('/home');
-    } catch (error) {
-      setErro(error.response?.data?.erro || 'Erro ao conectar com o servidor.');
-    } finally {
-      setCarregando(false);
-    }
-  };
-
-  const handleClick = () => {
-    router.push('/register');
-  };
-
-  return (
-    <div className={styles.container}>
-      <div className={styles.main}>
-        <div className={styles.logo}>
-          <Image
-            src="/images/Logo.png"
-            alt="Logo EdPro"
-            width={100}
-            height={150}
-          />
-          <div className={styles.line}></div>
-          <p className={styles.text}>EdPro</p>
-        </div>
-        <div className={styles.welcome}>
-          <h1 className={styles.title1}>Olá, Bem-vindo ao EdPro</h1>
-          <p className={styles.subtitle}>Faça seu login para continuar</p>
-        </div>
-        {erro && (
-          <Alert
-            message="Erro ao fazer login"
-            description={erro}
-            type="error"
-            closable
-            onClose={() => setErro(null)}
-            style={{ marginBottom: '20px' }}
-          />
-        )}
-        <Form name="login" onFinish={onFinish} layout="vertical">
-          <Form.Item
-            name="login"
-            rules={[{ required: true, message: 'Digite seu usuário!' }]}
-          >
-            <Input size="large" placeholder="Digite seu usuário" />
-          </Form.Item>
-          <Form.Item
-            name="senha"
-            rules={[{ required: true, message: 'Digite sua senha!' }]}
-          >
-            <Input.Password size="large" placeholder="Digite sua senha" />
-          </Form.Item>
-          <Form.Item>
-            <Button
-              type="normal"
-              htmlType="submit"
-              size="large"
-              block
-              loading={carregando}
-              
-            >
-              Entrar
-            </Button>
-          </Form.Item>
-        </Form>
-        <div className={styles.button}>
-          <p className={styles.subtitle}>
-            Não possui uma conta?
-          </p>
-          <button
-            className={styles.buttonRegister}
-            onClick={handleClick}
-          >
-            Cadastre-se
-          </button>
-          <ButtonAdm/>
-        </div>
-      </div>
-      <div className={styles.aside}>
-        <h1 className={styles.title}>
-          ❝Autonomia para treinar, inteligência para crescer.❞
-        </h1>
-      </div>
-    </div>
-  );
+                <div className={styles.sectioncontainer}>
+                    <h1 className={styles.sectiontitle}>Nossa Solução</h1>
+                    <div className={styles.sectioncard1}>
+                        <p className={styles.sectiondescription}>O EdPro nasce para simplificar tudo isso. Com um LMS completo e interno, sua empresa cria seus próprios cursos, organiza trilhas de aprendizado, acompanha o progresso de cada colaborador e gerencia tudo em um só lugar - de forma simples, personalizada e totalmente sua. Sem custos abusivos, sem limitações e com total autonomia para ensinar, treinar e evoluir sua equipe no seu ritmo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <Footer />
+        </div >
+    );
 }
