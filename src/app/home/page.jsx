@@ -5,6 +5,7 @@ import Link from "next/link";
 import Footer from "../components/Footer/Footer";
 import { Carousel } from 'antd';
 import Image from "next/image";
+import Header from "../components/Header/Header.jsx";
 
 const contentStyle = {
     margin: 0,
@@ -18,6 +19,7 @@ const contentStyle = {
 export default function Home() {
     return (
         <div className={styles.container}>
+            <Header />
             <div className={styles.sessao}>
                 <h1 className={styles.title}>O seu conhecimento começa aqui</h1>
                 <div className={styles.descriptions}>
