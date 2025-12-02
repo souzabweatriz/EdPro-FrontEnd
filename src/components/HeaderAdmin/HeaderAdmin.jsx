@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from './HeaderStudent.module.css';
+import styles from './HeaderAdmin.module.css';
 import { IoMdMenu } from "react-icons/io";
 
-export default function HeaderStudent() {
+export default function HeaderAdmin() {
     return (
         <header className={styles.header}>
             <div className={styles.logoContainer}>
