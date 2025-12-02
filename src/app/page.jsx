@@ -5,7 +5,7 @@ import axios from 'axios';
 import styles from "./page.module.css";
 import { Form, Input, Button, message, Alert } from 'antd';
 import Image from 'next/image';
-import ButtonAdm from './components/ButtonAdm/ButtonAdm.jsx';
+import ButtonAdm from '../components/ButtonAdm/ButtonAdm.jsx';
 
 const HEADERS = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
@@ -61,6 +61,7 @@ export default function LoginPage() {
             type="error"
             closable
             onClose={() => setErro(null)}
+            style={{ marginBottom: '20px' }}
           />
         )}
         <Form name="login" onFinish={onFinish} layout="vertical">
@@ -83,6 +84,7 @@ export default function LoginPage() {
               size="large"
               block
               loading={carregando}
+              
             >
               Entrar
             </Button>

@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "../home/home.module.css";
 import Link from "next/link";
-import Footer from "../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import { Carousel } from 'antd';
 import Image from "next/image";
 import Header from "../components/Header/Header.jsx";

@@ -91,20 +91,20 @@ export default function Matricula() {
                         Por favor, selecione os cursos nos quais deseja se inscrever.
                     </div>
                     <div className={styles.coursesList}>
-                        <label className={styles.courseItem}><input type="checkbox" /> Engenharia mecânica</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Medicina</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Desenvolvimento de sistemas</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> História</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Direito</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Psicologia</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Arquitetura</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Administração</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Ciências Contábeis</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Engenharia Civil</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Pedagogia</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Enfermagem</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Engenharia Mecânica</label>
-                        <label className={styles.courseItem}><input type="checkbox" /> Medicina Veterinária</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Conecta y Crea: Spanish with Purpose</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Humanized Leadership: Inspire, Motivate, and Transform</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> From Dream to Action: The Entrepreneurs Path</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Balance and Flow: Stress Management</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> You 2.0: Personal Branding and Self-Confidence</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> English Flow: Professional Communication</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Emotion & Clarity: Emotional Intelligence in Practice</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Creative Mindset: Unlock Your Innovative Potential</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Leadership Path: Inspiring Teams with Purpose</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Digital Skills Accelerator: Mastering Modern Tools</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Leadership Essentials: Foundations of Modern Leadership</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Creative Productivity: Mastering Focus & Innovation</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Smart Communication: Clear & Confident Expression</label>
+                        <label className={styles.courseItem}><input type="checkbox" /> Personal Finance Basics: Building a Healthy Money Mindset</label>
                     </div>
                 </div>
                 <div className={styles.commentsRow}>
