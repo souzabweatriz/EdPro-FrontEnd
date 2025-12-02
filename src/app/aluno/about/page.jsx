@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import styles from "../about/about.module.css";
-import Footer from "../../app/components/Footer/Footer";
+import Footer from "../../../components/Footer/Footer";
 import { FiPlay, FiBookOpen, FiBarChart2 } from "react-icons/fi";
 import Image from "next/image";
 

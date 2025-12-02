@@ -6,7 +6,8 @@ import Cookies from "js-cookie";
 const AuthContext = createContext(null);
 
 const cookieOpts = {
-    expires: 1 / 1400,
+    expires: 1, // 1 dia
+    // 1 dia = 1/30
     secure: false,
     sameSite: "lax",
 };
