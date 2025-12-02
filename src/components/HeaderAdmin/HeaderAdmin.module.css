@@ -107,3 +107,144 @@
 .menuIcon:hover .dropdownMenu {
     display: block;
 }
+
+@media (max-width: 480px) {
+    .header {
+        width: 100vw;
+        max-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .logoContainer {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 2rem;
+    }
+
+    .navLink {
+        text-align: center !important;
+        width: 100%;
+        font-size: 1.3rem;
+    }
+
+    .menuIcon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .header {
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logoContainer {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        gap: 1rem;
+    }
+
+    .logoText {
+        font-size: 2rem;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .navLink {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .header {
+        width: 100vw;
+        min-height: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+
+    .logoContainer {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logoText {
+        font-size: 2.2rem;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .navLink {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .header {
+        width: 100vw;
+        min-height: 90px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4rem;
+    }
+
+    .logoContainer {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logoText {
+        font-size: 2.5rem;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .navLink {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+}
