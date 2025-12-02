@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #020b8d;
+    background-color: #03758e;
     color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     min-height: 12vh;
@@ -83,7 +83,7 @@
     position: absolute;
     top: 30px;
     right: 0;
-    background-color:  #020b8d;
+    background-color: #03758e;
     border: 1px solid #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -101,7 +101,7 @@
 
 .dropdownMenu a:hover {
     background-color: #fff;
-    color: #020b8d;
+    color: #03758e;
 }
 
 .menuIcon:hover .dropdownMenu {
