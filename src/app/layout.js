@@ -1,5 +1,5 @@
 import "./globals.css";
-import BackTop from "./components/BackTop/BackTop.jsx";
+import BackTop from "../components/BackTop/BackTop.jsx";
 import localFont from "next/font/local";
 
 const inter = localFont({
