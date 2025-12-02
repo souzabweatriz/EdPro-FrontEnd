@@ -6,6 +6,12 @@ import styles from "./Courses.module.css";
 export default function CreateCourse() {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [formData, setFormData] = useState({
+    categoria: "",
+    numero: "",
+    titulo: "",
+    descricao: "",
+  });
   const fileInputRef = useRef(null);
   const router = useRouter();
 
@@ -18,6 +24,42 @@ export default function CreateCourse() {
     if (file) {
       setImage(file);
       setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("categoria", formData.categoria);
+      formDataToSend.append("numero", formData.numero);
+      formDataToSend.append("titulo", formData.titulo);
+      formDataToSend.append("descricao", formData.descricao);
+      if (image) {
+        formDataToSend.append("imagem", image);
+      }
+
+      // Salvar dados no sessionStorage (opcional)
+      sessionStorage.setItem("cursoData", JSON.stringify(formData));
+
+      const response = await fetch("https://seu-backend-url.com/api/cursos", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      if (response.ok) {
+        alert("Curso criado com sucesso!");
+        router.push("/matricula");
+      } else {
+        alert("Erro ao criar curso. Tente novamente.");
+      }
+    } catch (error) {
+      console.error("Erro ao criar curso:", error);
+      alert("Erro ao criar curso. Verifique o console para mais detalhes.");
     }
   };
 
@@ -42,28 +84,53 @@ export default function CreateCourse() {
         <div className={styles.fieldsRow}>
           <div className={styles.fieldCol}>
             <label className={styles.label}>Categoria:</label>
-            <input className={styles.input} placeholder="Digite sua categoria" />
+            <input
+              className={styles.input}
+              name="categoria"
+              placeholder="Digite sua categoria"
+              value={formData.categoria}
+              onChange={handleInputChange}
+            />
           </div>
           <div className={styles.fieldCol}>
             <label className={styles.label}>Número:</label>
-            <input className={styles.input} type="number" placeholder="Digite o número do curso" />
+            <input
+              className={styles.input}
+              name="numero"
+              type="number"
+              placeholder="Digite o número do curso"
+              value={formData.numero}
+              onChange={handleInputChange}
+            />
           </div>
         </div>
         <div className={styles.fieldsRow}>
           <div className={styles.fieldCol}>
             <label className={styles.label}>Título:</label>
-            <input className={styles.input} placeholder="Digite o título" />
+            <input
+              className={styles.input}
+              name="titulo"
+              placeholder="Digite o título"
+              value={formData.titulo}
+              onChange={handleInputChange}
+            />
           </div>
           <div className={styles.fieldCol}>
             <label className={styles.label}>Descrição:</label>
-            <input className={styles.input} placeholder="Digite sua descrição" />
+            <input
+              className={styles.input}
+              name="descricao"
+              placeholder="Digite sua descrição"
+              value={formData.descricao}
+              onChange={handleInputChange}
+            />
           </div>
         </div>
         <div className={styles.buttonRow}>
           <button
             className={styles.createButton}
             type="button"
-            onClick={() => router.push("/matricula")}
+            onClick={handleSubmit}
           >
             Criar Cursos
           </button>
