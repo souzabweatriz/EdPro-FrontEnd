@@ -9,6 +9,118 @@
     padding-top: 90px;
 }
 
+
+.content {
+    position: relative;
+    background-image: 
+        linear-gradient(90deg, #b8b8b8 1px, transparent 1px),
+        linear-gradient(180deg, #b8b8b8 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+    height: 60rem;
+}
+
+.content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #000000, #0d0dc7, #ffffff);
+    opacity: 0.9;
+    z-index: 1;
+    height: 60rem;
+}
+
+.content > * {
+    position: relative;
+    z-index: 2;
+}
+
+.buttons {
+    margin-top: 7rem;
+    font-size: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    text-align: center;
+}
+
+.button {
+    padding: 10px 22px;
+    border-radius: 28px;
+    text-decoration: none;
+    width: 10rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #3639e7;
+    color: #ffffff;
+    text-align: center;
+}
+
+.button1 {
+    padding: 10px 22px;
+    border-radius: 28px;
+    text-decoration: none;
+    width: 9rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.button1:hover {
+    background-color: #3639e7;
+    color: #ffffff;
+    border: 2px solid #3639e7;
+}
+
+.sessao2 {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px 40px 20px;
+}
+
+.title {
+    font-size: 6rem;
+    margin: 30px 0 12px 0;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 6px 6px 12px rgba(43, 43, 43, 0.7);
+}
+
+.subtitle {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 10px 0 8px 0;
+    color: #ffffff; 
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 6px 6px 12px rgba(43, 43, 43, 0.7);
+}
+
+.description {
+    font-size: 1.5rem;
+    margin: 40px 0 0 0;
+    color: #c4c4c4;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .hero {
     background: linear-gradient(90deg, #04224a 0%, #0b4da3 100%);
     color: #fff;
