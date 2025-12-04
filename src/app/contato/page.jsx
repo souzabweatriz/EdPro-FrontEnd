@@ -9,39 +9,39 @@ const team = [
 		name: 'Isabella',
 		role: 'Desenvolvedora',
 		image: '/images/isabella.png',
-		email: 'isabella@example.com',
-		github: 'isabelladev'
+		email: 'isabella.b.rosa6@aluno.senai.br',
+		github: 'isab5'
 	},
 	{
 		name: 'Luana',
 		role: 'Desenvolvedora',
 		image: '/images/luana.png',
 		email: 'luana.domeneghetti@aluno.senai.br',
-		github: 'luanads'
+		github: 'domeneghettii'
 	},
 
 	{
 		name: 'Beatriz Lima',
 		role: 'Desenvolvedora',
-		image: '/images/beatriz.png',
+		image: '/images/beatriz.jpg',
 		email: 'beatriz.lima@aluno.senai.br',
-		github: 'beatrizlima'
+		github: 'limabea23'
 	},
 
 	{
 		name: 'Ana Beatriz de Souza',
 		role: 'Product Owner',
 		image: '/images/ana.png',
-		email: 'ana.souza@aluno.senai.br',
-		github: 'anasouza'
+		email: 'ana.b.oliveira56@aluno.senai.br',
+		github: 'souzabweatriz'
 	},
 
 	{
-		name: 'Valentim',
+		name: 'Anna Beatriz Valentim',
 		role: 'Desenvolvedora',
 		image: '/images/valentim.png',
-		email: 'valentim@example.com',
-		github: 'valentim'
+		email: 'anna.b.valentim@aluno.senai.br',
+		github: 'annabeatriz17'
 	},
 
 	{
@@ -49,15 +49,15 @@ const team = [
 		role: 'Desenvolvedora',
 		image: '/images/maria.png',
 		email: 'maria.parma@aluno.senai.br',
-		github: 'mariaparma'
+		github: 'Mariaparma'
 	},
 
 	{
 		name: 'Anna Beatriz Leme Alves',
 		role: 'Scrum Master',
-		image: '/images/leme.png',
-		email: 'anna.leme@aluno.senai.br',
-		github: 'annaleme'
+		image: '/images/leme.jpg',
+		email: 'anna.b.alves7@aluno.senai.br',
+		github: 'annabialeme'
 	}
 	
 ]
