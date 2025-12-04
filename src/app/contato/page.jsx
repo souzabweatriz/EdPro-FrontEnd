@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
+import HeaderStudent from '../../components/HeaderStudent/HeaderStudent'
+import FooterStudent from '../../components/FooterStudent/FooterStudent'
 import styles from './contato.module.css'
 
 const team = [
@@ -14,24 +14,58 @@ const team = [
 	},
 	{
 		name: 'Luana',
-		role: 'UX/UI',
+		role: 'Desenvolvedora',
 		image: '/images/luana.png',
-		email: 'luana@example.com',
+		email: 'luana.domeneghetti@aluno.senai.br',
 		github: 'luanads'
 	},
+
+	{
+		name: 'Beatriz Lima',
+		role: 'Desenvolvedora',
+		image: '/images/beatriz.png',
+		email: 'beatriz.lima@aluno.senai.br',
+		github: 'beatrizlima'
+	},
+
+	{
+		name: 'Ana Beatriz de Souza',
+		role: 'Product Owner',
+		image: '/images/ana.png',
+		email: 'ana.souza@aluno.senai.br',
+		github: 'anasouza'
+	},
+
 	{
 		name: 'Valentim',
-		role: 'Back-end',
+		role: 'Desenvolvedora',
 		image: '/images/valentim.png',
 		email: 'valentim@example.com',
 		github: 'valentim'
+	},
+
+	{
+		name: 'Maria Parma',
+		role: 'Desenvolvedora',
+		image: '/images/maria.png',
+		email: 'maria.parma@aluno.senai.br',
+		github: 'mariaparma'
+	},
+
+	{
+		name: 'Anna Beatriz Leme Alves',
+		role: 'Scrum Master',
+		image: '/images/leme.png',
+		email: 'anna.leme@aluno.senai.br',
+		github: 'annaleme'
 	}
+	
 ]
 
 export default function ContatoPage() {
 	return (
 		<div className={styles.pageWrap}>
-			<Header />
+			<HeaderStudent />
 
 			<section className={styles.hero}>
 				<div className={styles.heroContent}>
@@ -72,7 +106,7 @@ export default function ContatoPage() {
 
 			</main>
 
-			<Footer />
+			<FooterStudent />
 		</div>
 	)
 }

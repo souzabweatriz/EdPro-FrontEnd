@@ -4,6 +4,10 @@
 	min-height: 100vh;
 }
 
+.pageWrap {
+	padding-top: 90px; /* espaço para header fixo */
+}
+
 .hero {
 	background: linear-gradient(90deg, #04224a 0%, #0b4da3 100%);
 	color: #fff;
@@ -16,7 +20,8 @@
 .heroContent {
 	max-width: 1100px;
 	width: 100%;
-	text-align: left;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .heroContent h1 {
@@ -32,11 +37,15 @@
 
 .container {
 	max-width: 1100px;
-	margin: -2.5rem auto 3rem auto;
+	margin: 2rem auto 3rem auto;
 	padding: 2rem;
 	background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
 	border-radius: 12px;
 	box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 }
 
 .teamTitle {
@@ -47,8 +56,9 @@
 
 .teamGrid {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 	gap: 1.25rem;
+	justify-items: center;
 }
 
 .memberCard {
@@ -59,6 +69,8 @@
 	background: #fff;
 	border-radius: 12px;
 	border: 1px solid rgba(6,42,95,0.06);
+	width: 100%;
+	max-width: 360px;
 }
 
 .avatarWrap {
@@ -91,10 +103,15 @@
 	font-size: 0.95rem;
 }
 
+.memberInfo {
+	text-align: center;
+}
+
 .memberContacts {
 	display: flex;
 	flex-direction: column;
 	gap: 0.35rem;
+	align-items: center;
 }
 
 .contactLink {
@@ -134,6 +151,31 @@
 	.container {
 		margin: -1.5rem 1rem 2rem 1rem;
 		padding: 1rem;
+	}
+
+	.pageWrap {
+		padding-top: 120px;
+	}
+}
+
+@media (min-width: 992px) {
+	.teamGrid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.memberCard {
+		flex-direction: row;
+		align-items: center;
+		text-align: left;
+		max-width: none;
+	}
+
+	.memberInfo {
+		text-align: left;
+	}
+
+	.memberContacts {
+		align-items: flex-start;
 	}
 }
 
