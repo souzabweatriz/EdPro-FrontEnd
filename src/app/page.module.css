@@ -9,20 +9,17 @@
 }
 
 .buttons {
-    margin-top: 10rem;
+    margin-top: 7rem;
     font-size: 10px;
-    position: absolute;
-    top: 28px;
-    right: 40px;
     display: flex;
     gap: 12px;
     align-items: center;
+    justify-content: flex-end;
+    padding-right: 2rem;
     text-align: center;
-    z-index: 9999;
 }
 
 .button {
-    display: inline-block;
     padding: 10px 22px;
     border-radius: 28px;
     text-decoration: none;
@@ -35,7 +32,6 @@
 }
 
 .button1 {
-    display: inline-block;
     padding: 10px 22px;
     border-radius: 28px;
     text-decoration: none;
@@ -50,9 +46,9 @@
 }
 
 .button1:hover {
-    background-color: #3639e7; /* Fundo preenchido ao passar o mouse */
-    color: #ffffff; /* Texto branco ao passar o mouse */
-    border: 2px solid #3639e7; /* Borda preenchida ao passar o mouse */
+    background-color: #3639e7;
+    color: #ffffff;
+    border: 2px solid #3639e7;
 }
 
 .content {
@@ -90,7 +86,7 @@
 
 .title {
     font-size: 6rem;
-    margin: 260px 0 12px 0;
+    margin: 30px 0 12px 0;
     color: #ffffff;
     text-align: center;
     white-space: nowrap;
@@ -122,6 +118,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.containerbuttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.buttons2 {
+    font-size: 18px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    background-color: #0011ff;
+    color: #ffffff;
+    width: 13rem;
+    border-radius: 50rem;
+    text-decoration: none;
 }
 
 .cards {
