@@ -3,8 +3,6 @@ import React from "react";
 import styles from "../app/page.module.css";
 import Link from "next/link";
 import Footer from "../components/FooterStudent/FooterStudent";
-import { Button, Carousel } from 'antd';
-import Image from "next/image";
 import Header from "../components/HeaderStudent/HeaderStudent.jsx";
 
 export default function Home() {

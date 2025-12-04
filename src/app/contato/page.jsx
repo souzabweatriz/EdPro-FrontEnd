@@ -62,16 +62,17 @@ export default function ContatoPage() {
     return (
         <div className={styles.pageWrap}>
             <HeaderStudent />
-
-            <section className={styles.hero}>
-                <div className={styles.heroContent}>
-                    <h1>Contato</h1>
-                    <p>
-                        Fale conosco — dúvidas, sugestões ou parcerias. A equipe EdPro está pronta para ajudar.
-                    </p>
+            <div className={styles.content}>
+                <div className={styles.buttons}>
+                <Link href="/login" className={styles.button}>Login</Link>
+                <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
+            </div>
+                <div className={styles.sessao2}>
+                    <h1 className={styles.title}>Contato</h1>
+                    <h2 className={styles.subtitle}>Fale conosco - dúvidas ou sugestões.</h2>
+                    <p className={styles.description}>Nossa equipe está pronta para ajudar.</p>
                 </div>
-            </section>
-
+            </div>
             <main className={styles.container}>
                 <h2 className={styles.teamTitle}>Nossa Equipe</h2>
 
