@@ -1,5 +1,5 @@
 .container {
-    margin: 0;
+    margin-top: 5rem;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,6 +9,7 @@
 }
 
 .buttons {
+    margin-top: 10rem;
     font-size: 10px;
     position: absolute;
     top: 28px;
