@@ -2,8 +2,8 @@
 import React from "react";
 import styles from "../app/page.module.css";
 import Link from "next/link";
-import Footer from "../components/Footer/Footer.jsx";
-import { Carousel } from 'antd';
+import Footer from "../components/FooterStudent/FooterStudent";
+import { Button, Carousel } from 'antd';
 import Image from "next/image";
 import Header from "../components/HeaderStudent/HeaderStudent.jsx";
 
@@ -11,19 +11,15 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <Header />
-            <div className={styles.sessao}>
-                <div className={styles.buttons}>
-                    <Link href="/login" className={styles.button}>Login</Link>
-                    <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
-                </div>
-            </div>
             <div className={styles.content}>
+                <div className={styles.buttons}>
+                <Link href="/login" className={styles.button}>Login</Link>
+                <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
+            </div>
                 <div className={styles.sessao2}>
                     <h1 className={styles.title}>Bem-vindo ao EdPro!</h1>
                     <h2 className={styles.subtitle}>Plataforma de Cursos</h2>
                     <p className={styles.description}>Capacite sua equipe com treinamentos personalizados e eficientes.</p>
-                </div>
-                <div className={styles.containerbuttons}>
                 </div>
             </div>
 

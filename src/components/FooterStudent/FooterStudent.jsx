@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
-export default function Footer() {
+export default function FooterStudent() {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e) => {
@@ -48,8 +48,7 @@ export default function Footer() {
           <h1 className={styles.title}>Links Rápidos</h1>
           <ul className={styles.links}>
             <li className={styles.link}><Link href="/">Início</Link></li>
-            <li className={styles.link}><Link href="/cursos">Cursos</Link></li>
-            <li className={styles.link}><Link href="/sobre">Sobre Nós</Link></li>
+            <li className={styles.link}><Link href="/about">Sobre Nós</Link></li>
             <li className={styles.link}><Link href="/contato">Contato</Link></li>
           </ul>
         </div>

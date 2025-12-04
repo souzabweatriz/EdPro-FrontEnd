@@ -18,7 +18,7 @@ export default function HeaderStudent() {
             </div>
 
             <nav className={styles.nav}>
-                <Link href="/home" className={styles.navLink}>Início</Link>
+                <Link href="/" className={styles.navLink}>Início</Link>
                 <Link href="/about" className={styles.navLink}>Sobre Nós</Link>
                 <Link href="/contato" className={styles.navLink}>Contato</Link>
 

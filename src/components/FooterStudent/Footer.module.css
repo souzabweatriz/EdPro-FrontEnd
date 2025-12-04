@@ -67,15 +67,6 @@
     display: inline-block;
 }
 
-.title1 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #ffffff;
-    border-bottom: 0.125rem solid #37AAFC;
-    display: inline-block;
-    max-width: 4.5rem;
-}
-
 .newsletter .title {
     display: inline-block;
     max-width: 8rem;
@@ -144,16 +135,6 @@
     margin: 1.5rem 0 0;
 }
 
-.newsletter h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 0;
-    color: #ffffff;
-    border-bottom: 0.125rem solid #37AAFC;
-    display: inline-block;
-    padding-bottom: 0.3rem;
-}
-
 .emailForm {
     display: flex;
     flex-direction: row;
@@ -198,6 +179,27 @@
     color: #37AAFC;
     font-size: 0.8rem;
     margin-bottom: 0.6rem;
+}
+
+.title1 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    max-width: none;
+}
+
+.title1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15rem;
+    width: 5rem;
+    height: 0.125rem;
+    background: #37AAFC;
+    border-radius: 2px;
 }
 
 .socialIcons {
