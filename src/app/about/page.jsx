@@ -5,14 +5,22 @@ import Footer from "../../components/FooterStudent/FooterStudent";
 import { FiPlay, FiBookOpen, FiBarChart2 } from "react-icons/fi";
 import Image from "next/image";
 import Header from "../../components/HeaderStudent/HeaderStudent";
+import Link from "next/link";
 
 export default function About() {
     return (
         <div className={styles.container}>
             <Header />
             <div className={styles.content}>
-                <h1 className={styles.title}>Desenvolva sua equipe</h1>
-                <h2 className={styles.description}>dentro da sua própria empresa.</h2>
+                <div className={styles.buttons}>
+                <Link href="/login" className={styles.button}>Login</Link>
+                <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
+            </div>
+                <div className={styles.sessao2}>
+                    <h1 className={styles.title}>Desenvolva sua equipe</h1>
+                    <h2 className={styles.subtitle}>dentro da sua própria empresa.</h2>
+                    <p className={styles.description}>Plataforma de treinamento corporativo para desenvolver competências e aumentar a produtividade.</p>
+                </div>
             </div>
             <div className={styles.section}>
                 <h1 className={styles.sectiontitle}>Conheça a EdPro</h1>
