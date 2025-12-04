@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./matricula.module.css";
-import apiClient, { getDefaultHeaders } from "../../lib/apiClient";
+import useCourses from "../../lib/useCourses";
 
 export default function Matricula() {
     const [formData, setFormData] = useState({
@@ -74,91 +74,86 @@ export default function Matricula() {
         }
 
         setLoading(true);
-
         try {
-            const res = await fetch("/api/matricula", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
+        
+            const selectedIds = formData.cursos || [];
+            const selectedTitles = (cursosLista || []).filter(c => selectedIds.includes(c.id)).map(c => c.title);
+            const payload = { ...formData, cursos_ids: selectedIds, cursos_titles: selectedTitles };
 
-            if (!res.ok) throw new Error("Erro ao enviar");
-
-            alert("Matrícula enviada com sucesso!");
-
-            setFormData({
-                nome: "",
-                email: "",
-                genero: "",
-                telefone: "",
-                endereco: "",
-                estado: "",
-                cursos: [],
-                comentario: "",
-            });
-
-        } catch (err) {
-            alert("Ocorreu um erro ao enviar a matrícula.");
-        }
-
-        setLoading(false);
-    };
-
-    const [cursosLista, setCursosLista] = useState([]);
-    const [cursosLoading, setCursosLoading] = useState(false);
-    const [cursosError, setCursosError] = useState(null);
-
-    useEffect(() => {
-        const fetchCourses = async () => {
-            setCursosLoading(true);
-            setCursosError(null);
-            // Tentar chamar o backend configurado em NEXT_PUBLIC_API_URL primeiro,
-            // e como fallback chamar a rota interna `/api/course`.
-            const base = process.env.NEXT_PUBLIC_API_URL || apiClient.defaults.baseURL || "";
+            const baseRaw = process.env.NEXT_PUBLIC_API_URL || "";
+            const base = baseRaw.replace(/\/$/, "");
             const urlsToTry = [];
-            if (base) urlsToTry.push(`${base.replace(/\/$/, "")}/course`);
-            urlsToTry.push("/api/course");
-            urlsToTry.push("/course");
+            if (base) {
+                urlsToTry.push(`${base}/matricula`);
+                urlsToTry.push(`${base}/api/matricula`);
+            }
+            urlsToTry.push("/api/matricula");
+            urlsToTry.push("/matricula");
+            urlsToTry.push("http://localhost:5000/api/matricula");
+            urlsToTry.push("http://localhost:5000/matricula");
 
             let lastError = null;
             for (const url of urlsToTry) {
                 try {
-                    const resp = await apiClient.get(url.replace(/^(https?:)?\/\//, url.startsWith("/") ? url : url), {
-                        headers: getDefaultHeaders(),
+                    console.debug("[Matricula] POST ->", url, payload);
+                    const resp = await fetch(url, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload),
                     });
-                    // resposta pode ser array ou { cursos: [...] } ou { data: [...] }
-                    const data = resp.data;
-                    let list = [];
-                    if (Array.isArray(data)) list = data;
-                    else if (Array.isArray(data.cursos)) list = data.cursos;
-                    else if (Array.isArray(data.data)) list = data.data;
-                    else if (data && typeof data === "object") {
-                        // talvez um array esteja em data.results etc
-                        list = Object.values(data).flat().filter(Boolean);
+
+                    const textOrJson = await (async () => {
+                        const ct = resp.headers.get("content-type") || "";
+                        try {
+                            if (ct.includes("application/json")) return await resp.json();
+                            return await resp.text();
+                        } catch { return await resp.text(); }
+                    })();
+
+                    if (!resp.ok) {
+                        lastError = new Error(`HTTP ${resp.status} ${resp.statusText} - ${JSON.stringify(textOrJson)}`);
+                        console.warn("[Matricula] tentativa falhou:", url, lastError);
+                        continue;
                     }
 
-                    // Normalizar para strings com título
-                    const normalized = list.map((item) => {
-                        if (!item) return null;
-                        if (typeof item === "string") return item;
-                        return item.titulo || item.title || item.name || item.nome || item.nomeCurso || JSON.stringify(item);
-                    }).filter(Boolean);
-
-                    setCursosLista(normalized);
-                    setCursosLoading(false);
+                    console.info("[Matricula] enviado com sucesso para:", url, textOrJson);
+                    alert("Matrícula enviada com sucesso!");
+                    setFormData({
+                        nome: "",
+                        email: "",
+                        genero: "",
+                        telefone: "",
+                        endereco: "",
+                        estado: "",
+                        cursos: [],
+                        comentario: "",
+                    });
+                    setLoading(false);
                     return;
                 } catch (err) {
                     lastError = err;
-                    // tentar próximo
+                    console.error("[Matricula] erro ao postar em", url, err);
+                    continue;
                 }
             }
 
-            setCursosError(lastError?.message || "Erro ao carregar cursos");
-            setCursosLoading(false);
-        };
+            console.error("[Matricula] falha ao enviar matrícula; tentadas:", urlsToTry, lastError);
+            alert("Ocorreu um erro ao enviar a matrícula. Verifique o console para mais detalhes.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        fetchCourses();
-    }, []);
+    // Use hook-based loader with cache (sessionStorage)
+    const { courses: fetchedCourses, loading: cursosLoading, error: cursosError, reload } = useCourses();
+    const [cursosLista, setCursosLista] = useState([]);
+
+    // sincroniza fetchedCourses (array de objetos {id,title}) com o estado local
+    useEffect(() => {
+        if (Array.isArray(fetchedCourses)) {
+            setCursosLista(fetchedCourses);
+        }
+    }, [fetchedCourses]);
 
     return (
         <div className={styles.container}>
@@ -261,14 +256,24 @@ export default function Matricula() {
                     </div>
 
                     <div className={styles.coursesList}>
-                        {cursosLista.map((curso) => (
-                            <label key={curso} className={styles.courseItem}>
+                        {cursosLoading && <div>Carregando cursos...</div>}
+                        {cursosError && (
+                            <div className={styles.error}>
+                                Erro ao carregar cursos: {String(cursosError)}
+                                <button type="button" onClick={reload} style={{ marginLeft: 8 }}>Tentar novamente</button>
+                            </div>
+                        )}
+                        {!cursosLoading && !cursosError && cursosLista.length === 0 && (
+                            <div>Nenhum curso disponível no momento.</div>
+                        )}
+                        {!cursosLoading && !cursosError && cursosLista.map((curso) => (
+                            <label key={curso.id} className={styles.courseItem}>
                                 <input
                                     type="checkbox"
-                                    checked={formData.cursos.includes(curso)}
-                                    onChange={() => handleCourseChange(curso)}
+                                    checked={formData.cursos.includes(curso.id)}
+                                    onChange={() => handleCourseChange(curso.id)}
                                 />
-                                {curso}
+                                {curso.title}
                             </label>
                         ))}
                     </div>
