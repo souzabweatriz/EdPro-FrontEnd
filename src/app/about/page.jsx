@@ -6,6 +6,7 @@ import { FiPlay, FiBookOpen, FiBarChart2 } from "react-icons/fi";
 import Image from "next/image";
 import Header from "../../components/HeaderStudent/HeaderStudent";
 import Link from "next/link";
+import StatisticsSection from "../../components/StatisticsSection/StatisticsSection.jsx";
 
 export default function About() {
     return (
@@ -68,6 +69,7 @@ export default function About() {
                     <p className={styles.iconText}>Medição e evolução do desempenho com dados acionáveis.</p>
                 </div>
             </div>
+            <StatisticsSection />
             <div className={styles.sectionEquipe}>
                 <h1 className={styles.sectionTitle}>Nossa Equipe</h1>
                 <div className={styles.sessaoequipe}>
