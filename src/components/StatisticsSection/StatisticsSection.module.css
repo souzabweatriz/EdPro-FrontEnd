@@ -1,6 +1,6 @@
 .container {
-    padding: 20px 20px;
-    margin: 0 0 100px 0;
+    padding: 60px 20px;
+    margin: 40px 0 100px 0;
 }
 
 .section {
@@ -101,4 +101,128 @@
     font-size: 0.85rem;
     color: #6b7280;
     font-style: italic;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 50px 20px;
+        margin: 30px 0 80px 0;
+    }
+
+    .statistics {
+        gap: 25px;
+        max-width: 800px;
+    }
+
+    .statistic {
+        padding: 25px 18px;
+        min-width: 200px;
+        max-width: 260px;
+    }
+
+    .number {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 15px;
+        margin: 25px 0 60px 0;
+    }
+
+    .title {
+        font-size: 1.75rem;
+        margin-bottom: 12px;
+    }
+
+    .statistics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 500px;
+    }
+
+    .statistic {
+        padding: 25px 15px;
+        min-width: unset;
+        max-width: unset;
+        border-radius: 12px;
+    }
+
+    .icons {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 12px;
+    }
+
+    .icon {
+        font-size: 1.3rem;
+    }
+
+    .number {
+        font-size: 2.2rem;
+        margin: 12px 0 6px;
+    }
+
+    .description {
+        font-size: 0.95rem;
+    }
+
+    .subdescription {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 15px;
+        margin: 20px 0 40px 0;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .statistics {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 300px;
+    }
+
+    .statistic {
+        padding: 20px 15px;
+        border-radius: 10px;
+    }
+
+    .statistic:hover {
+        transform: translateY(-5px);
+    }
+
+    .icons {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .icon {
+        font-size: 1.2rem;
+    }
+
+    .number {
+        font-size: 2rem;
+        margin: 10px 0 5px;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .subdescription {
+        font-size: 0.75rem;
+    }
 }
