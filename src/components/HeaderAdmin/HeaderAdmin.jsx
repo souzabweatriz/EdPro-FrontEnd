@@ -18,9 +18,9 @@ export default function HeaderAdmin() {
             </div>
 
             <nav className={styles.nav}>
-                <Link href="/home" className={styles.navLink}>Início</Link>
-                <Link href="/about" className={styles.navLink}>Sobre Nós</Link>
-                <Link href="/contato" className={styles.navLink}>Contato</Link>
+                <Link href="/admin/page" className={styles.navLink}>Início</Link>
+                <Link href="/admin/courses" className={styles.navLink}>Criar Cursos</Link>
+                <Link href="/matricula" className={styles.navLink}>Criar Matrículas</Link>
 
                 <div className={styles.menuIcon}>
                     <div className={styles.icon}>
