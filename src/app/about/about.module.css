@@ -294,3 +294,455 @@
     color: #ffffffcc;
     text-align: center;
 }
+
+@media (max-width: 1200px) {
+    .content {
+        height: 55rem;
+    }
+
+    .content::before {
+        height: 55rem;
+    }
+
+    .title {
+        font-size: 5rem;
+    }
+
+    .subtitle {
+        font-size: 3.2rem;
+    }
+
+    .section {
+        max-width: 1000px;
+    }
+
+    .cards {
+        gap: 1.2rem;
+    }
+
+    .sectionEquipe {
+        max-width: 1000px;
+    }
+
+    .equipe {
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding-top: 10vh;
+    }
+
+    .content {
+        height: 50rem;
+    }
+
+    .content::before {
+        height: 50rem;
+    }
+
+    .buttons {
+        margin-top: 5rem;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .sessao2 {
+        padding: 50px 20px 30px 20px;
+    }
+
+    .title {
+        font-size: 4rem;
+        white-space: normal;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+        white-space: normal;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        white-space: normal;
+    }
+
+    .section {
+        max-width: 800px;
+    }
+
+    .sectiontitle {
+        font-size: 1.8rem;
+    }
+
+    .cards {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+
+    .icons {
+        gap: 1rem;
+    }
+
+    .icon {
+        width: 180px;
+    }
+
+    .sectionEquipe {
+        max-width: 800px;
+        min-height: auto;
+        padding: 1.5rem 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.8rem;
+    }
+
+    .equipe {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .member {
+        max-width: 150px;
+    }
+
+    .avatar {
+        width: 75px;
+        height: 75px;
+    }
+
+    .role {
+        font-size: 0.9rem;
+    }
+
+    .name {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-top: 8vh;
+    }
+
+    .content {
+        height: 45rem;
+    }
+
+    .content::before {
+        height: 45rem;
+    }
+
+    .buttons {
+        margin-top: 4rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button,
+    .button1 {
+        width: 12rem;
+        font-size: 14px;
+    }
+
+    .sessao2 {
+        padding: 40px 15px 25px 15px;
+    }
+
+    .title {
+        font-size: 3rem;
+        margin: 20px 0 10px 0;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        margin: 25px 0 0 0;
+        padding: 0 10px;
+    }
+
+    .section {
+        padding: 0 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .sectiontitle {
+        font-size: 1.6rem;
+    }
+
+    .cards {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 1.2rem;
+    }
+
+    .carddescription {
+        font-size: 14px;
+    }
+
+    .sessao {
+        padding: 0 1.5rem;
+    }
+
+    .sessaotitle {
+        font-size: 1.6rem;
+    }
+
+    .description1,
+    .cardtext {
+        font-size: 1.1rem;
+    }
+
+    .subdescription1 {
+        font-size: 13px;
+    }
+
+    .description2 {
+        font-size: 1.1rem;
+    }
+
+    .icons {
+        gap: 0.8rem;
+        margin: 1.5rem 0;
+    }
+
+    .icon {
+        width: 150px;
+    }
+
+    .iconTitle {
+        font-size: 0.9rem;
+    }
+
+    .iconText {
+        font-size: 0.85rem;
+    }
+
+    .sectionEquipe {
+        margin: 1.5rem auto;
+        padding: 1.5rem 0.8rem;
+        border-radius: 6px;
+    }
+
+    .sectionTitle {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .sessaoequipe {
+        gap: 1.2rem;
+    }
+
+    .equipe {
+        gap: 1.5rem;
+    }
+
+    .member {
+        max-width: 120px;
+    }
+
+    .avatar {
+        width: 65px;
+        height: 65px;
+        border-width: 4px;
+    }
+
+    .role {
+        font-size: 0.85rem;
+        margin: 0.4rem 0 0.15rem;
+    }
+
+    .name {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-top: 6vh;
+    }
+
+    .content {
+        height: 40rem;
+    }
+
+    .content::before {
+        height: 40rem;
+    }
+
+    .buttons {
+        margin-top: 3rem;
+        gap: 8px;
+    }
+
+    .button,
+    .button1 {
+        width: 10rem;
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .sessao2 {
+        padding: 30px 10px 20px 10px;
+    }
+
+    .title {
+        font-size: 2.2rem;
+        margin: 15px 0 8px 0;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        margin: 8px 0 6px 0;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        margin: 20px 0 0 0;
+        line-height: 1.5;
+    }
+
+    .section {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+
+    .sectiontitle {
+        font-size: 1.4rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .carddescription {
+        font-size: 13px;
+    }
+
+    .sessao {
+        padding: 0 1rem;
+    }
+
+    .sessaotitle {
+        font-size: 1.4rem;
+    }
+
+    .description1,
+    .cardtext {
+        font-size: 1rem;
+    }
+
+    .subdescription1 {
+        font-size: 12px;
+    }
+
+    .description2 {
+        font-size: 1rem;
+    }
+
+    .icons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .icon {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .sectionEquipe {
+        margin: 1rem auto;
+        padding: 1.2rem 0.5rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.4rem;
+    }
+
+    .sessaoequipe {
+        gap: 1rem;
+    }
+
+    .equipe {
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .member {
+        max-width: 100px;
+        flex: 0 0 calc(33.33% - 0.7rem);
+    }
+
+    .avatar {
+        width: 55px;
+        height: 55px;
+        border-width: 3px;
+    }
+
+    .role {
+        font-size: 0.75rem;
+    }
+
+    .name {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .content {
+        height: 38rem;
+    }
+
+    .content::before {
+        height: 38rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .description {
+        font-size: 0.85rem;
+    }
+
+    .button,
+    .button1 {
+        width: 9rem;
+        font-size: 12px;
+    }
+
+    .sectiontitle,
+    .sessaotitle,
+    .sectionTitle {
+        font-size: 1.2rem;
+    }
+
+    .member {
+        flex: 0 0 calc(50% - 0.5rem);
+    }
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+    }
+}

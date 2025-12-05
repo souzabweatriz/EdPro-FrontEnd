@@ -217,3 +217,287 @@
     justify-content: center;
     cursor: pointer;
 }
+
+@media (max-width: 1200px) {
+    .content {
+        height: 55rem;
+    }
+
+    .content::before {
+        height: 55rem;
+    }
+
+    .title {
+        font-size: 5rem;
+    }
+
+    .subtitle {
+        font-size: 3.2rem;
+    }
+
+    .description {
+        font-size: 1.3rem;
+    }
+
+    .cards {
+        max-width: 900px;
+    }
+
+    .card {
+        width: 300px;
+        height: 240px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        margin-top: 4rem;
+    }
+
+    .content {
+        height: 50rem;
+    }
+
+    .content::before {
+        height: 50rem;
+    }
+
+    .buttons {
+        margin-top: 5rem;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .sessao2 {
+        padding: 50px 20px 30px 20px;
+    }
+
+    .title {
+        font-size: 4rem;
+        white-space: normal;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+        white-space: normal;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        white-space: normal;
+    }
+
+    .buttons2 {
+        font-size: 16px;
+        width: 12rem;
+        height: 3.5rem;
+    }
+
+    .cards {
+        max-width: 700px;
+        gap: 15px;
+    }
+
+    .card {
+        width: 280px;
+        height: 220px;
+        padding: 20px 18px;
+    }
+
+    .cardtitle {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 3.5rem;
+    }
+
+    .content {
+        height: 45rem;
+    }
+
+    .content::before {
+        height: 45rem;
+    }
+
+    .buttons {
+        margin-top: 4rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button,
+    .button1 {
+        width: 12rem;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .sessao2 {
+        padding: 40px 15px 25px 15px;
+    }
+
+    .title {
+        font-size: 3rem;
+        margin: 20px 0 10px 0;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        margin: 25px 0 0 0;
+        padding: 0 10px;
+    }
+
+    .containerbuttons {
+        margin-top: 30px;
+    }
+
+    .buttons2 {
+        font-size: 15px;
+        width: 11rem;
+        height: 3.2rem;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+        height: 200px;
+    }
+
+    .cardtitle {
+        font-size: 1.4rem;
+    }
+
+    .buttoncard {
+        padding: 8px 18px;
+        width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-top: 3rem;
+    }
+
+    .content {
+        height: 40rem;
+    }
+
+    .content::before {
+        height: 40rem;
+    }
+
+    .buttons {
+        margin-top: 3rem;
+        gap: 8px;
+    }
+
+    .button,
+    .button1 {
+        width: 10rem;
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .sessao2 {
+        padding: 30px 10px 20px 10px;
+    }
+
+    .title {
+        font-size: 2.2rem;
+        margin: 15px 0 8px 0;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        margin: 8px 0 6px 0;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        margin: 20px 0 0 0;
+        line-height: 1.5;
+    }
+
+    .containerbuttons {
+        margin-top: 25px;
+    }
+
+    .buttons2 {
+        font-size: 14px;
+        width: 10rem;
+        height: 3rem;
+        gap: 8px;
+    }
+
+    .cards {
+        padding: 20px 10px;
+        gap: 12px;
+    }
+
+    .card {
+        height: 180px;
+        padding: 18px 15px;
+        border-radius: 12px;
+    }
+
+    .cardtitle {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .buttoncard {
+        padding: 8px 15px;
+        width: 110px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 360px) {
+    .content {
+        height: 38rem;
+    }
+
+    .content::before {
+        height: 38rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .description {
+        font-size: 0.85rem;
+    }
+
+    .button,
+    .button1 {
+        width: 9rem;
+        font-size: 12px;
+    }
+
+    .card {
+        height: 160px;
+    }
+
+    .cardtitle {
+        font-size: 1.1rem;
+    }
+}

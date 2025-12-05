@@ -183,94 +183,261 @@
     box-shadow: 0 4px 12px rgba(2, 11, 141, 0.5);
 }
 
-/* Responsividade */
 @media (max-width: 1200px) {
+    .container {
+        padding: 50px 15px 80px 15px;
+    }
+
+    .section {
+        gap: 30px;
+    }
+
     .carousel {
         width: 650px;
+        height: 600px;
     }
-    
+
     .sectionCard {
-        width: 530px;
-        height: 550px;
+        width: 550px;
+        height: 500px;
         padding: 40px 35px;
+    }
+
+    .sectionCard.left {
+        transform: translateX(-150px) scale(0.8) rotateY(20deg);
+    }
+
+    .sectionCard.right {
+        transform: translateX(150px) scale(0.8) rotateY(-20deg);
+    }
+
+    .cardTitle {
+        font-size: 2.5rem;
+    }
+
+    .cardDescription {
+        font-size: 1.2rem;
+    }
+
+    .navButton {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
     }
 }
 
 @media (max-width: 992px) {
-    .carouselContainer {
-        gap: 30px;
+    .container {
+        padding: 40px 15px 60px 15px;
+        min-height: auto;
     }
-    
+
+    .section {
+        gap: 20px;
+    }
+
     .carousel {
         width: 500px;
-        height: 600px;
-    }
-    
-    .sectionCard {
-        width: 450px;
         height: 500px;
+    }
+
+    .sectionCard {
+        width: 420px;
+        height: 400px;
         padding: 35px 30px;
+        border-radius: 20px;
+    }
+
+    .sectionCard.left {
+        transform: translateX(-120px) scale(0.75) rotateY(15deg);
+    }
+
+    .sectionCard.right {
+        transform: translateX(120px) scale(0.75) rotateY(-15deg);
+    }
+
+    .cardTitle {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .cardDescription {
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    .navButton {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .navIcon {
+        font-size: 16px;
+    }
+
+    .indicators {
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .indicator {
+        width: 14px;
+        height: 14px;
     }
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 30px 10px 50px 10px;
+    }
+
     .section {
-        padding: 40px 15px 80px 15px;
+        flex-direction: column;
+        gap: 15px;
     }
-    
-    .carouselContainer {
-        gap: 20px;
-    }
-    
+
     .carousel {
-        width: 350px;
-        height: 500px;
+        width: 100%;
+        max-width: 400px;
+        height: 420px;
     }
-    
+
     .sectionCard {
-        width: 320px;
-        height: 450px;
+        width: 90%;
+        max-width: 340px;
+        height: 350px;
         padding: 30px 25px;
+        border-radius: 18px;
     }
-    
+
+    .sectionCard.left,
+    .sectionCard.right {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    .cardTitle {
+        font-size: 1.7rem;
+        margin-bottom: 12px;
+    }
+
+    .cardDescription {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
     .navButton {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
-    
-    .navIcon {
-        font-size: 16px;
+
+    .section > .navButton:first-of-type {
+        left: 5px;
+    }
+
+    .section > .navButton:last-of-type {
+        right: 5px;
+    }
+
+    .indicators {
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 12px;
+    }
+
+    .indicator.active {
+        transform: scale(1.2);
     }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 20px 10px 40px 10px;
+    }
+
     .carousel {
-        width: 280px;
-        height: 420px;
-    }
-    
-    .sectionCard {
-        width: 260px;
+        width: 100%;
         height: 380px;
-        padding: 25px 20px;
     }
-    
+
+    .sectionCard {
+        width: 85%;
+        max-width: 300px;
+        height: 320px;
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    .cardHeader {
+        margin-bottom: 15px;
+    }
+
+    .cardTitle {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .cardDescription {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
     .navButton {
         width: 40px;
         height: 40px;
+        font-size: 18px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    
+
     .navIcon {
         font-size: 14px;
     }
-    
+
     .indicators {
-        gap: 10px;
-        margin-top: 30px;
+        gap: 8px;
+        margin-top: 20px;
     }
-    
+
     .indicator {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .indicator.active {
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 360px) {
+    .carousel {
+        height: 340px;
+    }
+
+    .sectionCard {
+        height: 280px;
+        padding: 20px 15px;
+    }
+
+    .cardTitle {
+        font-size: 1.2rem;
+    }
+
+    .cardDescription {
+        font-size: 0.85rem;
+    }
+
+    .navButton {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
     }
 }

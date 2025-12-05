@@ -235,3 +235,219 @@
     color: #37AAFC;
     font-size: 0.85rem;
 }
+
+@media (max-width: 1024px) {
+    .content {
+        gap: 3rem;
+        padding: 0 2rem;
+    }
+
+    .company {
+        padding-left: 2rem;
+        flex: 2 1 16rem;
+    }
+
+    .logoSection h1 {
+        font-size: 1.8rem;
+    }
+
+    .description {
+        max-width: 18rem;
+    }
+
+    .newsletter {
+        max-width: 20rem;
+    }
+
+    .emailForm {
+        max-width: 16rem;
+    }
+
+    .socialIcons a {
+        font-size: 1.8rem;
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem 1.5rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .company {
+        padding-left: 0;
+        flex: 1 1 100%;
+        align-items: center;
+    }
+
+    .logoSection {
+        justify-content: center;
+    }
+
+    .description {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .section {
+        align-items: center;
+        width: 100%;
+    }
+
+    .links {
+        align-items: center;
+    }
+
+    .section li {
+        text-align: center;
+    }
+
+    .sectionContact {
+        align-items: center;
+        width: 100%;
+    }
+
+    .contactInfo {
+        align-items: center;
+        text-align: center;
+    }
+
+    .newsletter {
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .newsletter .title {
+        text-align: center;
+    }
+
+    .emailForm {
+        max-width: 100%;
+        width: 100%;
+        max-width: 20rem;
+    }
+
+    .social {
+        align-items: center;
+    }
+
+    .title1 {
+        text-align: center;
+    }
+
+    .title1::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .socialIcons {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .socialIcons a {
+        font-size: 2rem;
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    .copyright p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        gap: 1.5rem;
+        padding: 1.2rem 1rem;
+    }
+
+    .logoSection h1 {
+        font-size: 1.5rem;
+    }
+
+    .logoSection p {
+        font-size: 0.9rem;
+    }
+
+    .description {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    .section {
+        gap: 0.5rem;
+        margin: 1rem 0 0;
+    }
+
+    .title {
+        font-size: 0.85rem;
+    }
+
+    .links a,
+    .section li {
+        font-size: 0.85rem;
+    }
+
+    .sectionContact {
+        margin: 1rem 0 0;
+    }
+
+    .contactInfo p {
+        font-size: 0.75rem;
+    }
+
+    .newsletter {
+        gap: 0.6rem;
+        margin: 1rem 0 0;
+    }
+
+    .emailForm {
+        max-width: 100%;
+    }
+
+    .emailForm input {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .emailForm button {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.8rem;
+    }
+
+    .social {
+        font-size: 0.75rem;
+    }
+
+    .title1 {
+        font-size: 0.9rem;
+    }
+
+    .title1::after {
+        width: 4rem;
+    }
+
+    .socialIcons {
+        gap: 1rem;
+    }
+
+    .socialIcons a {
+        font-size: 1.6rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .copyright {
+        padding: 0.3rem;
+    }
+
+    .copyright p {
+        font-size: 0.75rem;
+    }
+}
