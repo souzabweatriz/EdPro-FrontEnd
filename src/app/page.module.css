@@ -1,141 +1,503 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+.container {
+    margin-top: 5rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    color: #1f2937;
 }
 
-.main {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+.content {
+    position: relative;
+    background-image: 
+        linear-gradient(90deg, #b8b8b8 1px, transparent 1px),
+        linear-gradient(180deg, #b8b8b8 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+    height: 60rem;
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+.content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #000000, #0d0dc7, #ffffff);
+    opacity: 0.9;
+    z-index: 1;
+    height: 60rem;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.content > * {
+    position: relative;
+    z-index: 2;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.buttons {
+    margin-top: 7rem;
+    font-size: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    text-align: center;
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.button {
+    padding: 10px 22px;
+    border-radius: 28px;
+    text-decoration: none;
+    width: 10rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #3639e7;
+    color: #ffffff;
+    text-align: center;
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+.button1 {
+    padding: 10px 22px;
+    border-radius: 28px;
+    text-decoration: none;
+    width: 9rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+.button1:hover {
+    background-color: #3639e7;
+    color: #ffffff;
+    border: 2px solid #3639e7;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.sessao2 {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px 40px 20px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.title {
+    font-size: 6rem;
+    margin: 30px 0 12px 0;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 6px 6px 12px rgba(43, 43, 43, 0.7);
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.subtitle {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 10px 0 8px 0;
+    color: #ffffff; 
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 6px 6px 12px rgba(43, 43, 43, 0.7);
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.description {
+    font-size: 1.5rem;
+    margin: 40px 0 0 0;
+    color: #c4c4c4;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.containerbuttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
 
-  .page {
-    --background: #000;
-    --foreground: #000;
+.buttons2 {
+    font-size: 18px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    background-color: #0011ff;
+    color: #ffffff;
+    width: 13rem;
+    border-radius: 50rem;
+    text-decoration: none;
+}
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+.cards {
+    display: flex;
+    gap: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 32px 20px;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.card {
+    width: 330px;
+    height: 260px;
+    background-color: #051f52;
+    border-radius: 14px;
+    padding: 24px 20px;
+    box-shadow: 0 12px 30px rgba(8, 20, 48, 0.18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.cardtitle {
+    font-size: 1.7rem;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+    line-height: 1.15;
+}
+
+.cards .card {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.cards .card:nth-child(1) {
+    background-image: url('/images/livros.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.cards .card:nth-child(2) {
+    background-image: url('/images/equipe.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.cards .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(#051f52a5 , #051f52a5 );
+    z-index: 1;
+}
+
+.cards .card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.buttoncard {
+    padding: 10px 20px;
+    background: #ffffff;
+    color: #000000;
+    width: 130px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    .content {
+        height: 55rem;
+    }
+
+    .content::before {
+        height: 55rem;
+    }
+
+    .title {
+        font-size: 5rem;
+    }
+
+    .subtitle {
+        font-size: 3.2rem;
+    }
+
+    .description {
+        font-size: 1.3rem;
+    }
+
+    .cards {
+        max-width: 900px;
+    }
+
+    .card {
+        width: 300px;
+        height: 240px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        margin-top: 4rem;
+    }
+
+    .content {
+        height: 50rem;
+    }
+
+    .content::before {
+        height: 50rem;
+    }
+
+    .buttons {
+        margin-top: 5rem;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .sessao2 {
+        padding: 50px 20px 30px 20px;
+    }
+
+    .title {
+        font-size: 4rem;
+        white-space: normal;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+        white-space: normal;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        white-space: normal;
+    }
+
+    .buttons2 {
+        font-size: 16px;
+        width: 12rem;
+        height: 3.5rem;
+    }
+
+    .cards {
+        max-width: 700px;
+        gap: 15px;
+    }
+
+    .card {
+        width: 280px;
+        height: 220px;
+        padding: 20px 18px;
+    }
+
+    .cardtitle {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 3.5rem;
+    }
+
+    .content {
+        height: 45rem;
+    }
+
+    .content::before {
+        height: 45rem;
+    }
+
+    .buttons {
+        margin-top: 4rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button,
+    .button1 {
+        width: 12rem;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .sessao2 {
+        padding: 40px 15px 25px 15px;
+    }
+
+    .title {
+        font-size: 3rem;
+        margin: 20px 0 10px 0;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        margin: 25px 0 0 0;
+        padding: 0 10px;
+    }
+
+    .containerbuttons {
+        margin-top: 30px;
+    }
+
+    .buttons2 {
+        font-size: 15px;
+        width: 11rem;
+        height: 3.2rem;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+        height: 200px;
+    }
+
+    .cardtitle {
+        font-size: 1.4rem;
+    }
+
+    .buttoncard {
+        padding: 8px 18px;
+        width: 120px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-top: 3rem;
+    }
+
+    .content {
+        height: 40rem;
+    }
+
+    .content::before {
+        height: 40rem;
+    }
+
+    .buttons {
+        margin-top: 3rem;
+        gap: 8px;
+    }
+
+    .button,
+    .button1 {
+        width: 10rem;
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .sessao2 {
+        padding: 30px 10px 20px 10px;
+    }
+
+    .title {
+        font-size: 2.2rem;
+        margin: 15px 0 8px 0;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        margin: 8px 0 6px 0;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        margin: 20px 0 0 0;
+        line-height: 1.5;
+    }
+
+    .containerbuttons {
+        margin-top: 25px;
+    }
+
+    .buttons2 {
+        font-size: 14px;
+        width: 10rem;
+        height: 3rem;
+        gap: 8px;
+    }
+
+    .cards {
+        padding: 20px 10px;
+        gap: 12px;
+    }
+
+    .card {
+        height: 180px;
+        padding: 18px 15px;
+        border-radius: 12px;
+    }
+
+    .cardtitle {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .buttoncard {
+        padding: 8px 15px;
+        width: 110px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 360px) {
+    .content {
+        height: 38rem;
+    }
+
+    .content::before {
+        height: 38rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .description {
+        font-size: 0.85rem;
+    }
+
+    .button,
+    .button1 {
+        width: 9rem;
+        font-size: 12px;
+    }
+
+    .card {
+        height: 160px;
+    }
+
+    .cardtitle {
+        font-size: 1.1rem;
+    }
 }

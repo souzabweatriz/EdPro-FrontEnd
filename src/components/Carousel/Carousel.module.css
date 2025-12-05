@@ -1,0 +1,443 @@
+.container {
+    padding: 60px 20px 100px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.carousel {
+    position: relative;
+    width: 800px;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+}
+
+.sectionCard {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 50px 40px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 680px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.sectionCard.center {
+    z-index: 3;
+    transform: translateX(0) scale(1);
+    opacity: 1;
+}
+
+.sectionCard.left {
+    z-index: 2;
+    transform: translateX(-180px) scale(0.8) rotateY(20deg);
+    opacity: 0.6;
+}
+
+.sectionCard.right {
+    z-index: 2;
+    transform: translateX(180px) scale(0.8) rotateY(-20deg);
+    opacity: 0.6;
+}
+
+.sectionCard.back {
+    z-index: 1;
+    transform: scale(0.7);
+    opacity: 0.3;
+}
+
+.sectionCard:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.cardHeader {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+.cardTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cardContent {
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.cardDescription {
+    font-size: 1.4rem;
+    color: #ffffff;
+    line-height: 1.8;
+    margin: 0;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cardGradient1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #020b8d 0%, #3639e7 100%);
+    z-index: 1;
+}
+
+.cardGradient2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #03758e 0%, #0d0dc7 100%);
+    z-index: 1;
+}
+
+.cardGradient3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #051f52 0%, #0011ff 100%);
+    z-index: 1;
+}
+
+.navButton {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 4;
+}
+
+.navButton:hover {
+    background: #020b8d;
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(2, 11, 141, 0.3);
+}
+
+.navIcon {
+    font-size: 18px;
+}
+
+.indicators {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(142, 142, 142, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #020b8d;
+    transform: scale(1.3);
+    box-shadow: 0 4px 12px rgba(2, 11, 141, 0.5);
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 50px 15px 80px 15px;
+    }
+
+    .section {
+        gap: 30px;
+    }
+
+    .carousel {
+        width: 650px;
+        height: 600px;
+    }
+
+    .sectionCard {
+        width: 550px;
+        height: 500px;
+        padding: 40px 35px;
+    }
+
+    .sectionCard.left {
+        transform: translateX(-150px) scale(0.8) rotateY(20deg);
+    }
+
+    .sectionCard.right {
+        transform: translateX(150px) scale(0.8) rotateY(-20deg);
+    }
+
+    .cardTitle {
+        font-size: 2.5rem;
+    }
+
+    .cardDescription {
+        font-size: 1.2rem;
+    }
+
+    .navButton {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 40px 15px 60px 15px;
+        min-height: auto;
+    }
+
+    .section {
+        gap: 20px;
+    }
+
+    .carousel {
+        width: 500px;
+        height: 500px;
+    }
+
+    .sectionCard {
+        width: 420px;
+        height: 400px;
+        padding: 35px 30px;
+        border-radius: 20px;
+    }
+
+    .sectionCard.left {
+        transform: translateX(-120px) scale(0.75) rotateY(15deg);
+    }
+
+    .sectionCard.right {
+        transform: translateX(120px) scale(0.75) rotateY(-15deg);
+    }
+
+    .cardTitle {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .cardDescription {
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    .navButton {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+
+    .navIcon {
+        font-size: 16px;
+    }
+
+    .indicators {
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .indicator {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 10px 50px 10px;
+    }
+
+    .section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .carousel {
+        width: 100%;
+        max-width: 400px;
+        height: 420px;
+    }
+
+    .sectionCard {
+        width: 90%;
+        max-width: 340px;
+        height: 350px;
+        padding: 30px 25px;
+        border-radius: 18px;
+    }
+
+    .sectionCard.left,
+    .sectionCard.right {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    .cardTitle {
+        font-size: 1.7rem;
+        margin-bottom: 12px;
+    }
+
+    .cardDescription {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .navButton {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .section > .navButton:first-of-type {
+        left: 5px;
+    }
+
+    .section > .navButton:last-of-type {
+        right: 5px;
+    }
+
+    .indicators {
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 12px;
+    }
+
+    .indicator.active {
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 10px 40px 10px;
+    }
+
+    .carousel {
+        width: 100%;
+        height: 380px;
+    }
+
+    .sectionCard {
+        width: 85%;
+        max-width: 300px;
+        height: 320px;
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    .cardHeader {
+        margin-bottom: 15px;
+    }
+
+    .cardTitle {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .cardDescription {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .navButton {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .navIcon {
+        font-size: 14px;
+    }
+
+    .indicators {
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    .indicator.active {
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 360px) {
+    .carousel {
+        height: 340px;
+    }
+
+    .sectionCard {
+        height: 280px;
+        padding: 20px 15px;
+    }
+
+    .cardTitle {
+        font-size: 1.2rem;
+    }
+
+    .cardDescription {
+        font-size: 0.85rem;
+    }
+
+    .navButton {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}

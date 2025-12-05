@@ -1,0 +1,53 @@
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.button1 {
+    display: flex; 
+    align-items: center;
+    justify-content: center;   
+    border: none;
+    background-color: #e0e0e0;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 2rem 0  0 2rem ;
+    font-weight: bold;
+}
+
+.button2{
+    display: flex; 
+    align-items: center;
+    justify-content: center;   
+    border: none;
+    background-color: #e0e0e0;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 0 2rem 2rem 0 ; 
+    font-weight: bold;
+}
+
+.button1:hover {
+    background-color: #D9D9D9;
+}
+
+.button1:hover,
+.button2:hover {
+    background-color: #bebebe;
+}
+.active {
+    background-color: #070e70;
+    color: white;
+    font-weight: bold;
+}

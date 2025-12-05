@@ -1,0 +1,453 @@
+.container {
+    background: #271761;
+    color: #ffffff;
+    width: 100%;
+}
+
+.content {
+    max-width: 90rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    padding: 0 1rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.company {
+    gap: 0.5rem;
+    flex: 2 1 18rem;
+    min-width: 0;
+    padding-left: 4rem;
+}
+
+.logoSection {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: -1rem;
+}
+
+.logoSection h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #4BC9FF;
+}
+
+.logoSection p {
+    font-size: 1rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.description {
+    color: #ffffff;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1.4;
+    max-width: 21rem;
+    text-align: justify;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin: 1.5rem 0 0;
+}
+
+.title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: 0.125rem solid #37AAFC;
+    display: inline-block;
+}
+
+.newsletter .title {
+    display: inline-block;
+    max-width: 8rem;
+    border-bottom: 0.125rem solid #37AAFC;
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.links a {
+    text-decoration: none;
+    color: #37AAFC;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.section li {
+    color: #37AAFC;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    text-align: left;
+}
+
+.sectionContact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin: 1.5rem 0 0;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    color: #37AAFC;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    gap: 0.25rem;
+    align-items: flex-start;
+}
+
+.contactInfo p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.contactIcon {
+    margin-right: 0.4rem;
+    color: #ffffff;
+    vertical-align: middle;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 25rem;
+    width: 100%;
+    margin: 1.5rem 0 0;
+}
+
+.emailForm {
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+    max-width: 18rem;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.4rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.emailForm input {
+    flex: 1;
+    padding: 0.45rem 0.6rem;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.emailForm button {
+    padding: 0.45rem 0.8rem;
+    border: none;
+    background: #37AAFC;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s ease;
+}
+
+.emailForm button:hover {
+    background: #0091ff;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: #37AAFC;
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+}
+
+.title1 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    max-width: none;
+}
+
+.title1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15rem;
+    width: 5rem;
+    height: 0.125rem;
+    background: #37AAFC;
+    border-radius: 2px;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.socialIcons a {
+    text-decoration: none !important;
+    color: #37AAFC;
+    font-size: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    transition: transform 0.12s ease, color 0.12s ease;
+}
+
+.copyright {
+    background: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 0.4rem;
+    width: 100%;
+}
+
+.copyright p {
+    margin: 0;
+    color: #37AAFC;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        gap: 3rem;
+        padding: 0 2rem;
+    }
+
+    .company {
+        padding-left: 2rem;
+        flex: 2 1 16rem;
+    }
+
+    .logoSection h1 {
+        font-size: 1.8rem;
+    }
+
+    .description {
+        max-width: 18rem;
+    }
+
+    .newsletter {
+        max-width: 20rem;
+    }
+
+    .emailForm {
+        max-width: 16rem;
+    }
+
+    .socialIcons a {
+        font-size: 1.8rem;
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1.5rem 1.5rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .company {
+        padding-left: 0;
+        flex: 1 1 100%;
+        align-items: center;
+    }
+
+    .logoSection {
+        justify-content: center;
+    }
+
+    .description {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .section {
+        align-items: center;
+        width: 100%;
+    }
+
+    .links {
+        align-items: center;
+    }
+
+    .section li {
+        text-align: center;
+    }
+
+    .sectionContact {
+        align-items: center;
+        width: 100%;
+    }
+
+    .contactInfo {
+        align-items: center;
+        text-align: center;
+    }
+
+    .newsletter {
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .newsletter .title {
+        text-align: center;
+    }
+
+    .emailForm {
+        max-width: 100%;
+        width: 100%;
+        max-width: 20rem;
+    }
+
+    .social {
+        align-items: center;
+    }
+
+    .title1 {
+        text-align: center;
+    }
+
+    .title1::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .socialIcons {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .socialIcons a {
+        font-size: 2rem;
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+
+    .copyright p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        gap: 1.5rem;
+        padding: 1.2rem 1rem;
+    }
+
+    .logoSection h1 {
+        font-size: 1.5rem;
+    }
+
+    .logoSection p {
+        font-size: 0.9rem;
+    }
+
+    .description {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    .section {
+        gap: 0.5rem;
+        margin: 1rem 0 0;
+    }
+
+    .title {
+        font-size: 0.85rem;
+    }
+
+    .links a,
+    .section li {
+        font-size: 0.85rem;
+    }
+
+    .sectionContact {
+        margin: 1rem 0 0;
+    }
+
+    .contactInfo p {
+        font-size: 0.75rem;
+    }
+
+    .newsletter {
+        gap: 0.6rem;
+        margin: 1rem 0 0;
+    }
+
+    .emailForm {
+        max-width: 100%;
+    }
+
+    .emailForm input {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .emailForm button {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.8rem;
+    }
+
+    .social {
+        font-size: 0.75rem;
+    }
+
+    .title1 {
+        font-size: 0.9rem;
+    }
+
+    .title1::after {
+        width: 4rem;
+    }
+
+    .socialIcons {
+        gap: 1rem;
+    }
+
+    .socialIcons a {
+        font-size: 1.6rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .copyright {
+        padding: 0.3rem;
+    }
+
+    .copyright p {
+        font-size: 0.75rem;
+    }
+}
