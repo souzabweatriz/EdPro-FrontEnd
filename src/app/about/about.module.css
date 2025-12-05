@@ -150,13 +150,6 @@
     transition: transform 0.2s;
 }
 
-.cardtitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #1B0273;
-    text-align: center;
-}
-
 .carddescription {
     font-size: 15px;
     font-weight: 400;
@@ -168,7 +161,7 @@
 .sessao {
     width: 100%;
     max-width: 800px;
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 0 1rem;
     box-sizing: border-box;
     text-align: center;
