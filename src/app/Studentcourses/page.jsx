@@ -13,19 +13,25 @@ const StudentCoursesPage = () => {
   const [studentInfo, setStudentInfo] = useState(null);
   const router = useRouter();
 
-  const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+  const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
+  // ...existing code...
   useEffect(() => {
-    const storedStudentInfo = JSON.parse(localStorage.getItem('studentInfo'));
-    if (storedStudentInfo) {
-      setStudentInfo(storedStudentInfo);
-    } else {
-      router.push('/matricula');
+    // leitura segura do localStorage (apenas no cliente) — NÃO redireciona
+    if (typeof window !== 'undefined') {
+      try {
+        const raw = localStorage.getItem('studentInfo');
+        if (raw) {
+          setStudentInfo(JSON.parse(raw));
+        }
+      } catch (err) {
+        console.error('Erro ao ler studentInfo do localStorage:', err);
+      }
     }
 
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`${backendUrl}/courses`);
+        const response = await fetch(`${backendUrl}/api/courses`);
         if (!response.ok) {
           throw new Error('Erro ao buscar cursos');
         }
@@ -155,35 +161,45 @@ const StudentCoursesPage = () => {
           <div className={styles.loading}>Carregando cursos...</div>
         ) : (
           sortedCourses.map((course) => (
-            <div key={course.id} className={styles.courseCard}>
-              <div className={styles.cardImageBox}>
-                {course.image ? (
-                  <img
-                    src={`${backendUrl}/uploads/${course.image}`} // Puxa a imagem do backend
-                    alt={course.title}
-                    className={styles.cardImage}
-                  />
-                ) : (
-                  <div className={styles.cardImagePlaceholder}>FOTO AQUI</div>
-                )}
-              </div>
-              <div className={styles.cardBody}>
-                <h3 className={styles.cardTitle}>{course.title}</h3>
-                <p className={styles.cardDesc}>
-                  {course.description.length > 100
-                    ? course.description.slice(0, 100) + '...'
-                    : course.description}
-                </p>
-                {!course.completed && (
-                  <button
-                    className={styles.completeButton}
-                    onClick={() => handleCompleteCourse(course.id)}
-                  >
-                    Marcar como concluído
-                  </button>
-                )}
-              </div>
-            </div>
+            <Link
+              href={`/student/courses/${course.id}`}
+              key={course.id}
+              className={styles.courseCard}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+            <div className={styles.cardImageBox}>
+              {course.image ? (
+                <img
+                src={`${backendUrl}/uploads/${course.image}`}
+                alt={course.title}
+                className={styles.cardImage}
+                />
+            ) : (
+        <div className={styles.cardImagePlaceholder}>FOTO AQUI</div>
+        )}
+    </div>
+
+    <div className={styles.cardBody}>
+      <h3 className={styles.cardTitle}>{course.title}</h3>
+      <p className={styles.cardDesc}>
+        {course.description.length > 100
+          ? course.description.slice(0, 100) + "..."
+          : course.description}
+      </p>
+
+      {!course.completed && (
+        <button
+          className={styles.completeButton}
+          onClick={(e) => {
+            e.preventDefault(); 
+            handleCompleteCourse(course.id);
+          }}
+        >
+          Marcar como concluído
+        </button>
+      )}
+    </div>
+        </Link>
           ))
         )}
       </div>
