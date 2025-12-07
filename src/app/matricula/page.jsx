@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./matricula.module.css";
 import useCourses from "../../lib/useCourses";
+import axios from "axios";
+import HeaderAdmin from "@/components/HeaderAdmin/HeaderAdmin"; 
+import FooterAdmin from "@/components/FooterAdmin/FooterAdmin";
 
 export default function Matricula() {
     const router = useRouter();
@@ -96,7 +99,6 @@ export default function Matricula() {
 
         setLoading(true);
         try {
-        
             const selectedCourse = (cursosLista || []).find(c => c.id === formData.curso);
             const payload = { 
                 ...formData, 
@@ -104,80 +106,42 @@ export default function Matricula() {
                 curso_title: selectedCourse?.title || "" 
             };
 
-            const baseRaw = process.env.NEXT_PUBLIC_API_URL || "";
-            const base = baseRaw.replace(/\/$/, "");
-            const urlsToTry = [];
-            if (base) {
-                urlsToTry.push(`${base}/matricula`);
-                urlsToTry.push(`${base}/api/matricula`);
-            }
-            urlsToTry.push("/api/matricula");
-            urlsToTry.push("/matricula");
-            urlsToTry.push("http://localhost:5000/api/matricula");
-            urlsToTry.push("http://localhost:5000/matricula");
+            // URL única para envio do formulário
+            const url = "/api/matricula";
 
-            let lastError = null;
-            for (const url of urlsToTry) {
-                try {
-                    console.debug("[Matricula] POST ->", url, payload);
-                    const resp = await fetch(url, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload),
-                    });
+            const resp = await axios.post(url, payload, {
+                headers: { "Content-Type": "application/json" }
+            });
 
-                    const textOrJson = await (async () => {
-                        const ct = resp.headers.get("content-type") || "";
-                        try {
-                            if (ct.includes("application/json")) return await resp.json();
-                            return await resp.text();
-                        } catch { return await resp.text(); }
-                    })();
+            // Salvar dados do aluno no localStorage
+            const studentData = {
+                name: formData.nome,
+                email: formData.email,
+                course: selectedCourse?.title || "",
+                courseId: formData.curso,
+                avatar: null,
+                completedTasks: 0,
+                pendingTasks: 100
+            };
+            localStorage.setItem('studentInfo', JSON.stringify(studentData));
 
-                    if (!resp.ok) {
-                        lastError = new Error(`HTTP ${resp.status} ${resp.statusText} - ${JSON.stringify(textOrJson)}`);
-                        console.warn("[Matricula] tentativa falhou:", url, lastError);
-                        continue;
-                    }
+            alert("Matrícula enviada com sucesso!");
+            setFormData({
+                nome: "",
+                email: "",
+                genero: "",
+                telefone: "",
+                endereco: "",
+                estado: "",
+                curso: "",
+                comentario: "",
+            });
+            setLoading(false);
 
-                    console.info("[Matricula] enviado com sucesso para:", url, textOrJson);
-                    
-                    // Salvar dados do aluno no localStorage
-                    const studentData = {
-                        name: formData.nome,
-                        email: formData.email,
-                        course: selectedCourse?.title || "",
-                        courseId: formData.curso,
-                        avatar: null,
-                        completedTasks: 0,
-                        pendingTasks: 100
-                    };
-                    localStorage.setItem('studentInfo', JSON.stringify(studentData));
-                    
-                    alert("Matrícula enviada com sucesso!");
-                    setFormData({
-                        nome: "",
-                        email: "",
-                        genero: "",
-                        telefone: "",
-                        endereco: "",
-                        estado: "",
-                        curso: "",
-                        comentario: "",
-                    });
-                    setLoading(false);
-                    
-                    // Redirecionar para página de cursos do aluno
-                    router.push('/Studentcourses');
-                    return;
-                } catch (err) {
-                    lastError = err;
-                    console.error("[Matricula] erro ao postar em", url, err);
-                    continue;
-                }
-            }
-
-            console.error("[Matricula] falha ao enviar matrícula; tentadas:", urlsToTry, lastError);
+            // Redirecionar para página de cursos do aluno
+            router.push('/Studentcourses');
+        } catch (err) {
+            console.error("[Matricula] erro ao postar (axios)", err);
             alert("Ocorreu um erro ao enviar a matrícula. Verifique o console para mais detalhes.");
         } finally {
             setLoading(false);
@@ -186,9 +150,9 @@ export default function Matricula() {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.title}>Matrículas</h2>
-
+            <HeaderAdmin />
             <div className={styles.formBox}>
+            <h2 className={styles.title}>Matrículas</h2>
                 <div className={styles.fieldsGrid}>
 
                     <div className={styles.fieldCol}>
@@ -252,7 +216,6 @@ export default function Matricula() {
                         />
                         {errors.endereco && <span className={styles.error}>{errors.endereco}</span>}
                     </div>
-
                 
                     <div className={styles.fieldCol}>
                         <label className={styles.label}>Estado/Província:</label>
@@ -278,7 +241,6 @@ export default function Matricula() {
 
                 <div className={styles.divider}></div>
 
-               
                 <div className={styles.coursesBox}>
                     <div className={styles.coursesLabel}>
                         Por favor, selecione o curso no qual deseja se inscrever.
@@ -313,27 +275,6 @@ export default function Matricula() {
                     )}
                 </div>
 
-                <div className={styles.commentsRow}>
-                    <span className={styles.commentsLabel}>Comentários adicionais:</span>
-
-                    <input
-                        className={styles.commentsInput}
-                        name="comentario"
-                        placeholder="Digite seu comentário"
-                        value={formData.comentario}
-                        onChange={handleChange}
-                        disabled={loading}
-                    />
-
-                    <button
-                        className={styles.commentsButton}
-                        type="button"
-                        disabled={loading || !formData.comentario.trim()}
-                    >
-                        Enviar comentário
-                    </button>
-                </div>
-
                 <button
                     className={styles.submitButton}
                     onClick={handleSubmit}
@@ -342,6 +283,7 @@ export default function Matricula() {
                     Enviar matrícula
                 </button>
             </div>
+            <FooterAdmin />
         </div>
     );
 }
