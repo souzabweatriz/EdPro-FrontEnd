@@ -5,8 +5,9 @@ import styles from './courses.module.css';
 import Link from 'next/link';
 import HeaderStudent from '@/components/HeaderStudent/HeaderStudent';
 import FooterStudent from '@/components/FooterStudent/FooterStudent';
+import Image from 'next/image';
 
-const CoursesPage = () => {
+export default function CoursesPage() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,7 +20,7 @@ const CoursesPage = () => {
       const baseRaw = process.env.NEXT_PUBLIC_API_URL || "";
       const base = baseRaw.replace(/\/$/, "");
       const urlsToTry = [];
-      
+
       if (base) {
         urlsToTry.push(`${base}/courses`);
         urlsToTry.push(`${base}/api/courses`);
@@ -70,28 +71,33 @@ const CoursesPage = () => {
     if (!category) {
       setFilteredCourses(courses);
     } else {
-      const filtered = courses.filter((course) => 
+      const filtered = courses.filter((course) =>
         course.category?.toLowerCase() === category.toLowerCase()
       );
       setFilteredCourses(filtered);
     }
   };
 
-  // Pegar categorias únicas
   const categories = [...new Set(courses.map(course => course.category).filter(Boolean))];
 
   return (
-    <>
+    <div className={styles.container}>
       <HeaderStudent />
-      <div className={styles.pageContainer}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>Todos os Cursos</h1>
-          <p className={styles.subtitle}>Explore nossa biblioteca completa de cursos</p>
+      <div className={styles.content}>
+        <div className={styles.buttons}>
+          <Link href="/login" className={styles.button}>Login</Link>
+          <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
         </div>
+        <div className={styles.sessao2}>
+          <h1 className={styles.title}>Capacite-se com a EdPro</h1>
+          <h2 className={styles.subtitle}>Cursos para seu desenvolvimento</h2>
+          <p className={styles.description}>Acesse nossos cursos exclusivos.</p>
+        </div>
+      </div>
 
       <div className={styles.filtersContainer}>
-        <button 
-          className={styles.filterBtn} 
+        <button
+          className={styles.filterBtn}
           onClick={() => setFilteredCourses(courses)}
         >
           Todos
@@ -113,7 +119,7 @@ const CoursesPage = () => {
         />
       </div>
 
-      <div className={styles.coursesGrid}>
+      <div className={styles.courses}>
         {loading ? (
           <div className={styles.loading}>Carregando cursos...</div>
         ) : filteredCourses.length === 0 ? (
@@ -123,29 +129,27 @@ const CoursesPage = () => {
             <Link
               href={`/courses/${course.id}`}
               key={course.id}
-              className={styles.courseCard}
+              className={styles.card}
             >
-              <div className={styles.cardImageBox}>
+              <div className={styles.cadImage}>
                 {course.photo ? (
-                  <img
+                  <Image
                     src={course.photo.startsWith('http') ? course.photo : `${backendUrl}/uploads/${course.photo}`}
                     alt={course.title}
                     className={styles.cardImage}
+                    width={300}
+                    height={180}
+                    style={{ objectFit: 'cover' }}
                   />
                 ) : (
                   <div className={styles.cardImagePlaceholder}>📚</div>
                 )}
               </div>
 
-              <div className={styles.cardBody}>
+              <div className={styles.cards}>
                 <span className={styles.cardCategory}>{course.category}</span>
-                <h3 className={styles.cardTitle}>{course.title}</h3>
-                <p className={styles.cardDesc}>
-                  {course.description && course.description.length > 100
-                    ? course.description.slice(0, 100) + "..."
-                    : course.description}
-                </p>
-                <button className={styles.viewButton}>
+                <h3 className={styles.cardtitle}>{course.title}</h3>
+                <button className={styles.cardButton}>
                   Ver Curso
                 </button>
               </div>
@@ -153,10 +157,8 @@ const CoursesPage = () => {
           ))
         )}
       </div>
-      </div>
-      <FooterStudent />
-    </>
-  );
-};
 
-export default CoursesPage;
+      <FooterStudent />
+    </div>
+  );
+}
