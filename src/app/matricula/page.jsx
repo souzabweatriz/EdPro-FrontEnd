@@ -1,9 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./matricula.module.css";
 import useCourses from "../../lib/useCourses";
 
 export default function Matricula() {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const cursoFromUrl = searchParams.get('curso');
+    
     const [formData, setFormData] = useState({
         nome: "",
         email: "",
@@ -11,13 +16,33 @@ export default function Matricula() {
         telefone: "",
         endereco: "",
         estado: "",
-        cursos: [],
+        curso: "",
         comentario: ""
     });
 
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+
+    // Use hook-based loader with cache (sessionStorage)
+    const { courses: fetchedCourses, loading: cursosLoading, error: cursosError, reload } = useCourses();
+    const [cursosLista, setCursosLista] = useState([]);
+
+    // sincroniza fetchedCourses e pré-seleciona curso da URL
+    useEffect(() => {
+        if (Array.isArray(fetchedCourses)) {
+            setCursosLista(fetchedCourses);
+            
+            // Se há um curso na URL, pré-selecionar
+            if (cursoFromUrl) {
+                const cursoId = parseInt(cursoFromUrl, 10);
+                const cursoExists = fetchedCourses.some(c => Number(c.id) === cursoId);
+                if (cursoExists) {
+                    setFormData(prev => ({ ...prev, curso: cursoId }));
+                }
+            }
+        }
+    }, [fetchedCourses, cursoFromUrl]);
 
     const validate = () => {
         let newErrors = {};
@@ -42,8 +67,8 @@ export default function Matricula() {
 
         if (!formData.estado) newErrors.estado = "Selecione o estado.";
 
-        if (formData.cursos.length === 0)
-            newErrors.cursos = "Selecione pelo menos 1 curso.";
+        if (!formData.curso)
+            newErrors.curso = "Selecione um curso.";
 
         return newErrors;
     };
@@ -57,13 +82,9 @@ export default function Matricula() {
         setErrors({ ...errors, [e.target.name]: "" });
     };
 
-    const handleCourseChange = (course) => {
-        const cursos = formData.cursos.includes(course)
-            ? formData.cursos.filter(c => c !== course)
-            : [...formData.cursos, course];
-
-        setFormData({ ...formData, cursos });
-        setErrors({ ...errors, cursos: "" });
+    const handleCourseChange = (courseId) => {
+        setFormData({ ...formData, curso: courseId });
+        setErrors({ ...errors, curso: "" });
     };
 
     const handleSubmit = async () => {
@@ -76,9 +97,12 @@ export default function Matricula() {
         setLoading(true);
         try {
         
-            const selectedIds = formData.cursos || [];
-            const selectedTitles = (cursosLista || []).filter(c => selectedIds.includes(c.id)).map(c => c.title);
-            const payload = { ...formData, cursos_ids: selectedIds, cursos_titles: selectedTitles };
+            const selectedCourse = (cursosLista || []).find(c => c.id === formData.curso);
+            const payload = { 
+                ...formData, 
+                curso_id: formData.curso, 
+                curso_title: selectedCourse?.title || "" 
+            };
 
             const baseRaw = process.env.NEXT_PUBLIC_API_URL || "";
             const base = baseRaw.replace(/\/$/, "");
@@ -117,6 +141,19 @@ export default function Matricula() {
                     }
 
                     console.info("[Matricula] enviado com sucesso para:", url, textOrJson);
+                    
+                    // Salvar dados do aluno no localStorage
+                    const studentData = {
+                        name: formData.nome,
+                        email: formData.email,
+                        course: selectedCourse?.title || "",
+                        courseId: formData.curso,
+                        avatar: null,
+                        completedTasks: 0,
+                        pendingTasks: 100
+                    };
+                    localStorage.setItem('studentInfo', JSON.stringify(studentData));
+                    
                     alert("Matrícula enviada com sucesso!");
                     setFormData({
                         nome: "",
@@ -125,10 +162,13 @@ export default function Matricula() {
                         telefone: "",
                         endereco: "",
                         estado: "",
-                        cursos: [],
+                        curso: "",
                         comentario: "",
                     });
                     setLoading(false);
+                    
+                    // Redirecionar para página de cursos do aluno
+                    router.push('/Studentcourses');
                     return;
                 } catch (err) {
                     lastError = err;
@@ -143,17 +183,6 @@ export default function Matricula() {
             setLoading(false);
         }
     };
-
-    // Use hook-based loader with cache (sessionStorage)
-    const { courses: fetchedCourses, loading: cursosLoading, error: cursosError, reload } = useCourses();
-    const [cursosLista, setCursosLista] = useState([]);
-
-    // sincroniza fetchedCourses (array de objetos {id,title}) com o estado local
-    useEffect(() => {
-        if (Array.isArray(fetchedCourses)) {
-            setCursosLista(fetchedCourses);
-        }
-    }, [fetchedCourses]);
 
     return (
         <div className={styles.container}>
@@ -252,7 +281,7 @@ export default function Matricula() {
                
                 <div className={styles.coursesBox}>
                     <div className={styles.coursesLabel}>
-                        Por favor, selecione os cursos nos quais deseja se inscrever.
+                        Por favor, selecione o curso no qual deseja se inscrever.
                     </div>
 
                     <div className={styles.coursesList}>
@@ -269,8 +298,9 @@ export default function Matricula() {
                         {!cursosLoading && !cursosError && cursosLista.map((curso) => (
                             <label key={curso.id} className={styles.courseItem}>
                                 <input
-                                    type="checkbox"
-                                    checked={formData.cursos.includes(curso.id)}
+                                    type="radio"
+                                    name="curso"
+                                    checked={Number(formData.curso) === Number(curso.id)}
                                     onChange={() => handleCourseChange(curso.id)}
                                 />
                                 {curso.title}
@@ -278,8 +308,8 @@ export default function Matricula() {
                         ))}
                     </div>
 
-                    {errors.cursos && (
-                        <span className={styles.error}>{errors.cursos}</span>
+                    {errors.curso && (
+                        <span className={styles.error}>{errors.curso}</span>
                     )}
                 </div>
 

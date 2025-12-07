@@ -1,10 +1,10 @@
 "use client"
 import React from "react";
 import styles from "../about/about.module.css";
-import Footer from "../../components/FooterStudent/FooterStudent";
+import FooterStudent from "../../components/FooterStudent/FooterStudent";
 import { FiPlay, FiBookOpen, FiBarChart2 } from "react-icons/fi";
 import Image from "next/image";
-import Header from "../../components/HeaderStudent/HeaderStudent";
+import HeaderStudent from "../../components/HeaderStudent/HeaderStudent";
 import Link from "next/link";
 import StatisticsSection from "../../components/StatisticsSection/StatisticsSection.jsx";
 import CarouselAbout from "../../components/CarouselAbout/CarouselAbout";
@@ -30,7 +30,7 @@ const whyEdproCards = [
 export default function About() {
     return (
         <div className={styles.container}>
-            <Header />
+            <HeaderStudent />
             <div className={styles.content}>
                 <div className={styles.buttons}>
                 <Link href="/login" className={styles.button}>Login</Link>
@@ -114,7 +114,7 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            <Footer />
+            <FooterStudent />
         </div >
     );
 }
