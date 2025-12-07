@@ -15,9 +15,7 @@ const StudentCoursesPage = () => {
 
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-  // ...existing code...
   useEffect(() => {
-    // leitura segura do localStorage (apenas no cliente) — NÃO redireciona
     if (typeof window !== 'undefined') {
       try {
         const raw = localStorage.getItem('studentInfo');
@@ -47,6 +45,7 @@ const StudentCoursesPage = () => {
 
     fetchCourses();
   }, [backendUrl, router]);
+
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -162,44 +161,42 @@ const StudentCoursesPage = () => {
         ) : (
           sortedCourses.map((course) => (
             <Link
-              href={`/student/courses/${course.id}`}
               key={course.id}
+              href={`/Studentcourses/${course.id}`}
               className={styles.courseCard}
-              style={{ textDecoration: "none", color: "inherit" }}
             >
-            <div className={styles.cardImageBox}>
-              {course.image ? (
-                <img
-                src={`${backendUrl}/uploads/${course.image}`}
-                alt={course.title}
-                className={styles.cardImage}
-                />
-            ) : (
-        <div className={styles.cardImagePlaceholder}>FOTO AQUI</div>
-        )}
-    </div>
-
-    <div className={styles.cardBody}>
-      <h3 className={styles.cardTitle}>{course.title}</h3>
-      <p className={styles.cardDesc}>
-        {course.description.length > 100
-          ? course.description.slice(0, 100) + "..."
-          : course.description}
-      </p>
-
-      {!course.completed && (
-        <button
-          className={styles.completeButton}
-          onClick={(e) => {
-            e.preventDefault(); 
-            handleCompleteCourse(course.id);
-          }}
-        >
-          Marcar como concluído
-        </button>
-      )}
-    </div>
-        </Link>
+              <div className={styles.cardImageBox}>
+                {course.image ? (
+                  <img
+                    src={`${backendUrl}/uploads/${course.image}`} 
+                    alt={course.title}
+                    className={styles.cardImage}
+                  />
+                ) : (
+                  <div className={styles.cardImagePlaceholder}>FOTO AQUI</div>
+                )}
+              </div>
+              <div className={styles.cardBody}>
+                <h3 className={styles.cardTitle}>{course.title}</h3>
+                <p className={styles.cardDesc}>
+                  {course.description.length > 100
+                    ? course.description.slice(0, 100) + '...'
+                    : course.description}
+                </p>
+                {!course.completed && (
+                  <button
+                    className={styles.completeButton}
+                    onClick={(e) => {
+                      e.preventDefault(); 
+                      e.stopPropagation();
+                      handleCompleteCourse(course.id);
+                    }}
+                  >
+                    Marcar como concluído
+                  </button>
+                )}
+              </div>
+            </Link>
           ))
         )}
       </div>
