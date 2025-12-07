@@ -1,133 +1,139 @@
 .container {
-    margin: 0;
-    padding-top: 12vh;
-    min-height: calc(100vh - 12vh);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding-top: 12vh;
+  min-height: calc(100vh - 12vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
 .content {
-    position: relative;
-    background-image: 
-        linear-gradient(90deg, #b8b8b8 1px, transparent 1px),
-        linear-gradient(180deg, #b8b8b8 1px, transparent 1px);
-    background-size: 20px 20px;
-    z-index: 0;
-    height: 60rem;
+  position: relative;
+  background-image: 
+    linear-gradient(90deg, #b8b8b8 1px, transparent 1px),
+    linear-gradient(180deg, #b8b8b8 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+  height: 60rem;
 }
 
 .content::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, #000000, #0d0dc7, #ffffff);
-    opacity: 0.9;
-    z-index: 1;
-    height: 60rem;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #000000, #0d0dc7, #ffffff);
+  opacity: 0.9;
+  z-index: 1;
+  height: 60rem;
 }
 
 .content > * {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
 .buttons {
-    margin-top: 7rem;
-    font-size: 10px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 2rem;
-    text-align: center;
+  margin-top: 7rem;
+  font-size: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  text-align: center;
 }
 
 .button {
-    padding: 10px 22px;
-    border-radius: 28px;
-    text-decoration: none;
-    width: 10rem;
-    font-weight: 700;
-    font-size: 15px;
-    background-color: #3639e7;
-    color: #ffffff;
-    text-align: center;
+  padding: 10px 22px;
+  border-radius: 28px;
+  text-decoration: none;
+  width: 10rem;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #3639e7;
+  color: #ffffff;
+  text-align: center;
 }
 
 .button1 {
-    padding: 10px 22px;
-    border-radius: 28px;
-    text-decoration: none;
-    width: 9rem;
-    font-weight: 700;
-    font-size: 15px;
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-    text-align: center;
-    transition: all 0.3s ease;
+  padding: 10px 22px;
+  border-radius: 28px;
+  text-decoration: none;
+  width: 9rem;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
 .button1:hover {
-    background-color: #3639e7;
-    color: #ffffff;
-    border: 2px solid #3639e7;
+  background-color: #3639e7;
+  color: #ffffff;
+  border: 2px solid #3639e7;
 }
 
 .sessao2 {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 60px 20px 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px 40px 20px;
 }
 
 .title {
-    font-size: 6rem;
-    margin: 30px 0 12px 0;
-    color: #ffffff;
-    text-align: center;
-    white-space: nowrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-shadow: 6px 6px 12px rgba(43, 43, 43, 0.7);
+  font-size: 6rem;
+  margin: 30px 0 12px 0;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 6px 6px 12px rgba(43, 43, 43, 0.7);
 }
 
 .subtitle {
-    font-size: 4rem;
-    font-weight: 700;
-    margin: 10px 0 8px 0;
-    color: #ffffff; 
-    text-align: center;
-    white-space: nowrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-shadow: 6px 6px 12px rgba(43, 43, 43, 0.7);
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 10px 0 8px 0;
+  color: #ffffff; 
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 6px 6px 12px rgba(43, 43, 43, 0.7);
 }
 
 .description {
-    font-size: 1.5rem;
-    margin: 40px 0 0 0;
-    color: #c4c4c4;
-    text-align: center;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 1.5rem;
+  margin: 40px 0 0 0;
+  color: #c4c4c4;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .filtersContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
   margin-bottom: 30px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.categoriesRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
 }
 
 .filterBtn {
@@ -273,21 +279,100 @@
   padding: 40px;
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 28px;
+@media (max-width: 1024px) {
+  .content {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 2rem;
   }
+  .title {
+    font-size: 3.5rem;
+    white-space: normal;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+  .subtitle {
+    font-size: 2.5rem;
+    white-space: normal;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+  .description {
+    font-size: 1.1rem;
+    white-space: normal;
+    padding: 0 1rem;
+  }
+  .courses {
+    gap: 18px;
+    padding: 0 8px 40px 8px;
+  }
+  .card {
+    width: 90vw;
+    max-width: 350px;
+    height: 370px;
+  }
+  .filtersContainer {
+    gap: 6px;
+    margin-bottom: 18px;
+    padding: 0 8px;
+  }
+}
 
+@media (max-width: 600px) {
+  .container {
+    padding-top: 8vh;
+    min-height: calc(100vh - 8vh);
+  }
+  .content {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 1rem;
+  }
+  .title {
+    font-size: 2.2rem;
+    padding: 0 0.5rem;
+  }
+  .subtitle {
+    font-size: 1.3rem;
+    padding: 0 0.5rem;
+  }
+  .description {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+  .courses {
+    gap: 10px;
+    padding: 0 2px 20px 2px;
+  }
+  .card {
+    width: 98vw;
+    max-width: 98vw;
+    height: 320px;
+    font-size: 13px;
+  }
+  .cardImage {
+    height: 120px;
+  }
   .filtersContainer {
     flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+    padding: 0 2px;
   }
-
-  .searchInput {
+  .buttons {
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 0;
+    margin-top: 2rem;
+  }
+  .button, .button1 {
     width: 100%;
-    max-width: 300px;
+    font-size: 13px;
+    padding: 8px 0;
   }
-
-  .coursesGrid {
-    grid-template-columns: 1fr;
+  .searchInput {
+    width: 98vw;
+    font-size: 13px;
+    padding: 8px 10px;
   }
 }

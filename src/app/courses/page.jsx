@@ -96,27 +96,29 @@ export default function CoursesPage() {
       </div>
 
       <div className={styles.filtersContainer}>
-        <button
-          className={styles.filterBtn}
-          onClick={() => setFilteredCourses(courses)}
-        >
-          Todos
-        </button>
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={styles.filterBtn}
-            onClick={() => handleFilterByCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
         <input
           className={styles.searchInput}
           placeholder="Buscar cursos..."
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
         />
+        <div className={styles.categoriesRow}>
+          <button
+            className={styles.filterBtn}
+            onClick={() => setFilteredCourses(courses)}
+          >
+            Todos
+          </button>
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={styles.filterBtn}
+              onClick={() => handleFilterByCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className={styles.courses}>
