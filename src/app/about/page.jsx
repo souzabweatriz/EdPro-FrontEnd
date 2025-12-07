@@ -1,41 +1,52 @@
 "use client"
 import React from "react";
 import styles from "../about/about.module.css";
-import Footer from "../../components/Footer/Footer";
+import FooterStudent from "../../components/FooterStudent/FooterStudent";
 import { FiPlay, FiBookOpen, FiBarChart2 } from "react-icons/fi";
 import Image from "next/image";
+import HeaderStudent from "../../components/HeaderStudent/HeaderStudent";
+import Link from "next/link";
+import StatisticsSection from "../../components/StatisticsSection/StatisticsSection.jsx";
+import CarouselAbout from "../../components/CarouselAbout/CarouselAbout";
+
+const whyEdproCards = [
+    {
+        title: "Missão",
+        highlight: "Capacitar pessoas.",
+        description: "Acreditamos que o crescimento das empresas começa pelo desenvolvimento das pessoas. Nossa missão é democratizar o acesso ao conhecimento corporativo, tornando o aprendizado acessível, engajante e transformador para todos os colaboradores."
+    },
+    {
+        title: "Visão",
+        highlight: "Liderar o mercado.",
+        description: "Queremos ser a plataforma referência em treinamento corporativo no Brasil. Buscamos transformar a forma como as empresas desenvolvem seus talentos, criando uma cultura de aprendizado contínuo que impulsiona resultados."
+    },
+    {
+        title: "Valores",
+        highlight: "Inovação com propósito.",
+        description: "Valorizamos a simplicidade, a autonomia e a excelência. Cada funcionalidade é pensada para facilitar a vida de quem ensina e de quem aprende, sempre com foco em resultados mensuráveis e impacto real nas organizações."
+    }
+];
 
 export default function About() {
     return (
         <div className={styles.container}>
+            <HeaderStudent />
             <div className={styles.content}>
-                <h1 className={styles.title}>Desenvolva sua equipe</h1>
-                <h2 className={styles.description}>dentro da sua própria empresa.</h2>
+                <div className={styles.buttons}>
+                <Link href="/login" className={styles.button}>Login</Link>
+                <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
+            </div>
+                <div className={styles.sessao2}>
+                    <h1 className={styles.title}>Desenvolva sua equipe</h1>
+                    <h2 className={styles.subtitle}>dentro da sua própria empresa.</h2>
+                    <p className={styles.description}>Plataforma de treinamento corporativo para desenvolver competências e aumentar a produtividade.</p>
+                </div>
             </div>
             <div className={styles.section}>
                 <h1 className={styles.sectiontitle}>Conheça a EdPro</h1>
-                <div className={styles.cards}>
-                    <div className={styles.card}>
-                        <h1 className={styles.cardtitle}>Quem Somos</h1>
-                        <p className={styles.carddescription}>Somos uma plataforma de aprendizagem corporativa criada para tornar o desenvolvimento de colaboradores mais simples, eficiente e acessível.</p>
-                    </div>
-                    <div className={styles.card}>
-                        <h1 className={styles.cardtitle}>Nossa Essência</h1>
-                        <p className={styles.carddescription}>Acreditamos que conhecimento transforma empresas. Por isso, unimos tecnologia e educação para entregar uma experiência de aprendizado contínua, organizada e focada em resultados.</p>
-                    </div>
-                    <div className={styles.card}>
-                        <h1 className={styles.cardtitle}>Nosso Propósito</h1>
-                        <p className={styles.carddescription}>Existimos para capacitar organizações a evoluírem de dentro para fora, oferecendo autonomia para criar, gerenciar e expandir treinamentos sem depender de soluções externas caras</p>
-                    </div>
-                </div>
             </div>
             <div className={styles.sessao}>
-                <h1 className={styles.sessaotitle}>Por que escolher a EdPro?</h1>
-                <div className={styles.card}>
-                    <h1 className={styles.description1}>O que nós fazemos, afinal?</h1>
-                    <p className={styles.cardtext}>Capacitamos pessoas.</p>
-                    <p className={styles.subdescription1}>Na EdPro, acreditamos que o crescimento das empresas começa pelo desenvolvimento das pessoas. Por isso, criamos uma plataforma de aprendizagem corporativa que torna o treinamento contínuo, simples e estratégico. Unimos tecnologia, organização e experiência educacional para que cada colaborador aprenda no seu ritmo e cada empresa alcance resultados reais.</p>
-                </div>
+                <CarouselAbout cards={whyEdproCards} />
             </div>
             <div className={styles.sessao}>
                 <h1 className={styles.sessaotitle}>Como Surgimos?</h1>
@@ -58,6 +69,7 @@ export default function About() {
                     <p className={styles.iconText}>Medição e evolução do desempenho com dados acionáveis.</p>
                 </div>
             </div>
+            <StatisticsSection />
             <div className={styles.sectionEquipe}>
                 <h1 className={styles.sectionTitle}>Nossa Equipe</h1>
                 <div className={styles.sessaoequipe}>
@@ -102,7 +114,7 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            <Footer />
+            <FooterStudent />
         </div >
     );
 }

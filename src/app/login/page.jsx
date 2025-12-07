@@ -1,40 +1,40 @@
-'use client';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Form, Input, Button, Typography, Card, Alert, Divider } from "antd";
+import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
+import { useAuth } from "@/lib/AuthProvider";
+import Image from "next/image";
+import ButtonAdm from "../../components/ButtonAdm/ButtonAdm.jsx";
 import styles from "./login.module.css";
-import { Form, Input, Button, message, Alert } from 'antd';
-import Image from 'next/image';
-import ButtonAdm from '../../components/ButtonAdm/ButtonAdm.jsx';
-
-const HEADERS = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
 export default function LoginPage() {
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
-  const [erro, setErro] = useState(null);
-  const [carregando, setCarregando] = useState(false);
+  const { login } = useAuth();
 
   const onFinish = async (values) => {
-    setErro(null);
-    setCarregando(true);
-    try {
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/users`,
-        values,
-        { headers: HEADERS }
+    setLoading(true);
+    setError("");
+
+    const result = await login(values.email, values.password);
+
+    if (result.success) {
+      router.push("/");
+    } else {
+      setError(
+        result.error || "Erro ao fazer login. Verifique suas credenciais."
       );
-      sessionStorage.setItem('usuario', JSON.stringify(data.usuario));
-      message.success('Login realizado com sucesso!');
-      router.push('/home');
-    } catch (error) {
-      setErro(error.response?.data?.erro || 'Erro ao conectar com o servidor.');
-    } finally {
-      setCarregando(false);
     }
+
+    setLoading(false);
   };
 
   const handleClick = () => {
-    router.push('/register');
+    router.push("/register");
   };
 
   return (
@@ -54,26 +54,26 @@ export default function LoginPage() {
           <h1 className={styles.title1}>Olá, Bem-vindo ao EdPro</h1>
           <p className={styles.subtitle}>Faça seu login para continuar</p>
         </div>
-        {erro && (
+        {error && (
           <Alert
-            message="Erro ao fazer login"
-            description={erro}
+            title="Erro ao fazer login"
             type="error"
+            showIcon
             closable
-            onClose={() => setErro(null)}
-            style={{ marginBottom: '20px' }}
+            style={{ marginBottom: 24 }}
+            onClose={() => setError("")}
           />
         )}
         <Form name="login" onFinish={onFinish} layout="vertical">
           <Form.Item
             name="login"
-            rules={[{ required: true, message: 'Digite seu usuário!' }]}
+            rules={[{ required: true, message: "Digite seu usuário!" }]}
           >
             <Input size="large" placeholder="Digite seu usuário" />
           </Form.Item>
           <Form.Item
             name="senha"
-            rules={[{ required: true, message: 'Digite sua senha!' }]}
+            rules={[{ required: true, message: "Digite sua senha!" }]}
           >
             <Input.Password size="large" placeholder="Digite sua senha" />
           </Form.Item>
@@ -83,24 +83,18 @@ export default function LoginPage() {
               htmlType="submit"
               size="large"
               block
-              loading={carregando}
-              
+              loading={loading}
             >
               Entrar
             </Button>
           </Form.Item>
         </Form>
         <div className={styles.button}>
-          <p className={styles.subtitle}>
-            Não possui uma conta?
-          </p>
-          <button
-            className={styles.buttonRegister}
-            onClick={handleClick}
-          >
+          <p className={styles.subtitle}>Não possui uma conta?</p>
+          <button className={styles.buttonRegister} onClick={handleClick}>
             Cadastre-se
           </button>
-          <ButtonAdm/>
+          <ButtonAdm />
         </div>
       </div>
       <div className={styles.aside}>

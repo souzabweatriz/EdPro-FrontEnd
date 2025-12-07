@@ -9,7 +9,7 @@ export default function HeaderStudent() {
             <div className={styles.logoContainer}>
                 <Image
                     src="/images/Logo.png"
-                    alt="EdPro Logo"
+                    alt="EdPro Logo Coruja"
                     width={70}
                     height={110}
                     className={styles.logo}
@@ -18,9 +18,9 @@ export default function HeaderStudent() {
             </div>
 
             <nav className={styles.nav}>
-                <Link href="/home" className={styles.navLink}>Início</Link>
+                <Link href="/" className={styles.navLink}>Início</Link>
                 <Link href="/about" className={styles.navLink}>Sobre Nós</Link>
-                <Link href="/contato" className={styles.navLink}>Contato</Link>
+                <Link href="/contact" className={styles.navLink}>Contato</Link>
 
                 <div className={styles.menuIcon}>
                     <div className={styles.icon}>

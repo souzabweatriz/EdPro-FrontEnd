@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![EdPro Logo](public/images/logo.png)
+![EdPro Logo](public/images/capa.png)
 
 **Interface web moderna e intuitiva para o sistema de aprendizagem corporativa EdPro**
 
@@ -20,13 +20,15 @@ O **EdPro Front-End** é uma aplicação web moderna desenvolvida com Next.js qu
 ### 👥 Perfis de Usuário
 
 **🔧 Administrador**
+
 - Criação e gestão completa de cursos
 - Gerenciamento de módulos e lições
-- Controle de alunos e matrículas  
+- Controle de alunos e matrículas
 - Dashboard com métricas e indicadores
 - Controle de publicação de conteúdo
 
 **🎓 Colaborador (Aluno)**
+
 - Acesso personalizado aos seus cursos
 - Visualização de progresso em tempo real
 - Player integrado para conteúdo multimídia
@@ -36,6 +38,7 @@ O **EdPro Front-End** é uma aplicação web moderna desenvolvida com Next.js qu
 ## ✨ Funcionalidades Principais
 
 ### 🛡️ Administração
+
 - [x] **Autenticação e autorização** completa
 - [x] **Dashboard administrativo** com KPIs
 - [x] **CRUD de Cursos** com categorização
@@ -46,6 +49,7 @@ O **EdPro Front-End** é uma aplicação web moderna desenvolvida com Next.js qu
 - [x] **Sistema de publicação** com controle de versão
 
 ### 🎯 Portal do Aluno
+
 - [x] **Login seguro** de colaboradores
 - [x] **"Meus Cursos"** com visualização de progresso
 - [x] **Player multimídia** responsivo
@@ -57,6 +61,7 @@ O **EdPro Front-End** é uma aplicação web moderna desenvolvida com Next.js qu
 ## 🏗️ Tecnologias e Arquitetura
 
 ### Frontend Stack
+
 ```
 🚀 Next.js 16.0.1      - Framework React full-stack
 ⚛️  React 19.2.0       - Biblioteca de interface
@@ -66,6 +71,7 @@ O **EdPro Front-End** é uma aplicação web moderna desenvolvida com Next.js qu
 ```
 
 ### Ferramentas de Desenvolvimento
+
 - **Webpack** - Bundling otimizado
 - **Hot Reload** - Desenvolvimento ágil
 - **TypeScript Ready** - Tipagem estática (configurável)
@@ -75,17 +81,17 @@ O **EdPro Front-End** é uma aplicação web moderna desenvolvida com Next.js qu
 
 A comunicação é realizada via **API REST** com endpoints padronizados:
 
-| Endpoint | Método | Descrição |
-|----------|---------|-----------|
-| `/auth/login` | POST | Autenticação de usuários |
-| `/auth/refresh` | POST | Renovação de tokens |
-| `/courses` | GET, POST, PUT, DELETE | CRUD de cursos |
-| `/modules` | GET, POST, PUT, DELETE | CRUD de módulos |
-| `/lessons` | GET, POST, PUT, DELETE | CRUD de lições |
-| `/users` | GET, POST, PUT, DELETE | Gestão de usuários |
-| `/enrollments` | GET, POST, DELETE | Matrículas em cursos |
-| `/progress` | GET, PUT | Progresso dos alunos |
-| `/certificates` | GET, POST | Certificados de conclusão |
+| Endpoint        | Método                 | Descrição                 |
+| --------------- | ---------------------- | ------------------------- |
+| `/auth/login`   | POST                   | Autenticação de usuários  |
+| `/auth/refresh` | POST                   | Renovação de tokens       |
+| `/courses`      | GET, POST, PUT, DELETE | CRUD de cursos            |
+| `/modules`      | GET, POST, PUT, DELETE | CRUD de módulos           |
+| `/lessons`      | GET, POST, PUT, DELETE | CRUD de lições            |
+| `/users`        | GET, POST, PUT, DELETE | Gestão de usuários        |
+| `/enrollments`  | GET, POST, DELETE      | Matrículas em cursos      |
+| `/progress`     | GET, PUT               | Progresso dos alunos      |
+| `/certificates` | GET, POST              | Certificados de conclusão |
 
 ## 📁 Estrutura do Projeto
 
@@ -125,28 +131,32 @@ edpro-frontend/
 ## 🚀 Início Rápido
 
 ### Pré-requisitos
-- **Node.js** 18+ 
+
+- **Node.js** 18+
 - **npm**, **yarn**, **pnpm** ou **bun**
 - **Git**
 
 ### Instalação
 
 1. **Clone o repositório**
+
 ```bash
 git clone https://github.com/souzabweatriz/atividadedearray.git
 cd edpro-frontend
 ```
 
 2. **Instale as dependências**
+
 ```bash
 npm install
 # ou
 yarn install
-# ou  
+# ou
 pnpm install
 ```
 
 3. **Configure as variáveis de ambiente**
+
 ```bash
 # Crie o arquivo .env.local
 cp .env.example .env.local
@@ -157,6 +167,7 @@ NEXT_PUBLIC_APP_NAME=EdPro
 ```
 
 4. **Execute o projeto em desenvolvimento**
+
 ```bash
 npm run dev
 # ou
@@ -166,6 +177,7 @@ pnpm dev
 ```
 
 5. **Abra no navegador**
+
 ```
 http://localhost:3000
 ```
@@ -177,7 +189,7 @@ http://localhost:3000
 npm run dev
 
 # Build para produção
-npm run build  
+npm run build
 
 # Executar versão de produção
 npm start
@@ -203,8 +215,9 @@ O EdPro Front-End suporta temas customizáveis através de CSS Variables:
 ## 📱 Responsividade
 
 A aplicação é **mobile-first** e oferece suporte completo para:
+
 - 📱 **Mobile** (320px+)
-- 📟 **Tablet** (768px+) 
+- 📟 **Tablet** (768px+)
 - 💻 **Desktop** (1024px+)
 - 🖥️ **Large Desktop** (1440px+)
 
@@ -219,6 +232,7 @@ A aplicação é **mobile-first** e oferece suporte completo para:
 ## 🚀 Deploy e Produção
 
 ### Vercel (Recomendado)
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -228,6 +242,7 @@ vercel --prod
 ```
 
 ### Outros Provedores
+
 - **Netlify** - Suporte completo ao Next.js
 - **AWS Amplify** - Integração com AWS
 - **Railway** - Deploy simples e rápido
@@ -250,10 +265,25 @@ Contribuições são muito bem-vindas! Para contribuir:
 5. Abra um **Pull Request**
 
 ### Guidelines de Contribuição
+
 - Siga os padrões de código definidos pelo ESLint
 - Adicione testes para novas funcionalidades
 - Documente mudanças significativas
 - Mantenha commits pequenos e descritivos
+
+---
+
+## 👥 Participantes da Equipe
+
+|                                  Foto                                  | Nome                          |       Função        | GitHub                                             | E-mail                            |
+| :--------------------------------------------------------------------: | :---------------------------- | :-----------------: | :------------------------------------------------- | :-------------------------------- |
+|   <img src="public/images/equipe.png" alt="Ana Beatriz" width="80"/>   | Ana Beatriz de Souza Oliveira | Product Owner (P.O) | [@souzabweatriz](https://github.com/souzabweatriz) | ana.b.oliveira56@aluno.senai.br   |
+|     <img src="public/images/leme.jpg" alt="Anna Leme" width="80"/>     | Anna Beatriz Leme Alves       | Scrum Master (S.M)  | [@annabialeme](https://github.com/annabialeme)     | anna.b.alves7@aluno.senai.br      |
+| <img src="public/images/valentim.png" alt="Anna Valentim" width="80"/> | Anna Beatriz Ribeiro Valentim |   Desenvolvedora    | [@annabeatriz17](https://github.com/annabeatriz17) | anna.b.valentim@aluno.senai.br    |
+|  <img src="public/images/equipe.png" alt="Beatriz Lima" width="80"/>   | Beatriz Lima                  |   Desenvolvedora    | [@limabea23](https://github.com/limabea23)         | beatriz.lima14@aluno.senai.br     |
+|   <img src="public/images/isabella.png" alt="Isabella" width="80"/>    | Isabella Borin de Moraes Rosa |   Desenvolvedora    | [@isabella](https://github.com/isab5)              | isabella.b.rosa6@aluno.senai.br   |
+|      <img src="public/images/luana.png" alt="Luana" width="80"/>       | Luana Domeneghetti            |   Desenvolvedora    | [@domeneghettii](https://github.com/domeneghettii) | luana.domeneghetti@aluno.senai.br |
+|      <img src="public/images/maria.png" alt="Maria" width="80"/>       | Maria Eduarda da Silva Parma  |   Desenvolvedora    | [@Mariaparma](https://github.com/Mariaparma)       | maria.parma@aluno.senai.br        |
 
 ## 📄 Licença
 

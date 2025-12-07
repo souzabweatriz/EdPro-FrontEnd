@@ -1,6 +1,7 @@
 import "./globals.css";
 import BackTop from "../components/BackTop/BackTop.jsx";
 import localFont from "next/font/local";
+import { AuthProvider } from "@/lib/AuthProvider";
 
 const inter = localFont({
     src: [
@@ -50,8 +51,10 @@ export default function RootLayout({ children }) {
     return (
         <html lang="pt-BR">
             <body className={`${inter.variable} ${montserrat.variable} ${quicksand.variable}`}>
-                {children}
-                <BackTop />
+                <AuthProvider>
+                    {children}
+                    <BackTop />
+                </AuthProvider>
             </body>
         </html>
     );

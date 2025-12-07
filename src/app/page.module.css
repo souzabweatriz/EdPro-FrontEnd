@@ -8,61 +8,13 @@
     color: #1f2937;
 }
 
-.buttons {
-    margin-top: 10rem;
-    font-size: 10px;
-    position: absolute;
-    top: 28px;
-    right: 40px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    text-align: center;
-    z-index: 9999;
-}
-
-.button {
-    display: inline-block;
-    padding: 10px 22px;
-    border-radius: 28px;
-    text-decoration: none;
-    width: 10rem;
-    font-weight: 700;
-    font-size: 15px;
-    background-color: #3639e7;
-    color: #ffffff;
-    text-align: center;
-}
-
-.button1 {
-    display: inline-block;
-    padding: 10px 22px;
-    border-radius: 28px;
-    text-decoration: none;
-    width: 9rem;
-    font-weight: 700;
-    font-size: 15px;
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.button1:hover {
-    background-color: #3639e7; /* Fundo preenchido ao passar o mouse */
-    color: #ffffff; /* Texto branco ao passar o mouse */
-    border: 2px solid #3639e7; /* Borda preenchida ao passar o mouse */
-}
-
 .content {
-    /* Fundo quadriculado */
     position: relative;
     background-image: 
-        linear-gradient(90deg, #b8b8b8 1px, transparent 1px), /* Linhas verticais em azul */
-        linear-gradient(180deg, #b8b8b8 1px, transparent 1px); /* Linhas horizontais em azul */
-    background-size: 20px 20px; /* Tamanho dos quadrados */
-    z-index: 0; /* Define o fundo */
+        linear-gradient(90deg, #b8b8b8 1px, transparent 1px),
+        linear-gradient(180deg, #b8b8b8 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
     height: 60rem;
 }
 
@@ -77,9 +29,51 @@
 }
 
 .content > * {
-    /* Conteúdo sobre as camadas */
     position: relative;
-    z-index: 2; /* Camada acima do gradiente */
+    z-index: 2;
+}
+
+.buttons {
+    margin-top: 7rem;
+    font-size: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    text-align: center;
+}
+
+.button {
+    padding: 10px 22px;
+    border-radius: 28px;
+    text-decoration: none;
+    width: 10rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #3639e7;
+    color: #ffffff;
+    text-align: center;
+}
+
+.button1 {
+    padding: 10px 22px;
+    border-radius: 28px;
+    text-decoration: none;
+    width: 9rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.button1:hover {
+    background-color: #3639e7;
+    color: #ffffff;
+    border: 2px solid #3639e7;
 }
 
 .sessao2 {
@@ -90,7 +84,7 @@
 
 .title {
     font-size: 6rem;
-    margin: 260px 0 12px 0;
+    margin: 30px 0 12px 0;
     color: #ffffff;
     text-align: center;
     white-space: nowrap;
@@ -122,6 +116,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.containerbuttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.buttons2 {
+    font-size: 18px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    background-color: #0011ff;
+    color: #ffffff;
+    width: 13rem;
+    border-radius: 50rem;
+    text-decoration: none;
 }
 
 .cards {
@@ -204,45 +218,286 @@
     cursor: pointer;
 }
 
-.section {
-    padding: 36px 18px 80px 18px;
-    background-color: #ffffff;
+@media (max-width: 1200px) {
+    .content {
+        height: 55rem;
+    }
+
+    .content::before {
+        height: 55rem;
+    }
+
+    .title {
+        font-size: 5rem;
+    }
+
+    .subtitle {
+        font-size: 3.2rem;
+    }
+
+    .description {
+        font-size: 1.3rem;
+    }
+
+    .cards {
+        max-width: 900px;
+    }
+
+    .card {
+        width: 300px;
+        height: 240px;
+    }
 }
 
-.sectioncontainer {
-    max-width: 770px;
-    margin: 0 auto 28px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+@media (max-width: 992px) {
+    .container {
+        margin-top: 4rem;
+    }
+
+    .content {
+        height: 50rem;
+    }
+
+    .content::before {
+        height: 50rem;
+    }
+
+    .buttons {
+        margin-top: 5rem;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .sessao2 {
+        padding: 50px 20px 30px 20px;
+    }
+
+    .title {
+        font-size: 4rem;
+        white-space: normal;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+        white-space: normal;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        white-space: normal;
+    }
+
+    .buttons2 {
+        font-size: 16px;
+        width: 12rem;
+        height: 3.5rem;
+    }
+
+    .cards {
+        max-width: 700px;
+        gap: 15px;
+    }
+
+    .card {
+        width: 280px;
+        height: 220px;
+        padding: 20px 18px;
+    }
+
+    .cardtitle {
+        font-size: 1.5rem;
+    }
 }
 
-.sectiontitle {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 24px 0 12px 6px;
-    padding: 10px;
-    color: #1B0273; 
-    text-align: left;
+@media (max-width: 768px) {
+    .container {
+        margin-top: 3.5rem;
+    }
+
+    .content {
+        height: 45rem;
+    }
+
+    .content::before {
+        height: 45rem;
+    }
+
+    .buttons {
+        margin-top: 4rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button,
+    .button1 {
+        width: 12rem;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .sessao2 {
+        padding: 40px 15px 25px 15px;
+    }
+
+    .title {
+        font-size: 3rem;
+        margin: 20px 0 10px 0;
+    }
+
+    .subtitle {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        margin: 25px 0 0 0;
+        padding: 0 10px;
+    }
+
+    .containerbuttons {
+        margin-top: 30px;
+    }
+
+    .buttons2 {
+        font-size: 15px;
+        width: 11rem;
+        height: 3.2rem;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+        height: 200px;
+    }
+
+    .cardtitle {
+        font-size: 1.4rem;
+    }
+
+    .buttoncard {
+        padding: 8px 18px;
+        width: 120px;
+        font-size: 14px;
+    }
 }
 
-.sectioncard1 {
-    background-color: #ffffff;
-    padding: 22px 24px;
-    border-radius: 10px;
-    margin: 10px auto 28px auto;
-    box-shadow: 0 10px 20px rgba(16, 24, 40, 0.235);
-    max-width: 760px;
-    text-align: left;
-    height: 13rem;
+@media (max-width: 480px) {
+    .container {
+        margin-top: 3rem;
+    }
 
+    .content {
+        height: 40rem;
+    }
+
+    .content::before {
+        height: 40rem;
+    }
+
+    .buttons {
+        margin-top: 3rem;
+        gap: 8px;
+    }
+
+    .button,
+    .button1 {
+        width: 10rem;
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .sessao2 {
+        padding: 30px 10px 20px 10px;
+    }
+
+    .title {
+        font-size: 2.2rem;
+        margin: 15px 0 8px 0;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        margin: 8px 0 6px 0;
+    }
+
+    .description {
+        font-size: 0.9rem;
+        margin: 20px 0 0 0;
+        line-height: 1.5;
+    }
+
+    .containerbuttons {
+        margin-top: 25px;
+    }
+
+    .buttons2 {
+        font-size: 14px;
+        width: 10rem;
+        height: 3rem;
+        gap: 8px;
+    }
+
+    .cards {
+        padding: 20px 10px;
+        gap: 12px;
+    }
+
+    .card {
+        height: 180px;
+        padding: 18px 15px;
+        border-radius: 12px;
+    }
+
+    .cardtitle {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .buttoncard {
+        padding: 8px 15px;
+        width: 110px;
+        font-size: 13px;
+    }
 }
 
-.sectiondescription {
-    font-size: 1rem;
-    color: #374151; 
-    line-height: 1.7;
-    margin: 0;
-    font-style: italic;
-    font-weight: 550;
+@media (max-width: 360px) {
+    .content {
+        height: 38rem;
+    }
+
+    .content::before {
+        height: 38rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .description {
+        font-size: 0.85rem;
+    }
+
+    .button,
+    .button1 {
+        width: 9rem;
+        font-size: 12px;
+    }
+
+    .card {
+        height: 160px;
+    }
+
+    .cardtitle {
+        font-size: 1.1rem;
+    }
 }
