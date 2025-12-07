@@ -9,7 +9,7 @@ export default function HeaderStudent() {
             <div className={styles.logoContainer}>
                 <Image
                     src="/images/Logo.png"
-                    alt="EdPro Logo"
+                    alt="EdPro Logo Coruja"
                     width={70}
                     height={110}
                     className={styles.logo}
