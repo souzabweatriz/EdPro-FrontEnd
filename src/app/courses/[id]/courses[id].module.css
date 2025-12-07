@@ -1,0 +1,278 @@
+.pageContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px 20px;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+}
+
+.backLink {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.backLink:hover {
+  color: #0056b3;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  padding: 100px 20px;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.errorContainer h2 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.backButton {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.backButton:hover {
+  background-color: #0056b3;
+}
+
+.courseHeader {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.courseImageBox {
+  flex: 0 0 400px;
+  height: 350px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.courseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagePlaceholder {
+  font-size: 80px;
+}
+
+.courseInfo {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: #e7f3ff;
+  color: #007bff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  width: fit-content;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.courseStats {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statIcon {
+  font-size: 20px;
+}
+
+.statText {
+  font-size: 16px;
+  color: #555;
+  font-weight: 500;
+}
+
+.enrollButton {
+  padding: 15px 40px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: fit-content;
+}
+
+.enrollButton:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.lessonsSection {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lessonsTitle {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.noLessons {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  color: #666;
+  font-size: 16px;
+}
+
+.lessonsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lessonItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lessonItem:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lessonNumber {
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.lessonContent {
+  flex: 1;
+}
+
+.lessonTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.lessonDescription {
+  font-size: 14px;
+  color: #666;
+}
+
+.lessonDuration {
+  font-size: 14px;
+  color: #999;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .courseHeader {
+    flex-direction: column;
+  }
+
+  .courseImageBox {
+    flex: none;
+    width: 100%;
+    height: 250px;
+  }
+
+  .courseInfo {
+    padding: 30px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .lessonItem {
+    flex-wrap: wrap;
+  }
+
+  .lessonDuration {
+    width: 100%;
+    margin-left: 60px;
+  }
+}
