@@ -21,10 +21,14 @@ export default function HomeAdmin() {
     <div className={styles.container}>
       <HeaderAdmin />
 
+      <div className={styles.mainContent}>
+        <h3></h3>
+      </div>
+
       <main className={styles.mainContent}>
         <section className={styles.welcome}>
           <h1 className={styles.welcomeTitle}>
-            Seja Bem Vindo! <span className={styles.highlight}>Administrador Fulaninho</span>
+            Seja Bem Vindo! <span className={styles.highlight}>Administrador!</span>
           </h1>
         </section>
 
