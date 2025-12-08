@@ -31,7 +31,7 @@ const team = [
     {
         name: 'Ana Beatriz de Souza',
         role: 'Product Owner',
-        image: '/images/ana.png',
+        image: '/images/anasouza.jpg',
         email: 'ana.b.oliveira56@aluno.senai.br',
         github: 'souzabweatriz',
     },
