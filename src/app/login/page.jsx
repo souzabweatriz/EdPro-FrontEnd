@@ -23,7 +23,7 @@ export default function LoginPage() {
     const result = await login(values.email, values.password);
 
     if (result.success) {
-      router.push("/");
+      router.push("/Studentcourses");
     } else {
       setError(
         result.error || "Erro ao fazer login. Verifique suas credenciais."
@@ -66,13 +66,13 @@ export default function LoginPage() {
         )}
         <Form name="login" onFinish={onFinish} layout="vertical">
           <Form.Item
-            name="login"
-            rules={[{ required: true, message: "Digite seu usuário!" }]}
+            name="email"
+            rules={[{ required: true, message: "Digite seu email!" }]}
           >
-            <Input size="large" placeholder="Digite seu usuário" />
+            <Input size="large" placeholder="Digite seu email" type="email" />
           </Form.Item>
           <Form.Item
-            name="senha"
+            name="password"
             rules={[{ required: true, message: "Digite sua senha!" }]}
           >
             <Input.Password size="large" placeholder="Digite sua senha" />
