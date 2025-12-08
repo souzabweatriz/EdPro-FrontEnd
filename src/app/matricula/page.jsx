@@ -35,11 +35,10 @@ export default function Matricula() {
     useEffect(() => {
         if (Array.isArray(fetchedCourses)) {
             setCursosLista(fetchedCourses);
-            
             // Se há um curso na URL, pré-selecionar
             if (cursoFromUrl) {
-                const cursoId = parseInt(cursoFromUrl, 10);
-                const cursoExists = fetchedCourses.some(c => Number(c.id) === cursoId);
+                const cursoId = String(cursoFromUrl);
+                const cursoExists = fetchedCourses.some(c => String(c.id) === cursoId);
                 if (cursoExists) {
                     setFormData(prev => ({ ...prev, curso: cursoId }));
                 }
@@ -86,7 +85,7 @@ export default function Matricula() {
     };
 
     const handleCourseChange = (courseId) => {
-        setFormData({ ...formData, curso: courseId });
+        setFormData({ ...formData, curso: String(courseId) });
         setErrors({ ...errors, curso: "" });
     };
 
@@ -262,7 +261,8 @@ export default function Matricula() {
                                 <input
                                     type="radio"
                                     name="curso"
-                                    checked={Number(formData.curso) === Number(curso.id)}
+                                    value={String(curso.id)}
+                                    checked={formData.curso === String(curso.id)}
                                     onChange={() => handleCourseChange(curso.id)}
                                 />
                                 {curso.title}
