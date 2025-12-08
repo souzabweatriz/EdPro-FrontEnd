@@ -7,7 +7,6 @@ function initializeDatabase() {
     const dbPath = join(process.cwd(), "auth.db");
     const db = new Database(dbPath);
 
-    // Criar tabela se não existir
     db.exec(`
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,6 +36,4 @@ export function connect() {
 }
 
 export function disconnect(db) {
-    // NÃO fechar a conexão — manter aberta para reutilização
-    // Se fechar aqui, a próxima requisição vai falhar
 }

@@ -1,40 +1,58 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Form, Input, Button, Typography, Card, Alert, Divider } from "antd";
-import { UserOutlined, LockOutlined, MailOutlined } from "@ant-design/icons";
-import { useAuth } from "@/lib/AuthProvider";
-import Image from "next/image";
-import ButtonAdm from "../../components/ButtonAdm/ButtonAdm.jsx";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/AuthProvider';
 import styles from "./login.module.css";
+import { Form, Input, Button, Alert } from 'antd';
+import Image from 'next/image';
 
 export default function LoginPage() {
-  const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const router = useRouter();
   const { login } = useAuth();
+  const [erro, setErro] = useState(null);
+  const [carregando, setCarregando] = useState(false);
+  const [form] = Form.useForm();
+  const [displayedText, setDisplayedText] = useState('');
+  
+  const fullText = '“Autonomia para treinar, inteligência para crescer”.';
+
+  useEffect(() => {
+    const words = fullText.split(' ');
+    let currentWord = 0;
+    let currentText = '';
+
+    const interval = setInterval(() => {
+      if (currentWord < words.length) {
+        currentText += (currentText ? ' ' : '') + words[currentWord];
+        setDisplayedText(currentText);
+        currentWord++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 350);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const onFinish = async (values) => {
-    setLoading(true);
-    setError("");
-
-    const result = await login(values.email, values.password);
-
-    if (result.success) {
-      router.push("/Studentcourses");
-    } else {
-      setError(
-        result.error || "Erro ao fazer login. Verifique suas credenciais."
-      );
+    setErro(null);
+    setCarregando(true);
+    try {
+      const result = await login(values.email, values.password);
+      if (result.success) {
+        router.push('/Studentcourses');
+      } else {
+        setErro(result.error);
+      }
+    } catch (error) {
+      setErro('Erro ao conectar com o servidor');
+    } finally {
+      setCarregando(false);
     }
-
-    setLoading(false);
   };
 
   const handleClick = () => {
-    router.push("/register");
+    router.push('/signup');
   };
 
   return (
@@ -48,59 +66,64 @@ export default function LoginPage() {
             height={150}
           />
           <div className={styles.line}></div>
-          <p className={styles.text}>EdPro</p>
+          <p className={styles.text2}>EdPro</p>
         </div>
         <div className={styles.welcome}>
           <h1 className={styles.title1}>Olá, Bem-vindo ao EdPro</h1>
           <p className={styles.subtitle}>Faça seu login para continuar</p>
         </div>
-        {error && (
+        {erro && (
           <Alert
-            title="Erro ao fazer login"
+            message="Erro ao fazer login"
+            description={erro}
             type="error"
-            showIcon
             closable
-            style={{ marginBottom: 24 }}
-            onClose={() => setError("")}
+            onClose={() => setErro(null)}
+            style={{ marginBottom: '20px' }}
           />
         )}
-        <Form name="login" onFinish={onFinish} layout="vertical">
+        <Form name="login" onFinish={onFinish} layout="vertical" form={form}>
           <Form.Item
             name="email"
-            rules={[{ required: true, message: "Digite seu email!" }]}
+            rules={[
+              { required: true, message: 'Digite seu email!' },
+              { type: 'email', message: 'Email inválido!' }
+            ]}
           >
-            <Input size="large" placeholder="Digite seu email" type="email" />
+            <Input size="large" placeholder="Digite seu email" />
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Digite sua senha!" }]}
+            rules={[{ required: true, message: 'Digite sua senha!' }]}
           >
             <Input.Password size="large" placeholder="Digite sua senha" />
           </Form.Item>
           <Form.Item>
             <Button
-              type="normal"
+              type="primary"
               htmlType="submit"
               size="large"
               block
-              loading={loading}
+              loading={carregando}
             >
               Entrar
             </Button>
           </Form.Item>
         </Form>
         <div className={styles.button}>
-          <p className={styles.subtitle}>Não possui uma conta?</p>
-          <button className={styles.buttonRegister} onClick={handleClick}>
+          <p className={styles.subtitle}>
+            Não possui uma conta?
+          </p>
+          <button
+            className={styles.buttonRegister}
+            onClick={handleClick}
+          >
             Cadastre-se
           </button>
-          <ButtonAdm />
         </div>
       </div>
       <div className={styles.aside}>
-        <h1 className={styles.title}>
-          ❝Autonomia para treinar, inteligência para crescer.❞
-        </h1>
+        <p className={styles.text}>{displayedText}</p>
       </div>
     </div>
   );

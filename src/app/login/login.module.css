@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, #0388A6 0%, #00687f 50%, #034c5f 100%);
+    background: linear-gradient(90deg, #182f7a 0%, #042d6e 50%, #021853 100%);
     width: 70%;
     height: 100vh;
 }
@@ -25,7 +25,6 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 50%;
     animation: fadeSlideUp 1.2s ease-out forwards;
     opacity: 0;
     transform: translateY(30px);
@@ -67,11 +66,40 @@
     gap: 1rem;
 }
 
-.text {
+.text2{
+    color: black;
     font-family: var(--font-inter);
     font-size: 1.5rem;
     font-weight: 700;
-    color: #000000;
+}
+
+.text {
+    font-family: var(--font-inter);
+    font-size: 3rem;
+    font-weight: 700;
+    width: 50%;
+    color: white;
+    position: relative;
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    line-height: 1.6;
+    display: inline-block;
+    background: linear-gradient(90deg, white 0%, white 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: wordByWordReveal 3.5s ease-out forwards;
+}
+
+@keyframes wordByWordReveal {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .title1 {
@@ -99,16 +127,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-.buttonInstructor {
-    border-radius: 1rem;
-    width: 8rem;
-    height: 3rem;
-    background-color: #d9d9d9;
-    color: black;
-    border: none;
-    margin-top: 0.5rem;
 }
 
 .form {
