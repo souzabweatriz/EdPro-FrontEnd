@@ -42,6 +42,7 @@ export default function useCourses() {
         urlsToTry.push("/courses");
         urlsToTry.push("http://localhost:5000/api/courses");
         urlsToTry.push("http://localhost:5000/courses");
+        // Removido localhost:4000/api/courses pois não existe no projeto
 
         let lastError = null;
 
