@@ -27,16 +27,12 @@ export default function Matricula() {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    // Use hook-based loader with cache (sessionStorage)
     const { courses: fetchedCourses, loading: cursosLoading, error: cursosError, reload } = useCourses();
     const [cursosLista, setCursosLista] = useState([]);
 
-    // sincroniza fetchedCourses e pré-seleciona curso da URL
     useEffect(() => {
         if (Array.isArray(fetchedCourses)) {
             setCursosLista(fetchedCourses);
-            
-            // Se há um curso na URL, pré-selecionar
             if (cursoFromUrl) {
                 const cursoId = parseInt(cursoFromUrl, 10);
                 const cursoExists = fetchedCourses.some(c => Number(c.id) === cursoId);

@@ -80,7 +80,6 @@ function SignupForm() {
           autoComplete="off"
         >
           <Form.Item
-            label="Nome"
             name="name"
             rules={[
               { required: true, message: "Informe seu nome" },
@@ -91,7 +90,6 @@ function SignupForm() {
           </Form.Item>
 
           <Form.Item
-            label="Email"
             name="email"
             rules={[
               { required: true, message: "Informe um email" },
@@ -102,7 +100,6 @@ function SignupForm() {
           </Form.Item>
 
           <Form.Item
-            label="Senha"
             name="password"
             rules={[
               { required: true, message: "Informe uma senha" },
