@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { SignJWT, jwtVerify } from "jose";
 import { connect, disconnect } from "@/lib/sqlite/database";
+import { seedDatabase } from "@/lib/sqlite/seed";
 import crypto from "crypto";
 
 // bcryptjs is optional in dev; try dynamic import when needed and fallback to a simple
@@ -107,6 +108,7 @@ const authResponse = (user, message, token) => {
 
 
 export async function GET(request) {
+    seedDatabase(); // Garantir que o banco está inicializado
     const db = connect();
     try {
         const token = getToken(request);
@@ -137,17 +139,27 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
+    seedDatabase(); // Garantir que o banco está inicializado
     try {
         const { action, ...data } = await request.json();
-        return (
-            {
-                login: handleLogin,
-                signup: handleSignup,
-                logout: handleLogout,
-            }[action]?.(data) || error("Ação inválida")
-        ); 
-    } catch {
-        return error("Erro servidor", 500);
+        console.log(`[auth/route] POST action=${action}, data:`, data);
+        const handler = {
+            login: handleLogin,
+            signup: handleSignup,
+            logout: handleLogout,
+        }[action];
+        
+        if (!handler) {
+            console.error(`[auth/route] Ação inválida: ${action}`);
+            return error("Ação inválida");
+        }
+        
+        const result = await handler(data);
+        console.log(`[auth/route] ${action} resultado:`, result.status);
+        return result;
+    } catch (err) {
+        console.error(`[auth/route] POST erro:`, err.message, err.stack);
+        return error("Erro servidor: " + err.message, 500);
     }
 }
 
@@ -156,13 +168,24 @@ async function handleLogin({ email, password }) {
 
     const db = connect();
     try {
+        console.log(`[auth/login] Procurando usuário: ${email}`);
         const user = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
-        const bcrypt = await tryGetBcrypt();
-        const passwordOk = bcrypt ? bcrypt.compareSync(password, user?.password || '') : fallbackCompare(password, user?.password || '');
-        if (!user || !passwordOk) {
+        
+        if (!user) {
+            console.log(`[auth/login] Usuário ${email} não encontrado`);
             return error("Credenciais inválidas", 401);
         }
 
+        console.log(`[auth/login] Usuário encontrado: ${user.full_name}, verificando senha...`);
+        const bcrypt = await tryGetBcrypt();
+        const passwordOk = bcrypt ? bcrypt.compareSync(password, user?.password || '') : fallbackCompare(password, user?.password || '');
+        
+        if (!passwordOk) {
+            console.log(`[auth/login] Senha incorreta para ${email}`);
+            return error("Credenciais inválidas", 401);
+        }
+
+        console.log(`[auth/login] Senha correta, gerando token...`);
         // normalize name field (some DB seeds use full_name)
         const normalizedUser = { ...user, name: user.name || user.full_name || user.fullName };
 
@@ -172,7 +195,11 @@ async function handleLogin({ email, password }) {
             role: normalizedUser.role,
         });
 
+        console.log(`[auth/login] Login bem-sucedido para ${email}`);
         return authResponse(normalizedUser, "Login sucesso!", token);
+    } catch (err) {
+        console.error(`[auth/login] Erro:`, err.message, err.stack);
+        return error("Erro ao fazer login: " + err.message, 500);
     } finally {
         disconnect(db); 
     }
@@ -185,18 +212,35 @@ async function handleSignup({ name, email, password }) {
 
     const db = connect();
     try {
-        if (
-            db.prepare("SELECT COUNT(*) as count FROM users WHERE email = ?").get(email).count > 0
-        ) {
+        console.log(`[auth/signup] Verificando se email ${email} já existe...`);
+        const existing = db.prepare("SELECT COUNT(*) as count FROM users WHERE email = ?").get(email);
+        if (existing.count > 0) {
+            console.log(`[auth/signup] Email ${email} já em uso`);
             return error("Email em uso", 409);
         }
 
+        console.log(`[auth/signup] Hashando senha...`);
         const bcrypt = await tryGetBcrypt();
         const hashedPassword = bcrypt ? bcrypt.hashSync(password, 10) : fallbackHash(password);
+        
+        // Generate username from email (remove domain)
+        const username = email.split("@")[0] + "_" + Math.random().toString(36).substring(7);
+        
+        console.log(`[auth/signup] Inserindo novo usuário: ${name}, ${email}, ${username}`);
         const result = db
-            .prepare("INSERT INTO users (email, password, name, role) VALUES (?, ?, ?, ?)")
-            .run(email, hashedPassword, name, "aluno");
+            .prepare("INSERT INTO users (photo, full_name, username, email, phone, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)")
+            .run(
+                "https://i.pinimg.com/736x/65/d0/74/65d0747b42c81a76c9b49a548d7009b2.jpg",
+                name,
+                username,
+                email,
+                "",
+                hashedPassword,
+                "aluno"
+            );
 
+        console.log(`[auth/signup] Usuário inserido com ID: ${result.lastInsertRowid}`);
+        
         const token = await createToken({
             userId: result.lastInsertRowid,
             email,
@@ -210,8 +254,10 @@ async function handleSignup({ name, email, password }) {
             role: "aluno",
         };
 
-
         return authResponse(newUser, "Cadastro sucesso!", token);
+    } catch (err) {
+        console.error(`[auth/signup] Erro:`, err.message, err.stack);
+        return error("Erro ao cadastrar: " + err.message, 500);
     } finally {
         disconnect(db); 
     }

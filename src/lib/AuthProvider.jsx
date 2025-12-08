@@ -80,6 +80,7 @@ export function AuthProvider({ children }) {
                 response = await axios.post("/api/auth", { action: "login", email, password }, axiosOpts);
             }
             const data = response.data;
+            console.log("[AuthProvider] Login response:", data);
             if (data?.success) {
                 saveUser(data.user);
                 setUser(data.user);
@@ -87,6 +88,7 @@ export function AuthProvider({ children }) {
             }
             return data;
         } catch (error) {
+            console.error("[AuthProvider] Login error:", error.response?.data || error.message);
             return authError(error);
         }
     };

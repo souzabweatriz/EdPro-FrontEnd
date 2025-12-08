@@ -15,6 +15,34 @@ const StudentCoursesPage = () => {
 
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
+  // Mock courses data
+  const mockCourses = [
+    {
+      id: 1,
+      title: "Introdução ao JavaScript",
+      description: "Aprenda os fundamentos do JavaScript",
+      instructor: "Maria Luisa Gimenez",
+      students: 45,
+      image: "https://via.placeholder.com/300x200?text=JavaScript"
+    },
+    {
+      id: 2,
+      title: "React Avançado",
+      description: "Domine React com hooks e context",
+      instructor: "Luccas Augusto",
+      students: 32,
+      image: "https://via.placeholder.com/300x200?text=React"
+    },
+    {
+      id: 3,
+      title: "Node.js Backend",
+      description: "Crie servidores com Node.js",
+      instructor: "Rafael Moretti",
+      students: 28,
+      image: "https://via.placeholder.com/300x200?text=Node.js"
+    },
+  ];
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -29,16 +57,25 @@ const StudentCoursesPage = () => {
 
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`${backendUrl}/api/courses`);
-        if (!response.ok) {
-          throw new Error('Erro ao buscar cursos');
+        // Tentar buscar do backend, se falhar usar mock
+        const response = await fetch(`${backendUrl}/api/courses`, { 
+          signal: AbortSignal.timeout(3000) 
+        }).catch(() => null);
+        
+        if (response && response.ok) {
+          const data = await response.json();
+          setCourses(data);
+          setSortedCourses(data);
+        } else {
+          // Usar mock se backend não responder
+          setCourses(mockCourses);
+          setSortedCourses(mockCourses);
         }
-        const data = await response.json();
-        setCourses(data);
-        setSortedCourses(data);
         setLoading(false);
       } catch (error) {
-        console.error('Erro ao buscar cursos:', error);
+        console.error('Erro ao buscar cursos, usando mock:', error);
+        setCourses(mockCourses);
+        setSortedCourses(mockCourses);
         setLoading(false);
       }
     };
