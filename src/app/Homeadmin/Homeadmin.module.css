@@ -6,13 +6,15 @@
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
 
+
 .mainContent {
   flex: 1;
-  padding: 40px 20px;
+  padding: 80px 20px 40px; 
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
+
 
 .welcome {
   margin-bottom: 40px;
@@ -82,7 +84,9 @@
 }
 
 .card {
-  background: linear-gradient(135deg, #1a6f82 0%, #2a8fa1 100%);
+   background: linear-gradient(145deg, #0f6c83 0%, #1598b6 45%, #0f6c83 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px rgba(15, 108, 131, 0.22);
   border-radius: 12px;
   padding: 40px 25px;
   color: white;
