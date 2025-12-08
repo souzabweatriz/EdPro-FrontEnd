@@ -1,71 +1,36 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import HeaderAdmin from '@/components/HeaderAdmin/HeaderAdmin';
-import FooterAdmin from '@/components/FooterAdmin/FooterAdmin';
-import styles from './Homeadmin.module.css';
+import Link from "next/link";
+import styles from "../page.module.css";
+import HeaderAdmin from "@/components/HeaderAdmin/HeaderAdmin";
+import FooterAdmin from "@/components/FooterAdmin/FooterAdmin";
 
 export default function HomeAdmin() {
-  const router = useRouter();
-
-  const handleNavigateCourses = () => {
-    router.push('/admin/courses');
-  };
-
-  const handleNavigateMatriculas = () => {
-    router.push('/matricula');
-  };
-
   return (
     <div className={styles.container}>
       <HeaderAdmin />
 
-      <div className={styles.mainContent}>
-        <h3></h3>
+      <div className={styles.content}>
+        <div className={styles.sessao2}>
+          <h1 className={styles.title}>Bem-vindo ao EdPro!</h1>
+          <h2 className={styles.subtitle}>Plataforma de Cursos</h2>
+          <p className={styles.description}>
+           Seu painel para organizar, ajustar e evoluir o seu site.
+          </p>
+
+            <div className={styles.cards}>
+        <div className={styles.card}>
+          <h1 className={styles.cardtitle}>Crie aqui um novo curso</h1>
+          <Link href="/Studentcourses" className={styles.buttoncard}>Clica Aqui</Link>
+        </div>
+        <div className={styles.card}>
+          <h1 className={styles.cardtitle}>Gerenciar matrículas</h1>
+          <Link href="/matricula" className={styles.buttoncard}>Clica Aqui</Link>
+        </div>
       </div>
 
-      <main className={styles.mainContent}>
-        <section className={styles.welcome}>
-          <h1 className={styles.welcomeTitle}>
-            Seja Bem Vindo! <span className={styles.highlight}>Administrador!</span>
-          </h1>
-        </section>
-
-        <section className={styles.bannerSection}>
-          <div className={styles.bannerIcon}>
-            <Image
-              src="/images/Logo.png"
-              alt="EdPro Logo"
-              width={70}
-              height={90}
-              priority
-            />
-          </div>
-          <div className={styles.divider}></div>
-          <div className={styles.bannerContent}>
-            <h2>EdPro</h2>
-            <p>Seu painel para organizar, ajustar e evoluir o site.</p>
-          </div>
-        </section>
-
-        <section className={styles.cardsGrid}>
-          <div className={styles.card}>
-            <h3 className={styles.cardTitle}>Crie aqui um novo curso</h3>
-            <button className={styles.cardButton} onClick={handleNavigateCourses}>
-              Clique Aqui
-            </button>
-          </div>
-
-          <div className={styles.card}>
-            <h3 className={styles.cardTitle}>Gerencie sua matricula</h3>
-            <button className={styles.cardButton} onClick={handleNavigateMatriculas}>
-              Clique Aqui
-            </button>
-          </div>
-        </section>
-      </main>
-
+        </div>
+      </div>
       <FooterAdmin />
     </div>
   );

@@ -1,166 +1,269 @@
 .container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #f5f5f5;
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    margin-top: 5rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    color: #1f2937;
 }
 
 
-.mainContent {
-  flex: 1;
-  padding: 80px 20px 40px; 
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+.content {
+    position: relative;
+    background-color: #1ea7c4; /* antes #169cb4 */
+    z-index: 0;
+    padding: 32px 0 24px;
 }
 
-
-.welcome {
-  margin-bottom: 40px;
+.content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #1598b6 0%, #1ea7c4 55%, #48c6e9 100%); 
+    z-index: 1;
 }
 
-.welcomeTitle {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
+.buttons {
+    margin-top: 7rem;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 2rem;
 }
 
-.welcomeTitle .highlight {
-  color: #0099cc;
-  font-weight: 600;
+.button {
+    padding: 10px 22px;
+    border-radius: 28px;
+    text-decoration: none;
+    width: 10rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #0f6c83;
+    color: #ffffff;
+    text-align: center;
 }
 
+.button1 {
+    padding: 10px 22px;
+    border-radius: 28px;
+    text-decoration: none;
+    width: 9rem;
+    font-weight: 700;
+    font-size: 15px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+.button1:hover {
+    background-color: #0f6c83;
+    color: #ffffff;
+    border-color: #0f6c83;
+}
+
+.sessao2 {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px 20px 20px; 
+    text-align: center;
+}
+
+.title {
+    font-size: 6rem;
+    margin: 30px 0 12px 0;
+    color: #ffffff;
+    text-shadow: 4px 4px 10px rgba(0, 44, 60, 0.5);
+}
+
+.subtitle {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 10px 0 8px 0;
+    color: #ffffff;
+    text-shadow: 4px 4px 10px rgba(0, 44, 60, 0.5);
+}
+
+.description {
+    font-size: 1.5rem;
+    margin-top: 40px;
+    color: #e6f5f7;
+}
+
+/* Banner */
 .bannerSection {
-  background: linear-gradient(135deg, #1a6f82 0%, #2a8fa1 100%);
-  border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  color: white;
+    background: linear-gradient(145deg, #0f6c83 0%, #1598b6 45%, #0f6c83 100%);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 0 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: #ffffff;
+    box-shadow: 0 10px 24px rgba(10, 68, 90, 0.22);
 }
 
 .bannerIcon {
-  font-size: 0;
-  min-width: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 64px;
 }
 
 .bannerIcon :global(img) {
-  width: 70px;
-  height: auto;
-  display: block;
-}
-
-.bannerContent h2 {
-  font-size: 28px;
-  margin: 0;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.bannerContent p {
-  font-size: 16px;
-  margin: 0;
-  line-height: 1.6;
-  opacity: 0.95;
+    width: 64px;
+    height: auto;
+    display: block;
 }
 
 .divider {
-  width: 2px;
-  height: 60px;
-  background-color: rgba(255, 255, 255, 0.3);
+    width: 2px;
+    height: 56px;
+    background-color: rgba(255, 255, 255, 0.45);
 }
 
-.cardsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-bottom: 40px;
+.bannerContent h2 {
+    font-size: 24px;
+    margin: 0 0 6px 0;
+    font-weight: 700;
+}
+
+.bannerContent p {
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.5;
+    opacity: 0.96;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    gap: 18px;
+    max-width: 1100px;
+    margin: -28px auto 0; /* sobe os cards */
+    align-items: center;
+    padding: 0 20px 16px;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .card {
-   background: linear-gradient(145deg, #0f6c83 0%, #1598b6 45%, #0f6c83 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 25px rgba(15, 108, 131, 0.22);
-  border-radius: 12px;
-  padding: 40px 25px;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 250px;
+    position: relative;
+    width: 330px;
+    height: 260px;
+    background: linear-gradient(145deg, #0f6c83 0%, #1598b6 45%, #0f6c83 100%);
+    border-radius: 14px;
+    padding: 24px 20px;
+    box-shadow: 0 12px 30px rgba(10, 68, 90, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    overflow: hidden;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.cards .card:nth-child(1) {
+    background-image: url('/images/livros.png');
+    background-size: cover;
+    background-position: center;
 }
 
-.cardTitle {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  line-height: 1.4;
+.cards .card:nth-child(2) {
+    background-image: url('/images/equipe.png');
+    background-size: cover;
+    background-position: center;
 }
 
-.cardButton {
-  background-color: white;
-  color: #1a6f82;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  align-self: center;
-  margin-top: auto;
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+.cards .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(#0f6c83c8, #0f6c83c8);
+    z-index: 1;
 }
 
-.cardButton:hover {
-  background-color: #f0f0f0;
-  transform: scale(1.05);
+.cards .card > * {
+    position: relative;
+    z-index: 2;
 }
 
-.cardButton:active {
-  transform: scale(0.98);
+.cardtitle {
+    font-size: 1.7rem;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+    line-height: 1.15;
+}
+
+.buttoncard {
+    padding: 10px 20px;
+    background: #ffffff;
+    color: #0f6c83;
+    width: 150px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    margin-top: 10px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.buttoncard:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.buttoncard:active {
+    transform: translateY(0);
+}
+
+/* Responsivo */
+@media (max-width: 1200px) {
+    .bannerSection { padding: 18px 20px; gap: 14px; }
+    .bannerContent h2 { font-size: 22px; }
+    .cards { max-width: 900px; }
+    .card { width: 300px; height: 240px; }
+}
+
+@media (max-width: 992px) {
+    .container { margin-top: 4rem; }
+    .buttons { margin-top: 5rem; justify-content: center; padding: 0; }
+    .bannerSection { margin: 0 16px 22px; }
+    .cards { max-width: 700px; gap: 15px; }
+    .card { width: 280px; height: 220px; padding: 20px 18px; }
+    .cardtitle { font-size: 1.5rem; }
 }
 
 @media (max-width: 768px) {
-  .mainContent {
-    padding: 20px 15px;
-  }
+    .container { margin-top: 3.5rem; }
+    .buttons { margin-top: 4rem; flex-direction: column; gap: 10px; }
+    .button, .button1 { width: 12rem; font-size: 14px; padding: 10px 20px; }
+    .bannerSection { flex-direction: column; text-align: center; }
+    .divider { display: none; }
+    .bannerIcon :global(img) { width: 54px; }
+    .cards { flex-direction: column; align-items: center; padding: 20px 15px; margin-top: 8px; }
+    .card { width: 100%; max-width: 350px; height: 200px; }
+    .cardtitle { font-size: 1.4rem; }
+    .buttoncard { width: 140px; }
+}
 
-  .bannerSection {
-    flex-direction: column;
-    text-align: center;
-    padding: 25px;
-  }
+@media (max-width: 480px) {
+    .buttons { margin-top: 3rem; gap: 8px; }
+    .button, .button1 { width: 10rem; font-size: 13px; padding: 8px 16px; }
+    .cards { padding: 16px 10px; gap: 12px; }
+    .card { height: 180px; padding: 18px 15px; }
+    .cardtitle { font-size: 1.2rem; }
+    .buttoncard { width: 120px; font-size: 14px; padding: 8px 15px; }
+}
 
-  .divider {
-    display: none;
-  }
-
-  .bannerContent h2 {
-    font-size: 24px;
-  }
-
-  .cardsGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .welcomeTitle {
-    font-size: 20px;
-  }
+@media (max-width: 360px) {
+    .button, .button1 { width: 9rem; font-size: 12px; }
+    .card { height: 160px; }
+    .cardtitle { font-size: 1.1rem; }
 }
