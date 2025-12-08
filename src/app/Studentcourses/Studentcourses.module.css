@@ -106,19 +106,19 @@
 
 .coursesGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 30px; 
-  margin-top: 40px; 
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
 }
 
 .courseCard {
   background-color: #ffffff;
-  border-radius: 12px; 
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 .courseCard:hover {
   transform: translateY(-10px);
@@ -234,4 +234,86 @@
   border-radius: 8px;
   margin: 0 10px;
   font-size: 14px;
+}
+
+.noCourses {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.noCourses p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.enrollLink {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.enrollLink:hover {
+  background-color: #0056b3;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tabsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px auto 20px;
+  max-width: 500px;
+}
+
+.tabBtn {
+  flex: 1;
+  padding: 12px 24px;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.tabBtn:hover {
+  background-color: #e0e0e0;
+}
+
+.tabActive {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.tabActive:hover {
+  background-color: #0056b3;
+}
+
+.completedBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: #28a745;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-top: 10px;
 }
