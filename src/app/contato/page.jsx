@@ -95,7 +95,7 @@ export default function ContatoPage() {
 
                                 <div className={styles.memberContacts}>
                                     <a
-                                        className={styles.contactLink}
+                                        className={styles.contactLinks}
                                         href={`mailto:${m.email}`}
                                         aria-label={`Enviar email para ${m.name}`}
                                     >

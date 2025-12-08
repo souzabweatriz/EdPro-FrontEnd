@@ -1,0 +1,142 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.aside{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #0388A6 0%, #00687f 50%, #034c5f 100%);
+    width: 70%;
+    height: 100vh;
+}
+
+.asideText{
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+    width: 20rem;
+    font-family: var(--font-montserrat);
+}
+
+.text1 {
+    font-family: var(--font-inter);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.text {
+    color: rgb(255, 255, 255);
+    font-family: var(--font-montserrat);
+    display: inline-block;
+    text-align: left;
+    font-size: 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 50%;
+    position: relative;
+    letter-spacing: 0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    line-height: 1.6;
+    animation: fadeSlideUp 1.2s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 100vh;
+    flex-direction: column;
+    background: linear-gradient(90deg, #f0f0f04d 1px, transparent 1px) 0 0 / 20px 20px,
+        linear-gradient(#f0f0f04d 1px, transparent 1px) 0 0 / 20px 20px;
+}
+
+.line {
+    width: 0.2rem;
+    height: 3rem;
+    background-color: #0388A6;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.title1, .title {
+    font-family: var(--font-inter);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subtitle {
+    font-family: var(--font-inter);
+    font-size: 0.9rem;
+    color: #0388A6;
+}
+
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.buttonRegister {
+    border-radius: 1rem;
+    width: 14rem;
+    height: 3rem;
+    background-color: #c4cfdd8a;
+    color: #000000;
+    border: none;
+    font-weight: bold;
+}
+
+.buttonRegister:hover {
+    background-color: #aeb6c3;
+    cursor: pointer;
+}
+
+.subtitle span {
+    color: #1b0273;
+}

@@ -60,16 +60,14 @@ export function AuthProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        // Garantia de atualização do estado a cada mount/refresh
         checkAuth().then((result) => {
             setUser(result.success ? result.user : null);
             setIsAuthenticated(result.success);
             setLoading(false);
         });
-        // eslint-disable-next-line
     }, [checkAuth]);
 
-    // Login
+
     const login = async (email, password) => {
         if (!email || !password) return { success: false, error: "Email e senha obrigatórios" };
         try {
@@ -80,6 +78,7 @@ export function AuthProvider({ children }) {
                 response = await axios.post("/api/auth", { action: "login", email, password }, axiosOpts);
             }
             const data = response.data;
+            console.log("[AuthProvider] Login response:", data);
             if (data?.success) {
                 saveUser(data.user);
                 setUser(data.user);
@@ -87,11 +86,11 @@ export function AuthProvider({ children }) {
             }
             return data;
         } catch (error) {
+            console.error("[AuthProvider] Login error:", error.response?.data || error.message);
             return authError(error);
         }
     };
 
-    // Cadastro
     const signup = async (name, email, password) => {
         if (!name || !email || !password) return { success: false, error: "Todos campos obrigatórios" };
         try {

@@ -1,10 +1,10 @@
 "use client"
 import React from "react";
 import styles from "../about/about.module.css";
-import Footer from "../../components/FooterStudent/FooterStudent";
+import FooterStudent from "../../components/FooterStudent/FooterStudent";
 import { FiPlay, FiBookOpen, FiBarChart2 } from "react-icons/fi";
 import Image from "next/image";
-import Header from "../../components/HeaderStudent/HeaderStudent";
+import HeaderStudent from "../../components/HeaderStudent/HeaderStudent";
 import Link from "next/link";
 import StatisticsSection from "../../components/StatisticsSection/StatisticsSection.jsx";
 import CarouselAbout from "../../components/CarouselAbout/CarouselAbout";
@@ -30,11 +30,11 @@ const whyEdproCards = [
 export default function About() {
     return (
         <div className={styles.container}>
-            <Header />
+            <HeaderStudent />
             <div className={styles.content}>
                 <div className={styles.buttons}>
                 <Link href="/login" className={styles.button}>Login</Link>
-                <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
+                <Link href="/signup" className={styles.button1}>Cadastre-se</Link>
             </div>
                 <div className={styles.sessao2}>
                     <h1 className={styles.title}>Desenvolva sua equipe</h1>
@@ -70,51 +70,7 @@ export default function About() {
                 </div>
             </div>
             <StatisticsSection />
-            <div className={styles.sectionEquipe}>
-                <h1 className={styles.sectionTitle}>Nossa Equipe</h1>
-                <div className={styles.sessaoequipe}>
-                    <div className={styles.equipe}>
-                        <div className={styles.member}>
-                            <Image src="/images/team1.jpg" alt="P.O." width={86} height={86} className={styles.avatar} />
-                            <h4 className={styles.role}>Product Owner</h4>
-                            <p className={styles.name}>Ana Beatriz de Souza Oliveira</p>
-                        </div>
-                        <div className={styles.member}>
-                            <Image src="/images/team2.jpg" alt="S.M" width={86} height={86} className={styles.avatar} />
-                            <h4 className={styles.role}>Scrum Master</h4>
-                            <p className={styles.name}>Anna Beatriz Leme Alves</p>
-                        </div>
-                        <div className={styles.member}>
-                            <Image src="/images/valentim.png" alt="Desenvolvedora" width={86} height={86} className={styles.avatar} />
-                            <h4 className={styles.role}>Desenvolvedora</h4>
-                            <p className={styles.name}>Anna Beatriz Ribeiro Valentim</p>
-                        </div>
-                    </div>
-                    <div className={styles.equipe}>
-                        <div className={styles.member}>
-                            <Image src="/images/team4.jpg" alt="Desenvolvedora" width={86} height={86} className={styles.avatar} />
-                            <h4 className={styles.role}>Desenvolvedora</h4>
-                            <p className={styles.name}>Beatriz Lima</p>
-                        </div>
-                        <div className={styles.member}>
-                            <Image src="/images/isabella.png" alt="Desenvolvedora" width={86} height={86} className={styles.avatar} />
-                            <h4 className={styles.role}>Desenvolvedora</h4>
-                            <p className={styles.name}>Isabella Borin de Moraes Rosa</p>
-                        </div>
-                        <div className={styles.member}>
-                            <Image src="/images/luana.png" alt="Desenvolvedora" width={86} height={86} className={styles.avatar} />
-                            <h4 className={styles.role}>Desenvolvedora</h4>
-                            <p className={styles.name}>Luana Domeneghetti</p>
-                        </div>
-                        <div className={styles.member}>
-                            <Image src="/images/team7.jpg" alt="Desenvolvedora" width={86} height={86} className={styles.avatar} />
-                            <h4 className={styles.role}>Desenvolvedora</h4>
-                            <p className={styles.name}>Maria Eduarda da Silva Parma</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <Footer />
+            <FooterStudent />
         </div >
     );
 }

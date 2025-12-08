@@ -40,22 +40,20 @@
   align-items: center;
   min-height: 90vh;
   background: #f7f9fc;
-  padding: 20px;
 }
 
 .title {
   font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
   font-weight: bold;
-  margin-top: 32px;
-  margin-bottom: 18px;
+  padding-bottom: 1rem;
   color: #222;
   text-align: center;
 }
 
 .formBox {
   background: #d3deea;
-  border-radius: 20px;
+  border-radius: 2rem;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
   padding: 32px 24px 0 24px;
   width: 100%;
@@ -63,6 +61,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 10rem 0 4rem 0;
 }
 
 .fieldsGrid {
@@ -249,4 +248,18 @@
     padding: 10px 20px;
     border-radius: 16px;
   }
+}
+
+.submitButton {
+  background: #0388A6;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 40px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin: 3rem 0 3rem 0;
 }

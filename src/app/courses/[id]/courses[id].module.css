@@ -1,0 +1,329 @@
+.container {
+  margin: 0;
+  padding-top: 12vh;
+  min-height: calc(100vh - 12vh);
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  justify-content: flex-start;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.buttons {
+  margin-top: 7rem;
+  font-size: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  text-align: center;
+}
+
+.button {
+  padding: 10px 22px;
+  border-radius: 28px;
+  text-decoration: none;
+  width: 10rem;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #3639e7;
+  color: #ffffff;
+  text-align: center;
+}
+
+.button1 {
+  padding: 10px 22px;
+  border-radius: 28px;
+  text-decoration: none;
+  width: 9rem;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.button1:hover {
+  background-color: #3639e7;
+  color: #ffffff;
+  border: 2px solid #3639e7;
+}
+
+.backButtonTop {
+  margin-left: 80px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button2 {
+  padding: 10px 22px;
+  border-radius: 28px;
+  text-decoration: none;
+  width: 15rem;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #0056b3;
+  background-color: #0056b3;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  padding: 100px 20px;
+}
+
+.error {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.error h2 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.session {
+  display: flex;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto 50px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.35);
+  min-height: 340px;
+}
+
+.sessionImage {
+  flex: 1 1 0;
+  min-height: 340px;
+  min-width: 650px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.imagePlaceholder {
+  font-size: 80px;
+}
+
+.section {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: #e7f3ff;
+  color: #007bff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  width: fit-content;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.enrollButton {
+  padding: 15px 40px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: fit-content;
+}
+
+.enrollButton:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.backButton {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.backButton:hover {
+  background-color: #0056b3;
+}
+
+.backButtonContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .session {
+    flex-direction: column;
+    gap: 0;
+    min-height: unset;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  }
+  .sessionImage {
+    min-width: 100%;
+    min-height: 220px;
+    border-radius: 0;
+  }
+  .section {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 8vh;
+    min-height: calc(100vh - 8vh);
+  }
+  .buttons {
+    margin-top: 3rem;
+    font-size: 9px;
+    gap: 8px;
+    padding-right: 1rem;
+  }
+  .button, .button1, .button2 {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 0;
+  }
+  .backButtonTop {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  .session {
+    max-width: 100%;
+    margin: 0 0 30px 0;
+    border-radius: 10px;
+  }
+  .sessionImage {
+    min-width: 100%;
+    min-height: 180px;
+  }
+  .Image {
+    border-radius: 8px;
+  }
+  .section {
+    padding: 16px;
+  }
+  .category {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+  .description {
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  .enrollButton {
+    font-size: 16px;
+    padding: 12px 0;
+    width: 100%;
+  }
+  .backButton {
+    font-size: 15px;
+    padding: 10px 0;
+    width: 100%;
+  }
+  .backButtonContainer {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-top: 4vh;
+    min-height: calc(100vh - 4vh);
+  }
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding-right: 0;
+    margin-top: 2rem;
+  }
+  .button, .button1, .button2 {
+    font-size: 13px;
+    padding: 7px 0;
+    width: 100%;
+  }
+  .session {
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .sessionImage {
+    min-height: 120px;
+  }
+  .section {
+    padding: 8px;
+  }
+  .category {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+  .title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .description {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  .enrollButton {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+  .backButton {
+    font-size: 13px;
+    padding: 8px 0;
+  }
+}

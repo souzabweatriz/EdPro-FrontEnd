@@ -12,7 +12,44 @@ const StudentCoursesPage = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortedCourses, setSortedCourses] = useState([]);
+
   const [studentInfo, setStudentInfo] = useState(() => {
+
+  const [studentInfo, setStudentInfo] = useState(null);
+  const router = useRouter();
+
+  const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
+  
+  const mockCourses = [
+    {
+      id: 1,
+      title: "Introdução ao JavaScript",
+      description: "Aprenda os fundamentos do JavaScript",
+      instructor: "Maria Luisa Gimenez",
+      students: 45,
+      image: "https://via.placeholder.com/300x200?text=JavaScript"
+    },
+    {
+      id: 2,
+      title: "React Avançado",
+      description: "Domine React com hooks e context",
+      instructor: "Luccas Augusto",
+      students: 32,
+      image: "https://via.placeholder.com/300x200?text=React"
+    },
+    {
+      id: 3,
+      title: "Node.js Backend",
+      description: "Crie servidores com Node.js",
+      instructor: "Rafael Moretti",
+      students: 28,
+      image: "https://via.placeholder.com/300x200?text=Node.js"
+    },
+  ];
+
+  useEffect(() => {
+
     if (typeof window !== 'undefined') {
       try {
         const raw = localStorage.getItem('studentInfo');
@@ -35,6 +72,7 @@ const StudentCoursesPage = () => {
     const enrolledCourseId = studentInfo?.courseId || null;
 
     const fetchCourses = async () => {
+
       const baseRaw = process.env.NEXT_PUBLIC_API_URL || "";
       const base = baseRaw.replace(/\/$/, "");
 
@@ -84,6 +122,29 @@ const StudentCoursesPage = () => {
           console.warn("[StudentCourses] erro ao buscar em", url, error);
           continue;
         }
+
+      try {
+        
+        const response = await fetch(`${backendUrl}/api/courses`, { 
+          signal: AbortSignal.timeout(3000) 
+        }).catch(() => null);
+        
+        if (response && response.ok) {
+          const data = await response.json();
+          setCourses(data);
+          setSortedCourses(data);
+        } else {
+          
+          setCourses(mockCourses);
+          setSortedCourses(mockCourses);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error('Erro ao buscar cursos, usando mock:', error);
+        setCourses(mockCourses);
+        setSortedCourses(mockCourses);
+        setLoading(false);
+
       }
 
       console.error('[StudentCourses] Falha ao buscar cursos de todas as URLs');
@@ -92,6 +153,7 @@ const StudentCoursesPage = () => {
 
     fetchCourses();
   }, [studentInfo]);
+
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -314,6 +376,69 @@ const StudentCoursesPage = () => {
             ))
           )}
         </div>
+
+      )}
+
+      <h2 className={styles.title}>Meus Cursos</h2>
+      <div className={styles.filtersContainer}>
+        <button className={styles.filterBtn} onClick={() => setSortedCourses(courses)}>
+          Todos
+        </button>
+        <input
+          className={styles.searchInput}
+          placeholder="Buscar"
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+        <button className={styles.orderBtn} onClick={handleSortByLastAccess}>
+          Ordenar por último acesso
+        </button>
+      </div>
+      <div className={styles.coursesGrid}>
+        {loading ? (
+          <div className={styles.loading}>Carregando cursos...</div>
+        ) : (
+          sortedCourses.map((course) => (
+            <Link
+              key={course.id}
+              href={`/Studentcourses/${course.id}`}
+              className={styles.courseCard}
+            >
+              <div className={styles.cardImageBox}>
+                {course.image ? (
+                  <img
+                    src={`${backendUrl}/uploads/${course.image}`} 
+                    alt={course.title}
+                    className={styles.cardImage}
+                  />
+                ) : (
+                  <div className={styles.cardImagePlaceholder}>FOTO AQUI</div>
+                )}
+              </div>
+              <div className={styles.cardBody}>
+                <h3 className={styles.cardTitle}>{course.title}</h3>
+                <p className={styles.cardDesc}>
+                  {course.description.length > 100
+                    ? course.description.slice(0, 100) + '...'
+                    : course.description}
+                </p>
+                {!course.completed && (
+                  <button
+                    className={styles.completeButton}
+                    onClick={(e) => {
+                      e.preventDefault(); 
+                      e.stopPropagation();
+                      handleCompleteCourse(course.id);
+                    }}
+                  >
+                    Marcar como concluído
+                  </button>
+                )}
+              </div>
+            </Link>
+          ))
+        )}
+
       </div>
 
       <FooterStudent />

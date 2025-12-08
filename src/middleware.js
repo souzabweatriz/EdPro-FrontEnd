@@ -10,7 +10,7 @@ const JWT_CONFIG = {
 
 const protectedRoutes = {
     "/admin": ["admin"],
-    "/alunos": ["aluno"],
+    "/aluno": ["aluno"],
 };
 
 export async function middleware(request) {
@@ -24,9 +24,12 @@ export async function middleware(request) {
         return NextResponse.next();
     }
 
-    const token =
-        request.cookies.get("auth-token")?.value ||
-        request.headers.get("Authorization")?.slice(7);
+    const cookieToken = request.cookies.get("auth-token")?.value;
+    const authHeader = request.headers.get("authorization") || request.headers.get("Authorization");
+    let token = cookieToken;
+    if (!token && authHeader && authHeader.toLowerCase().startsWith("bearer ")) {
+        token = authHeader.slice(7);
+    }
 
     if (!token) {
         return NextResponse.redirect(new URL("/login", request.url));
@@ -52,5 +55,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-    matcher: ["/alunos/:path*", "/admin/:path*"],
+    matcher: ["/aluno/:path*", "/admin/:path*"],
 };
