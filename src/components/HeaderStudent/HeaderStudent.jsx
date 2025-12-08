@@ -20,7 +20,7 @@ export default function HeaderStudent() {
             <nav className={styles.nav}>
                 <Link href="/" className={styles.navLink}>Início</Link>
                 <Link href="/about" className={styles.navLink}>Sobre Nós</Link>
-                <Link href="/contact" className={styles.navLink}>Contato</Link>
+                <Link href="/contato" className={styles.navLink}>Contato</Link>
 
                 <div className={styles.menuIcon}>
                     <div className={styles.icon}>
