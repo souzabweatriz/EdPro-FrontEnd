@@ -1,0 +1,162 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.welcome {
+  margin-bottom: 40px;
+}
+
+.welcomeTitle {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.welcomeTitle .highlight {
+  color: #0099cc;
+  font-weight: 600;
+}
+
+.bannerSection {
+  background: linear-gradient(135deg, #1a6f82 0%, #2a8fa1 100%);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: white;
+}
+
+.bannerIcon {
+  font-size: 0;
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerIcon :global(img) {
+  width: 70px;
+  height: auto;
+  display: block;
+}
+
+.bannerContent h2 {
+  font-size: 28px;
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.bannerContent p {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.divider {
+  width: 2px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: linear-gradient(135deg, #1a6f82 0%, #2a8fa1 100%);
+  border-radius: 12px;
+  padding: 40px 25px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.cardButton {
+  background-color: white;
+  color: #1a6f82;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+  margin-top: auto;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.cardButton:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.cardButton:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 20px 15px;
+  }
+
+  .bannerSection {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .bannerContent h2 {
+    font-size: 24px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .welcomeTitle {
+    font-size: 20px;
+  }
+}
