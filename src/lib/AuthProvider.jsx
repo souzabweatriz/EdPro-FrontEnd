@@ -60,16 +60,14 @@ export function AuthProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        // Garantia de atualização do estado a cada mount/refresh
         checkAuth().then((result) => {
             setUser(result.success ? result.user : null);
             setIsAuthenticated(result.success);
             setLoading(false);
         });
-        // eslint-disable-next-line
     }, [checkAuth]);
 
-    // Login
+
     const login = async (email, password) => {
         if (!email || !password) return { success: false, error: "Email e senha obrigatórios" };
         try {
@@ -93,7 +91,6 @@ export function AuthProvider({ children }) {
         }
     };
 
-    // Cadastro
     const signup = async (name, email, password) => {
         if (!name || !email || !password) return { success: false, error: "Todos campos obrigatórios" };
         try {
