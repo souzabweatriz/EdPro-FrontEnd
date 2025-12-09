@@ -20,11 +20,11 @@ export default function HomeAdmin() {
 
             <div className={styles.cards}>
         <div className={styles.card}>
-          <h1 className={styles.cardtitle}>Crie aqui um novo curso</h1>
-          <Link href="/Studentcourses" className={styles.buttoncard}>Clica Aqui</Link>
+          <h1 className={styles.cardtitle}>Criar um novo curso</h1>
+          <Link href="/createCourses" className={styles.buttoncard}>Clica Aqui</Link>
         </div>
         <div className={styles.card}>
-          <h1 className={styles.cardtitle}>Gerenciar matrículas</h1>
+          <h1 className={styles.cardtitle}>Criar matrícula</h1>
           <Link href="/matricula" className={styles.buttoncard}>Clica Aqui</Link>
         </div>
       </div>
