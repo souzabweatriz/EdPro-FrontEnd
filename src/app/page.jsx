@@ -49,7 +49,7 @@ export default function Home() {
                 </div>
                 <div className={styles.card}>
                     <h1 className={styles.cardtitle}>Conheça Nossa Equipe</h1>
-                    <Link href="/about" className={styles.buttoncard}>Saiba Mais</Link>
+                    <Link href="/contato" className={styles.buttoncard}>Saiba Mais</Link>
                 </div>
             </div>
             <Carousel cards={cardsData} />
