@@ -23,7 +23,16 @@ export default function ProfessorPage() {
     return (
         <div className={styles.container}>
             <div className={styles.menuCard}>
-                <h1 className={styles.title}>Painel do Professor</h1>
+                <div className={styles.header}>
+                    <h1 className={styles.title}>Painel do Professor</h1>
+                    <button 
+                        className={styles.homeButton}
+                        onClick={() => router.push('/Homeadmin')}
+                        title="Ir para home"
+                    >
+                        🏠
+                    </button>
+                </div>
                 <p className={styles.subtitle}>Bem-vindo(a), {user?.name || 'Professor'}!</p>
                 
                 <div className={styles.menuOptions}>

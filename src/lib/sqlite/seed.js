@@ -21,8 +21,7 @@ export function seedDatabase() {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     `);
-
-    // Verificar se já tem usuários
+    
     const count = db.prepare("SELECT COUNT(*) as count FROM users").get().count;
     if (count > 0) {
         console.log(`[seed] Banco já tem ${count} usuários. Pulando seed.`);

@@ -18,8 +18,8 @@ export default function HeaderAdmin() {
             </div>
 
             <nav className={styles.nav}>
-                <Link href="/admin/page" className={styles.navLink}>Início</Link>
-                <Link href="/admin/courses" className={styles.navLink}>Criar Cursos</Link>
+                <Link href="/Homeadmin" className={styles.navLink}>Início</Link>
+                <Link href="/createCourses" className={styles.navLink}>Criar Cursos</Link>
                 <Link href="/matricula" className={styles.navLink}>Criar Matrículas</Link>
 
                 <div className={styles.menuIcon}>

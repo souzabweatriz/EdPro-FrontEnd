@@ -47,8 +47,8 @@ export default function FooterAdmin() {
         <div className={styles.section}>
           <h1 className={styles.title}>Links Rápidos</h1>
           <ul className={styles.links}>
-            <li className={styles.link}><Link href="/admin/page">Início</Link></li>
-            <li className={styles.link}><Link href="/admin/courses">Criar Cursos</Link></li>
+            <li className={styles.link}><Link href="/Homeadmin">Início</Link></li>
+            <li className={styles.link}><Link href="/createCourses">Criar Cursos</Link></li>
             <li className={styles.link}><Link href="/matricula">Criar Matrículas</Link></li>
           </ul>
         </div>

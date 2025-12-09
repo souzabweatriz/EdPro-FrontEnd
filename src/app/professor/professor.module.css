@@ -33,6 +33,38 @@
     pointer-events: none;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.homeButton {
+    background: linear-gradient(135deg, #0388A6 0%, #026a8a 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(3, 136, 166, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(3, 136, 166, 0.3);
+}
+
+.homeButton:active {
+    transform: translateY(-1px);
+}
+
 .title {
     font-size: 2rem;
     font-weight: 800;

@@ -7,14 +7,14 @@ export default function ButtonAdm() {
     const pathname = usePathname();
 
     const handleAdminClick = () => {
-        router.push("/src/app/admin/page.jsx");
+        router.push("/Homeadmin");
     };
 
     const handleAlunoClick = () => {
         router.push("");
     };
 
-    const isAdminActive = pathname === "/src/app/admin/page.jsx";
+    const isAdminActive = pathname === "/Homeadmin";
     const isAlunoActive = pathname === "/";
 
     return (

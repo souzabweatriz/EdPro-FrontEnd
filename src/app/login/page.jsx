@@ -46,6 +46,9 @@ export default function LoginPage() {
         if (result.user?.role === 'professor') {
           console.log('[Login] Redirecionando para /professor');
           router.push('/professor');
+        } else if (result.user?.role === 'admin') {
+          console.log('[Login] Redirecionando para /Homeadmin');
+          router.push('/Homeadmin');
         } else if (result.user?.role === 'aluno') {
           router.push('/profileStudent');
         } else {
