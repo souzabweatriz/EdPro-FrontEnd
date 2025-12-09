@@ -37,7 +37,10 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	min-height: 200vh;
+	min-height: 100vh;
+	/* space to accommodate the fixed header and footer */
+	padding-top: 14vh; /* header uses min-height around 12vh in styles; leave a little extra */
+	padding-bottom: 6rem; /* avoid card touching footer */
 	background: #f7f9fc;
 }
 
@@ -55,24 +58,25 @@
 	background: #d3deea;
 	border-radius: 16px;
 	box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-	padding: 32px 24px 0 24px;
-	width: 100%;
-	max-width: 540px;
+	padding: 32px 26px 20px 26px;
+	width: 90%;
+	max-width: 720px; /* slightly reduced to avoid feeling 'colado' */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: 3.2rem; /* extra gap from footer */
 }
 
 .imageBox {
 	background: #fff;
 	border-radius: 16px;
 	width: 100%;
-	max-width: 400px;
-	height: 140px;
+	max-width: 600px; /* larger image area */
+	height: 220px; /* taller for bigger preview */
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 24px;
+	margin-bottom: 28px;
 	cursor: pointer;
 	box-shadow: 0 1px 8px rgba(0,0,0,0.04);
 	transition: box-shadow 0.2s;
@@ -87,7 +91,7 @@
 }
 .previewImg {
 	max-width: 100%;
-	max-height: 120px;
+	max-height: 200px; /* allow bigger preview */
 	border-radius: 12px;
 	object-fit: cover;
 }
@@ -141,11 +145,11 @@
 	background: linear-gradient(90deg, #4bb3e6 0%, #3578e5 100%);
 	border: none;
 	color: #fff;
-	font-size: 1rem;
+	font-size: 1.05rem;
 	font-family: 'Quicksand', sans-serif;
 	cursor: pointer;
-	padding: 8px 20px;
-	border-radius: 8px;
+	padding: 10px 24px; /* slightly larger button */
+	border-radius: 10px;
 	box-shadow: 0 2px 8px rgba(75,179,230,0.12);
 	font-weight: 600;
 	transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -161,11 +165,11 @@
 @media (max-width: 700px) {
 	.formBox {
 		max-width: 98vw;
-		padding: 18px 6vw 0 6vw;
+		padding: 16px 6vw 0 6vw;
 	}
 	.imageBox {
 		max-width: 98vw;
-		height: 110px;
+		height: 120px; /* keep reasonable for small screens */
 	}
 	.fieldsRow {
 		flex-direction: column;

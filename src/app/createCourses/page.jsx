@@ -2,6 +2,8 @@
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Courses.module.css";
+import HeaderAdmin from "../../components/HeaderAdmin/HeaderAdmin";
+import FooterAdmin from "../../components/FooterAdmin/FooterAdmin";
 
 export default function CreateCourse() {
   const [image, setImage] = useState(null);
@@ -62,9 +64,11 @@ export default function CreateCourse() {
   };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Criar Cursos</h2>
-      <div className={styles.formBox}>
+    <>
+      <HeaderAdmin />
+      <main className={styles.container}>
+        <h2 className={styles.title}>Criar Cursos</h2>
+        <div className={styles.formBox}>
         <div className={styles.imageBox} onClick={handleImageClick}>
           {imagePreview ? (
             <img src={imagePreview} alt="Preview" className={styles.previewImg} />
@@ -133,7 +137,9 @@ export default function CreateCourse() {
             Criar Cursos
           </button>
         </div>
-      </div>
-    </div>
+        </div>
+      </main>
+      <FooterAdmin />
+    </>
   );
 }
