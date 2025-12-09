@@ -4,13 +4,15 @@ import { jwtVerify } from 'jose';
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 
 const JWT_CONFIG = {
-    issuer: "minha-aplicacao",
-    audience: "meus-usuarios",
+    issuer: process.env.JWT_ISSUER || "minha-aplicacao",
+    audience: process.env.JWT_AUDIENCE || "app-users",
 };
 
 const protectedRoutes = {
     "/admin": ["admin"],
     "/aluno": ["aluno"],
+    "/professor": ["professor"],
+    "/profileStudent": ["aluno"],
 };
 
 export async function middleware(request) {
@@ -55,5 +57,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-    matcher: ["/aluno/:path*", "/admin/:path*"],
+    matcher: ["/aluno/:path*", "/admin/:path*", "/professor/:path*", "/profileStudent/:path*"],
 };

@@ -6,12 +6,12 @@ import Cookies from "js-cookie";
 const AuthContext = createContext(null);
 
 const cookieOpts = {
-    expires: 1, // 1 dia
+    expires: 30, // 30 dias
     secure: false,
     sameSite: "lax",
 };
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || ""; // exemplo: http://localhost:3000/api/auth
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || ""; 
 const axiosOpts = { timeout: 10000, withCredentials: true };
 const axiosInstance = axios.create({ baseURL: API_BASE, ...axiosOpts });
 
@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    // Utilidades para cookies do lado do client (apenas nome/email/id/role)
+
     const saveUser = (userData) => {
         Cookies.set("user", JSON.stringify(userData), cookieOpts);
         Cookies.set("isLoggedIn", "true", cookieOpts);
@@ -39,7 +39,6 @@ export function AuthProvider({ children }) {
         error: error?.response?.data?.error || error?.message || "Erro de conexão",
     });
 
-    // Checa se o usuário está autenticado consultando o backend (/me), não usando só os cookies "user".
     const checkAuth = useCallback(async () => {
         try {
             let response;
@@ -120,7 +119,7 @@ export function AuthProvider({ children }) {
             } else {
                 await axios.post("/api/auth", { action: "logout" }, axiosOpts);
             }
-        } catch { /* Silenciar erros de logout */ }
+        } catch { }
         removeUser();
         setUser(null);
         setIsAuthenticated(false);

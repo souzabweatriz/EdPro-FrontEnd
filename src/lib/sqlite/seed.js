@@ -32,7 +32,7 @@ export function seedDatabase() {
 
     console.log("[seed] Populando banco com usuários iniciais...");
 
-    // Professores
+
     db.prepare("INSERT INTO users (photo, full_name, username, email, phone, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)").run(
       "https://pin.it/3zgRjMHMe",
       "Maria Luisa Gimenez",

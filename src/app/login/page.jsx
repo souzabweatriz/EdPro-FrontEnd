@@ -37,14 +37,25 @@ export default function LoginPage() {
   const onFinish = async (values) => {
     setErro(null);
     setCarregando(true);
+    console.log('[Login] Tentando login com:', values.email);
     try {
       const result = await login(values.email, values.password);
+      console.log('[Login] Resultado do login:', result);
       if (result.success) {
-        router.push('/Studentcourses');
+        console.log('[Login] Role do usuário:', result.user?.role);
+        if (result.user?.role === 'professor') {
+          console.log('[Login] Redirecionando para /professor');
+          router.push('/professor');
+        } else if (result.user?.role === 'aluno') {
+          router.push('/profileStudent');
+        } else {
+          router.push('/profileStudent');
+        }
       } else {
         setErro(result.error);
       }
     } catch (error) {
+      console.error('[Login] Exceção durante login:', error);
       setErro('Erro ao conectar com o servidor');
     } finally {
       setCarregando(false);
@@ -82,7 +93,13 @@ export default function LoginPage() {
             style={{ marginBottom: '20px' }}
           />
         )}
-        <Form name="login" onFinish={onFinish} layout="vertical" form={form}>
+        <Form 
+          name="login" 
+          onFinish={onFinish} 
+          layout="vertical" 
+          form={form}
+          autoComplete="on"
+        >
           <Form.Item
             name="email"
             rules={[
@@ -90,13 +107,21 @@ export default function LoginPage() {
               { type: 'email', message: 'Email inválido!' }
             ]}
           >
-            <Input size="large" placeholder="Digite seu email" />
+            <Input 
+              size="large" 
+              placeholder="Digite seu email"
+              autoComplete="email"
+            />
           </Form.Item>
           <Form.Item
             name="password"
             rules={[{ required: true, message: 'Digite sua senha!' }]}
           >
-            <Input.Password size="large" placeholder="Digite sua senha" />
+            <Input.Password 
+              size="large" 
+              placeholder="Digite sua senha"
+              autoComplete="current-password"
+            />
           </Form.Item>
           <Form.Item>
             <Button
@@ -105,8 +130,9 @@ export default function LoginPage() {
               size="large"
               block
               loading={carregando}
+              disabled={carregando}
             >
-              Entrar
+              {carregando ? 'Entrando...' : 'Entrar'}
             </Button>
           </Form.Item>
         </Form>
