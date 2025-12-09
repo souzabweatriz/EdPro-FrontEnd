@@ -26,8 +26,7 @@ function initializeDatabase() {
 
 export function connect() {
     const dbPath = join(process.cwd(), "auth.db");
-    
-    // Se a instância global não existe, inicializa
+
     if (!dbInstance) {
         dbInstance = initializeDatabase();
     }
