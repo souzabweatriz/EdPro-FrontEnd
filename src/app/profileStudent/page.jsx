@@ -74,15 +74,23 @@ export default function ProfileStudentPage() {
                         <span className={styles.detailValue}>{studentInfo?.overallProgress || '0%'}</span>
                     </div>
                 </div>
-                <button
-                    className={styles.logoutButton}
-                    onClick={async () => {
-                        await logout();
-                        router.push('/login');
-                    }}
-                >
-                    Sair
-                </button>
+                <div className={styles.actions}>
+                    <button
+                        className={styles.coursesButton}
+                        onClick={() => router.push('/Studentcourses')}
+                    >
+                        📚 Meus Cursos
+                    </button>
+                    <button
+                        className={styles.logoutButton}
+                        onClick={async () => {
+                            await logout();
+                            router.push('/login');
+                        }}
+                    >
+                        Sair
+                    </button>
+                </div>
             </div>
         </div>
     )

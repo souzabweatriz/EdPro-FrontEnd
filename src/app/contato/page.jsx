@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import HeaderStudent from '../../components/HeaderStudent/HeaderStudent';
@@ -29,7 +31,7 @@ const team = [
     {
         name: 'Ana Beatriz de Souza',
         role: 'Product Owner',
-        image: '/images/ana.png',
+        image: '/images/anasouza.jpg',
         email: 'ana.b.oliveira56@aluno.senai.br',
         github: 'souzabweatriz',
     },

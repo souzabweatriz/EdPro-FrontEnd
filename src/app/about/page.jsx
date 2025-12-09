@@ -34,7 +34,7 @@ export default function About() {
             <div className={styles.content}>
                 <div className={styles.buttons}>
                 <Link href="/login" className={styles.button}>Login</Link>
-                <Link href="/cadastro" className={styles.button1}>Cadastre-se</Link>
+                <Link href="/signup" className={styles.button1}>Cadastre-se</Link>
             </div>
                 <div className={styles.sessao2}>
                     <h1 className={styles.title}>Desenvolva sua equipe</h1>

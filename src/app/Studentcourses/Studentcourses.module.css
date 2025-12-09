@@ -4,9 +4,9 @@
   align-items: center;
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   padding: 20px;
-  margin: 20px auto;
+  margin: 20px auto 40px auto;
   width: 80%;
   max-width: 1200px;
 }
@@ -105,33 +105,49 @@
 }
 
 .coursesGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 30px; 
-  margin-top: 40px; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
 }
 
 .courseCard {
   background-color: #ffffff;
-  border-radius: 12px; 
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  margin-top: 20px; 
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  height: 400px;
+  flex: 0 0 400px;
 }
+
 .courseCard:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .cardImageBox {
-  height: 180px;
+  height: 220px;
+  width: 100%;
+  min-height: 220px;
+  max-height: 220px;
+  min-width: 100%;
+  max-width: 100%;
   background-color: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 4px solid #000000;
+  position: relative;
 }
 
 .cardImagePlaceholder {
@@ -140,22 +156,24 @@
 }
 
 .cardBody {
-  padding: 20px;
+  padding: 12px;
 }
 
 .cardTitle {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 10px;
-  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  text-align: justify;
 }
 
 .cardDesc {
-  font-size: 15px;
+  font-size: 16px;
   color: #666;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  text-align: justify;
 }
 
 .topButton:hover {
@@ -234,4 +252,106 @@
   border-radius: 8px;
   margin: 0 10px;
   font-size: 14px;
+}
+
+.noCourses {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  border-radius: 12px;
+}
+
+.noCourses p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.enrollLink {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.enrollLink:hover {
+  background-color: #0056b3;
+}
+
+.cardImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.tabsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px auto 20px;
+  max-width: 500px;
+}
+
+.tabBtn {
+  flex: 1;
+  padding: 12px 24px;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.tabBtn:hover {
+  background-color: #e0e0e0;
+}
+
+.tabActive {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.tabActive:hover {
+  background-color: #0056b3;
+}
+
+.completedBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: #28a745;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-top: 24px;
+}
+
+.completedBadgeTop {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background-color: #28a745;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 6px 18px;
+  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.15);
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.headerSpacer {
+  width: 100%;
+  height: 128px;
+  display: block;
 }
