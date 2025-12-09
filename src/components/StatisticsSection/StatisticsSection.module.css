@@ -10,6 +10,15 @@
 }
 
 .title {
+    /* Estilo para o texto de expectativa */
+    .expectation {
+        font-size: 1.1rem;
+        color: #374151;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        font-style: italic;
+        text-align: center;
+    }
     font-size: 2rem;
     font-weight: 700;
     color: #1B0273;
@@ -130,6 +139,10 @@
 }
 
 @media (max-width: 768px) {
+        .expectation {
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
     .container {
         padding: 40px 15px;
         margin: 25px 0 60px 0;
@@ -178,6 +191,10 @@
 }
 
 @media (max-width: 480px) {
+        .expectation {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
     .container {
         padding: 30px 15px;
         margin: 20px 0 40px 0;
