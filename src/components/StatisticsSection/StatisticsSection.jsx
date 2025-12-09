@@ -13,7 +13,7 @@ export default function StatisticsSection() {
     return (
         <section className={styles.container}>
             <div className={styles.section}>
-                <h1 className={styles.title}>Nossos Expectativa</h1>
+                <h1 className={styles.title}>Nossas Expectativa</h1>
                 <p className={styles.expectation}>Ao longo dos anos, temos essa expectativa de crescimento e impacto positivo.</p>
                 <div className={styles.statistics}>
                     <div className={styles.statistic}>
