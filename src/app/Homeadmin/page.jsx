@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import styles from "../page.module.css";
+import styles from "./Homeadmin.module.css";
 import HeaderAdmin from "@/components/HeaderAdmin/HeaderAdmin";
 import FooterAdmin from "@/components/FooterAdmin/FooterAdmin";
 
