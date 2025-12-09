@@ -1,3 +1,4 @@
+/* ...existing code... */
 .container {
     margin-top: 5rem;
     min-height: 100vh;
@@ -7,21 +8,36 @@
     color: #1f2937;
 }
 
-
 .content {
     position: relative;
-    background-color: #1ea7c4; /* antes #169cb4 */
     z-index: 0;
     padding: 32px 0 24px;
-}
 
+    background:
+      linear-gradient(90deg, rgba(6,12,41,0.14) 1px, transparent 1px) 0 0/18px 18px,
+      linear-gradient(rgba(6,12,41,0.14) 1px, transparent 1px) 0 0/18px 18px,
+      linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.82) 78%),
+      linear-gradient(180deg, #6ea8ff 0%, #bfe6ff 45%, #ffffff 100%);
+    background-blend-mode: normal, normal, normal, normal;
+    color: #08314a;
+    overflow: hidden;
+}
 .content::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, #1598b6 0%, #1ea7c4 55%, #48c6e9 100%); 
+    background: linear-gradient(to bottom, #000000, #0f95ee, #ffffff);
+    opacity: 0.9;
     z-index: 1;
+    height: 60rem;
 }
+
+.content > * {
+    position: relative;
+    z-index: 2;
+}
+
+.sessao2, .cards, .card, .bannerSection { position: relative; z-index: 2; }
 
 .buttons {
     margin-top: 7rem;
@@ -39,7 +55,7 @@
     width: 10rem;
     font-weight: 700;
     font-size: 15px;
-    background-color: #0f6c83;
+    background-color: #38a1bb;
     color: #ffffff;
     text-align: center;
 }
@@ -58,7 +74,7 @@
 }
 
 .button1:hover {
-    background-color: #0f6c83;
+    background-color: #299bb8;
     color: #ffffff;
     border-color: #0f6c83;
 }
@@ -66,22 +82,22 @@
 .sessao2 {
     max-width: 800px;
     margin: 0 auto;
-    padding: 60px 20px 20px 20px; 
+    padding: 60px 20px 20px 20px;
     text-align: center;
 }
 
 .title {
     font-size: 6rem;
     margin: 30px 0 12px 0;
-    color: #ffffff;
-    text-shadow: 4px 4px 10px rgba(0, 44, 60, 0.5);
+    color: #9cc9f3; 
+    text-shadow: 2px 6px 18px rgba(255,255,255,0.06), 0 4px 10px rgba(2,10,20,0.35);
 }
 
 .subtitle {
     font-size: 4rem;
     font-weight: 700;
     margin: 10px 0 8px 0;
-    color: #ffffff;
+    color: #9cc9f3; 
     text-shadow: 4px 4px 10px rgba(0, 44, 60, 0.5);
 }
 
@@ -91,7 +107,6 @@
     color: #e6f5f7;
 }
 
-/* Banner */
 .bannerSection {
     background: linear-gradient(145deg, #0f6c83 0%, #1598b6 45%, #0f6c83 100%);
     border-radius: 10px;
@@ -135,13 +150,11 @@
     line-height: 1.5;
     opacity: 0.96;
 }
-
-/* Cards */
 .cards {
     display: flex;
-    gap: 18px;
+    gap: 20px;
     max-width: 1100px;
-    margin: -28px auto 0; /* sobe os cards */
+    margin: 36px auto 0;
     align-items: center;
     padding: 0 20px 16px;
     text-align: center;
@@ -153,7 +166,7 @@
     position: relative;
     width: 330px;
     height: 260px;
-    background: linear-gradient(145deg, #0f6c83 0%, #1598b6 45%, #0f6c83 100%);
+    background: linear-gradient(145deg, rgba(15,108,131,0.95) 0%, rgba(21,152,182,0.95) 60%);
     border-radius: 14px;
     padding: 24px 20px;
     box-shadow: 0 12px 30px rgba(10, 68, 90, 0.25);
@@ -163,25 +176,16 @@
     align-items: center;
     color: #ffffff;
     overflow: hidden;
-}
-
-.cards .card:nth-child(1) {
-    background-image: url('/images/livros.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.cards .card:nth-child(2) {
-    background-image: url('/images/equipe.png');
-    background-size: cover;
-    background-position: center;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease;
+    backdrop-filter: blur(4px);
 }
 
 .cards .card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(#0f6c83c8, #0f6c83c8);
+    background: linear-gradient(180deg, rgba(15,108,131,0.6), rgba(15,108,131,0.6));
     z-index: 1;
 }
 
@@ -195,6 +199,7 @@
     margin: 0 0 12px 0;
     color: #ffffff;
     line-height: 1.15;
+    text-shadow: 0 6px 18px rgba(5,20,30,0.18);
 }
 
 .buttoncard {
@@ -223,7 +228,11 @@
     transform: translateY(0);
 }
 
-/* Responsivo */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 26px 60px rgba(10, 68, 90, 0.30);
+}
+
 @media (max-width: 1200px) {
     .bannerSection { padding: 18px 20px; gap: 14px; }
     .bannerContent h2 { font-size: 22px; }
