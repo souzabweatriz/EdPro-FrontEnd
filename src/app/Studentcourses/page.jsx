@@ -6,65 +6,60 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import FooterStudent from '@/components/FooterStudent/FooterStudent';
+import HeaderStudent from '../../components/HeaderStudent/HeaderStudent'
 
 const StudentCoursesPage = () => {
+
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortedCourses, setSortedCourses] = useState([]);
-
-  const [studentInfo, setStudentInfo] = useState(() => {
-
   const [studentInfo, setStudentInfo] = useState(null);
-  const router = useRouter();
-
-  const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-
-  
-  const mockCourses = [
-    {
-      id: 1,
-      title: "Introdução ao JavaScript",
-      description: "Aprenda os fundamentos do JavaScript",
-      instructor: "Maria Luisa Gimenez",
-      students: 45,
-      image: "https://via.placeholder.com/300x200?text=JavaScript"
-    },
-    {
-      id: 2,
-      title: "React Avançado",
-      description: "Domine React com hooks e context",
-      instructor: "Luccas Augusto",
-      students: 32,
-      image: "https://via.placeholder.com/300x200?text=React"
-    },
-    {
-      id: 3,
-      title: "Node.js Backend",
-      description: "Crie servidores com Node.js",
-      instructor: "Rafael Moretti",
-      students: 28,
-      image: "https://via.placeholder.com/300x200?text=Node.js"
-    },
-  ];
 
   useEffect(() => {
-
-    if (typeof window !== 'undefined') {
+    const updateStudentInfo = () => {
       try {
         const raw = localStorage.getItem('studentInfo');
         if (raw) {
-          return JSON.parse(raw);
+          setStudentInfo(JSON.parse(raw));
+        } else {
+          setStudentInfo(null);
         }
-      } catch (err) {
-        console.error('Erro ao ler studentInfo do localStorage:', err);
+      } catch {
+        setStudentInfo(null);
+      }
+    };
+    if (typeof window !== 'undefined') {
+      updateStudentInfo();
+      window.addEventListener('storage', updateStudentInfo);
+      return () => window.removeEventListener('storage', updateStudentInfo);
+    }
+  }, []);
+  const [fixedCompletedCourses, setFixedCompletedCourses] = useState([]);
+  useEffect(() => {
+    if (typeof window !== 'undefined' && studentInfo?.email) {
+      try {
+        const raw = localStorage.getItem(`fixedCompletedCourses_${studentInfo.email}`);
+        if (raw) {
+          setFixedCompletedCourses(JSON.parse(raw));
+        } else {
+          setFixedCompletedCourses([]);
+        }
+      } catch {
+        setFixedCompletedCourses([]);
       }
     }
-    return null;
-  });
-
+  }, [studentInfo?.email]);
   const [activeTab, setActiveTab] = useState('inProgress');
   const router = useRouter();
+
+  useEffect(() => {
+    if (activeTab === 'completed') {
+      setSortedCourses(fixedCompletedCourses);
+    } else {
+      setSortedCourses(courses.filter(c => !c.completed));
+    }
+  }, [courses, activeTab, fixedCompletedCourses]);
 
   const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
@@ -72,17 +67,14 @@ const StudentCoursesPage = () => {
     const enrolledCourseId = studentInfo?.courseId || null;
 
     const fetchCourses = async () => {
-
       const baseRaw = process.env.NEXT_PUBLIC_API_URL || "";
       const base = baseRaw.replace(/\/$/, "");
-
       const urlsToTry = [];
-
+      
       if (base) {
-        urlsToTry.push(`${base}/courses`);
-        urlsToTry.push(`${base}/api/courses`);
+          urlsToTry.push(`${base}/courses`);
+          urlsToTry.push(`${base}/api/courses`);
       }
-
       urlsToTry.push("/api/courses");
       urlsToTry.push("/courses");
       urlsToTry.push("http://localhost:5000/api/courses");
@@ -90,14 +82,10 @@ const StudentCoursesPage = () => {
 
       for (const url of urlsToTry) {
         try {
-          console.debug("[StudentCourses] GET ->", url);
           const response = await fetch(url);
-
           if (!response.ok) {
-            console.warn("[StudentCourses] tentativa falhou:", url, response.status);
             continue;
           }
-
           const data = await response.json();
           const coursesList = Array.isArray(data) ? data : (data.courses || []);
 
@@ -105,67 +93,38 @@ const StudentCoursesPage = () => {
             const enrolledCourse = coursesList
               .filter(c => Number(c.id) === Number(enrolledCourseId))
               .map(c => ({ ...c, completed: c.completed || false }));
-
-            console.log("[StudentCourses] Curso matriculado encontrado:", enrolledCourse);
             setCourses(enrolledCourse);
-            setSortedCourses(enrolledCourse.filter(c => !c.completed));
+            // Atualiza o nome do curso em studentInfo se não estiver
+            if (enrolledCourse.length > 0 && (!studentInfo.course || studentInfo.course !== enrolledCourse[0].title)) {
+              const updatedStudentInfo = { ...studentInfo, course: enrolledCourse[0].title };
+              setStudentInfo(updatedStudentInfo);
+              localStorage.setItem('studentInfo', JSON.stringify(updatedStudentInfo));
+            }
           } else {
-            console.log("[StudentCourses] Nenhum courseId encontrado no localStorage");
             setCourses([]);
-            setSortedCourses([]);
           }
-
           setLoading(false);
           return;
-
         } catch (error) {
-          console.warn("[StudentCourses] erro ao buscar em", url, error);
-          continue;
         }
-
-      try {
-        
-        const response = await fetch(`${backendUrl}/api/courses`, { 
-          signal: AbortSignal.timeout(3000) 
-        }).catch(() => null);
-        
-        if (response && response.ok) {
-          const data = await response.json();
-          setCourses(data);
-          setSortedCourses(data);
-        } else {
-          
-          setCourses(mockCourses);
-          setSortedCourses(mockCourses);
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error('Erro ao buscar cursos, usando mock:', error);
-        setCourses(mockCourses);
-        setSortedCourses(mockCourses);
-        setLoading(false);
-
       }
-
-      console.error('[StudentCourses] Falha ao buscar cursos de todas as URLs');
       setLoading(false);
     };
 
     fetchCourses();
-  }, [studentInfo]);
-
+  }, [studentInfo?.courseId]);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-
-    const baseFiltered = activeTab === 'completed'
-      ? courses.filter(c => c.completed)
-      : courses.filter(c => !c.completed);
-
+    let baseFiltered = [];
+    if (activeTab === 'completed') {
+      baseFiltered = fixedCompletedCourses;
+    } else {
+      baseFiltered = courses.filter(c => !c.completed);
+    }
     const filteredCourses = baseFiltered.filter((course) =>
       course.title.toLowerCase().includes(query.toLowerCase())
     );
-
     setSortedCourses(filteredCourses);
   };
 
@@ -182,48 +141,58 @@ const StudentCoursesPage = () => {
         ? { ...course, completed: true, lastAccess: new Date().toISOString() }
         : course
     );
-
     setCourses(updatedCourses);
 
-    const filtered = activeTab === 'completed'
-      ? updatedCourses.filter(c => c.completed)
-      : updatedCourses.filter(c => !c.completed);
-
-    setSortedCourses(filtered);
+    const completedCourse = updatedCourses.find(c => c.id === courseId && c.completed);
+    const email = studentInfo?.email;
+    if (completedCourse && email) {
+      setFixedCompletedCourses(prev => {
+        const alreadyIn = prev.some(c => Number(c.id) === Number(courseId));
+        if (!alreadyIn) {
+          const newArr = [...prev, completedCourse];
+          localStorage.setItem(`fixedCompletedCourses_${email}`, JSON.stringify(newArr));
+          return newArr;
+        }
+        return prev;
+      });
+    }
 
     const totalCourses = updatedCourses.length;
     const completedCourses = updatedCourses.filter((course) => course.completed).length;
+    const pendingPercentage = 100 - Math.round((completedCourses / totalCourses) * 100);
+    const completedPercentage = 100 - pendingPercentage;
 
-    const completedPercentage = Math.round((completedCourses / totalCourses) * 100);
-    const pendingPercentage = 100 - completedPercentage;
-
-    const newStudentInfo = {
+    let newStudentInfo = {
       ...studentInfo,
       completedTasks: completedPercentage,
       pendingTasks: pendingPercentage,
     };
-
+    if (completedCourse && studentInfo?.courseId && Number(studentInfo.courseId) === Number(courseId)) {
+      newStudentInfo = {
+        ...newStudentInfo,
+        course: '',
+        courseId: '',
+      };
+    }
     setStudentInfo(newStudentInfo);
     localStorage.setItem('studentInfo', JSON.stringify(newStudentInfo));
+    setTimeout(() => {
+      const raw = localStorage.getItem('studentInfo');
+      if (raw) setStudentInfo(JSON.parse(raw));
+    }, 0);
   };
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-
-    if (tab === 'completed') {
-      setSortedCourses(courses.filter(c => c.completed));
-    } else {
-      setSortedCourses(courses.filter(c => !c.completed));
-    }
   };
 
   return (
     <>
+      <HeaderStudent />
+      <div className={styles.headerSpacer}></div>
       <div className={styles.pageContainer}>
-
         {studentInfo && (
           <div className={styles.topPanel}>
-
             <div className={styles.userInfoBox}>
               <div className={styles.userInfoAvatar}>
                 <Image
@@ -234,59 +203,52 @@ const StudentCoursesPage = () => {
                   className={styles.avatarImg}
                 />
               </div>
-
               <div className={styles.userInfoDetails}>
                 <div className={styles.userName}>Olá, {studentInfo.name}</div>
-
                 <div className={styles.userCourse}>
                   Matriculado no curso de:{' '}
-                  <span className={styles.courseLink}>{studentInfo.course}</span>
+                  {studentInfo && studentInfo.course && String(studentInfo.course).trim() ? (
+                    <span className={styles.courseLink}>{studentInfo.course}</span>
+                  ) : (
+                    <span className={styles.courseLink} style={{ color: '#aaa' }}>Nenhum curso ativo</span>
+                  )}
                 </div>
-
                 <div className={styles.buttonRow}>
-                  <Link href="/courses" className={styles.topButton}>Confira seus cursos</Link>
-                  <Link href="/matricula" className={styles.topButton}>Matricule-se</Link>
+                  <Link href="/courses" className={styles.topButton}>
+                    Confira seus cursos
+                  </Link>
+                  <Link href="/matricula" className={styles.topButton}>
+                    Matricule-se
+                  </Link>
+                  <button
+                    className={styles.topButton}
+                    style={{ background: '#e74c3c', color: '#fff', marginLeft: 8 }}
+                    onClick={() => {
+                      if (typeof window !== 'undefined') {
+                        localStorage.removeItem('studentInfo');
+                        setStudentInfo(null);
+                        setCourses([]);
+                        setSortedCourses([]);
+                        router.push('/login');
+                      }
+                    }}
+                  >
+                    Sair
+                  </button>
                 </div>
-              </div>
-            </div>
-
-            <div className={styles.taskSummary}>
-              <div className={styles.taskTitle}>Resumo de Tarefas</div>
-
-              <div className={styles.taskRow}>
-                <span>Concluídas:</span>
-                <span className={styles.taskBar}>
-                  <span
-                    className={styles.taskBarGreen}
-                    style={{ width: `${studentInfo.completedTasks}%` }}
-                  ></span>
-                </span>
-                <span className={styles.taskPercent}>{studentInfo.completedTasks}%</span>
-              </div>
-
-              <div className={styles.taskRow}>
-                <span>Pendentes:</span>
-                <span className={styles.taskBar}>
-                  <span
-                    className={styles.taskBarRed}
-                    style={{ width: `${studentInfo.pendingTasks}%` }}
-                  ></span>
-                </span>
-                <span className={styles.taskPercent}>{studentInfo.pendingTasks}%</span>
               </div>
             </div>
           </div>
         )}
 
         <div className={styles.tabsContainer}>
-          <button
+          <button 
             className={`${styles.tabBtn} ${activeTab === 'inProgress' ? styles.tabActive : ''}`}
             onClick={() => handleTabChange('inProgress')}
           >
             Meus Cursos
           </button>
-
-          <button
+          <button 
             className={`${styles.tabBtn} ${activeTab === 'completed' ? styles.tabActive : ''}`}
             onClick={() => handleTabChange('completed')}
           >
@@ -297,27 +259,23 @@ const StudentCoursesPage = () => {
         <h2 className={styles.title}>
           {activeTab === 'inProgress' ? 'Meus Cursos' : 'Cursos Concluídos'}
         </h2>
-
         <div className={styles.filtersContainer}>
           <input
             className={styles.searchInput}
-            placeholder="Buscar"
+            placeholder="Buscar curso"
             value={searchQuery}
             onChange={(e) => handleSearch(e.target.value)}
           />
         </div>
-
         <div className={styles.coursesGrid}>
           {loading ? (
             <div className={styles.loading}>Carregando cursos...</div>
           ) : sortedCourses.length === 0 ? (
             <div className={styles.noCourses}>
-              <p>
-                {activeTab === 'inProgress'
-                  ? 'Você não tem cursos em andamento.'
-                  : 'Você ainda não concluiu nenhum curso.'}
+              <p>{activeTab === 'inProgress' 
+                ? 'Você não tem cursos em andamento.' 
+                : 'Você ainda não concluiu nenhum curso.'}
               </p>
-
               {activeTab === 'inProgress' && (
                 <Link href="/courses" className={styles.enrollLink}>
                   Ver cursos disponíveis
@@ -327,7 +285,7 @@ const StudentCoursesPage = () => {
           ) : (
             sortedCourses.map((course) => (
               <Link
-                href={`/courses/${course.id}`}
+                href={`/Studentcourses/${course.id}`}
                 key={course.id}
                 className={styles.courseCard}
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -335,11 +293,7 @@ const StudentCoursesPage = () => {
                 <div className={styles.cardImageBox}>
                   {course.photo ? (
                     <Image
-                      src={
-                        course.photo.startsWith('http')
-                          ? course.photo
-                          : `${backendUrl}/uploads/${course.photo}`
-                      }
+                      src={course.photo.startsWith('http') ? course.photo : `${backendUrl}/uploads/${course.photo}`}
                       alt={course.title}
                       width={300}
                       height={180}
@@ -347,6 +301,11 @@ const StudentCoursesPage = () => {
                     />
                   ) : (
                     <div className={styles.cardImagePlaceholder}>📚</div>
+                  )}
+                  {course.completed && (
+                    <span className={styles.completedBadgeTop}>
+                      &#10003; Concluído
+                    </span>
                   )}
                 </div>
 
@@ -358,13 +317,11 @@ const StudentCoursesPage = () => {
                       : course.description}
                   </p>
 
-                  {course.completed ? (
-                    <span className={styles.completedBadge}>✓ Concluído</span>
-                  ) : (
+                  {!course.completed && (
                     <button
                       className={styles.completeButton}
                       onClick={(e) => {
-                        e.preventDefault();
+                        e.preventDefault(); 
                         handleCompleteCourse(course.id);
                       }}
                     >
@@ -376,71 +333,7 @@ const StudentCoursesPage = () => {
             ))
           )}
         </div>
-
-      )}
-
-      <h2 className={styles.title}>Meus Cursos</h2>
-      <div className={styles.filtersContainer}>
-        <button className={styles.filterBtn} onClick={() => setSortedCourses(courses)}>
-          Todos
-        </button>
-        <input
-          className={styles.searchInput}
-          placeholder="Buscar"
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-        <button className={styles.orderBtn} onClick={handleSortByLastAccess}>
-          Ordenar por último acesso
-        </button>
       </div>
-      <div className={styles.coursesGrid}>
-        {loading ? (
-          <div className={styles.loading}>Carregando cursos...</div>
-        ) : (
-          sortedCourses.map((course) => (
-            <Link
-              key={course.id}
-              href={`/Studentcourses/${course.id}`}
-              className={styles.courseCard}
-            >
-              <div className={styles.cardImageBox}>
-                {course.image ? (
-                  <img
-                    src={`${backendUrl}/uploads/${course.image}`} 
-                    alt={course.title}
-                    className={styles.cardImage}
-                  />
-                ) : (
-                  <div className={styles.cardImagePlaceholder}>FOTO AQUI</div>
-                )}
-              </div>
-              <div className={styles.cardBody}>
-                <h3 className={styles.cardTitle}>{course.title}</h3>
-                <p className={styles.cardDesc}>
-                  {course.description.length > 100
-                    ? course.description.slice(0, 100) + '...'
-                    : course.description}
-                </p>
-                {!course.completed && (
-                  <button
-                    className={styles.completeButton}
-                    onClick={(e) => {
-                      e.preventDefault(); 
-                      e.stopPropagation();
-                      handleCompleteCourse(course.id);
-                    }}
-                  >
-                    Marcar como concluído
-                  </button>
-                )}
-              </div>
-            </Link>
-          ))
-        )}
-
-      </div>
-
       <FooterStudent />
     </>
   );
